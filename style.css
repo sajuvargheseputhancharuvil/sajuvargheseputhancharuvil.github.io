@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0b0f19;
+    color: white;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    color: #00d4ff !important;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: white !important;
+    margin-left: 15px;
+}
+
+.nav-link:hover {
+    color: #00d4ff !important;
+}
+
+/* HERO */
+
+.hero {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-top: 15px;
+    color: #d1d1d1;
+}
+
+/* SECTION */
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    color: #00d4ff;
+    font-weight: 700;
+}
+
+/* ABOUT */
+
+.about-card {
+    background: #151c2c;
+    padding: 40px;
+    border-radius: 20px;
+    line-height: 1.8;
+}
+
+/* BLOG */
+
+.dark-section {
+    background: #101522;
+}
+
+.blog-card {
+    background: #151c2c;
+    padding: 30px;
+    border-radius: 20px;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card h4 {
+    margin-bottom: 20px;
+    color: #00d4ff;
+}
+
+/* PROJECTS */
+
+.project-box {
+    background: #151c2c;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.project-box ul {
+    margin-top: 20px;
+}
+
+/* FOOTER */
+
+.footer-section {
+    background: black;
+    padding: 50px 0;
+}
+
+/* BUTTON */
+
+.btn-primary {
+    background: #00d4ff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #00a8cc;
+}
