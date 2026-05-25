@@ -1,152 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Saju | Cybersecurity Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSV | Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
-  <!-- NAVBAR -->
-  <header class="site-header">
-    <div class="nav-container">
-      <div class="logo">
-        <div class="logo-circle">SV</div>
-        <span class="logo-text">Saju Varghese</span>
-      </div>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#tutorials">Tutorials</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header class="navbar">
+    <div class="logo">PSV</div>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <p class="hero-kicker">NEW · Introducing Smart Data Protector</p>
-        <h1 class="hero-title">CYBER SECURITY</h1>
-        <p class="hero-subtitle">
-          Data Protection consists of technology, processes and controls designed to protect systems.
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="investigations.html">Investigations</a></li>
+            <li><a href="labs.html">Lab Setup</a></li>
+            <li><a href="security-tools.html">Security Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <a href="#contact" class="btn-primary">Connect</a>
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+        <span class="hero-badge">SOC OPERATIONS • INVESTIGATIONS • LABS</span>
+
+        <h1>
+            Investigating Threats.<br>
+            Building Detection.<br>
+            Strengthening Security.
+        </h1>
+
+        <p>
+            Documenting investigations, detection workflows, security testing,
+            SIEM analysis and hands-on cybersecurity labs.
         </p>
 
-        <div class="hero-meta">
-          <span class="hero-version">V.01 Data Protector</span>
-          <span class="hero-step">01 — 04</span>
+        <div class="hero-buttons">
+            <a href="investigations.html" class="btn-primary">Explore Investigations</a>
+            <a href="labs.html" class="btn-secondary">Build Your Lab</a>
+        </div>
+    </div>
+
+    <div class="hero-image image-placeholder">
+        <span>Add Hero Dashboard / SIEM Image</span>
+    </div>
+
+</section>
+
+<section class="stats-section">
+
+    <div class="stat-card">
+        <h2>50+</h2>
+        <p>Investigations</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>25+</h2>
+        <p>Detection Rules</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>10+</h2>
+        <p>Labs & Projects</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>3+</h2>
+        <p>Years Experience</p>
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-title">
+        <span>FOCUS AREAS</span>
+        <h2>Core Security Domains</h2>
+    </div>
+
+    <div class="grid-4">
+
+        <div class="card">
+            <div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
+            <h3>Security Operations</h3>
+            <p>SOC monitoring, incident analysis and operational workflows.</p>
         </div>
 
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">View Projects</a>
-          <button class="btn-ghost">
-            <span class="play-circle"></span>
-            Watch Video
-          </button>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-orb hero-orb-main"></div>
-        <div class="hero-orb hero-orb-small"></div>
-        <div class="hero-grid"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT STRIP -->
-  <section id="about" class="about-strip">
-    <div class="about-inner">
-      <div class="about-avatar">S</div>
-      <div>
-        <p class="about-title">Security Operations · DFIR · Blue Team</p>
-        <p class="about-text">
-          I investigate incidents, build detection logic, and share practical tutorials for defenders and analysts.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section-dark">
-    <div class="section-inner">
-      <div class="section-header">
-        <h2>Featured Investigations & Projects</h2>
-        <p>Real-world SOC & DFIR work, tools, and case studies.</p>
-      </div>
-
-      <div class="card-grid">
-        <article class="card-dark">
-          <h3>Ransomware Incident Response</h3>
-          <p>End-to-end DFIR workflow: triage, containment, forensics, and reporting.</p>
-          <div class="card-tags">
-            <span>DFIR</span><span>IR Playbook</span>
-          </div>
-        </article>
-
-        <article class="card-dark">
-          <h3>SIEM Detection Pack</h3>
-          <p>Custom correlation rules and dashboards for lateral movement detection.</p>
-          <div class="card-tags">
-            <span>SOC</span><span>Detection</span>
-          </div>
-        </article>
-
-        <article class="card-dark">
-          <h3>Malware Sandbox Automation</h3>
-          <p>Automated analysis pipeline with enrichment and reporting.</p>
-          <div class="card-tags">
-            <span>Malware</span><span>Automation</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- TUTORIALS (LIGHT PANEL INSIDE DARK THEME) -->
-  <section id="tutorials" class="section-dark">
-    <div class="section-inner">
-      <div class="tutorial-panel">
-        <div class="section-header">
-          <h2>Tutorials & Guides</h2>
-          <p>Step-by-step content for SOC analysts, DFIR responders, and blue teamers.</p>
+        <div class="card">
+            <div class="icon-circle"><i class="fas fa-search"></i></div>
+            <h3>Threat Investigation</h3>
+            <p>Detection analysis, log correlation and behavioral review.</p>
         </div>
 
-        <div class="tutorial-grid">
-          <article class="tutorial-card">
-            <h3>Building a Detection Rule</h3>
-            <p>From hypothesis to SIEM rule with test data.</p>
-          </article>
-
-          <article class="tutorial-card">
-            <h3>Memory Forensics Basics</h3>
-            <p>Using Volatility to triage compromised hosts.</p>
-          </article>
-
-          <article class="tutorial-card">
-            <h3>Log Sources You Can’t Ignore</h3>
-            <p>Prioritizing telemetry for effective detection.</p>
-          </article>
+        <div class="card">
+            <div class="icon-circle"><i class="fas fa-network-wired"></i></div>
+            <h3>Lab Testing</h3>
+            <p>Hands-on cybersecurity testing in isolated environments.</p>
         </div>
 
-        <a href="#" class="tutorial-link">View all tutorials →</a>
-      </div>
-    </div>
-  </section>
+        <div class="card">
+            <div class="icon-circle"><i class="fas fa-user-secret"></i></div>
+            <h3>Fraud Analysis</h3>
+            <p>Behavior monitoring, alert review and fraud investigations.</p>
+        </div>
 
-  <!-- FOOTER -->
-  <footer id="contact" class="site-footer">
-    <div class="footer-inner">
-      <p>© 2026 Saju · Cybersecurity · SOC · DFIR</p>
-      <div class="footer-links">
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">X</a>
-      </div>
     </div>
-  </footer>
 
+</section>
+
+<section class="section dark-panel">
+
+    <div class="section-title">
+        <span>FEATURED INVESTIGATIONS</span>
+        <h2>Operational Analysis & Case Studies</h2>
+    </div>
+
+    <div class="grid-3">
+
+        <div class="investigation-card">
+            <div class="image-placeholder small-image">
+                <span>Investigation Image</span>
+            </div>
+            <div class="card-content">
+                <span class="tag">SOC</span>
+                <h3>PowerShell Obfuscation Analysis</h3>
+                <p>Investigating encoded PowerShell activity through SIEM correlation and log analysis.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="investigation-card">
+            <div class="image-placeholder small-image">
+                <span>Detection Image</span>
+            </div>
+            <div class="card-content">
+                <span class="tag">Threat Hunting</span>
+                <h3>Authentication Failure Analysis</h3>
+                <p>Reviewing repeated failed logins and authentication anomalies.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="investigation-card">
+            <div class="image-placeholder small-image">
+                <span>SIEM Dashboard</span>
+            </div>
+            <div class="card-content">
+                <span class="tag">Detection Engineering</span>
+                <h3>SIEM Correlation Validation</h3>
+                <p>Validating detections, reviewing alerts and improving visibility.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-title">
+        <span>LABS & PROJECTS</span>
+        <h2>Hands-On Security Environments</h2>
+    </div>
+
+    <div class="grid-4">
+
+        <div class="card">
+            <div class="image-placeholder mini-image"></div>
+            <h3>Elastic SIEM Lab</h3>
+            <p>Centralized log monitoring and threat visibility.</p>
+        </div>
+
+        <div class="card">
+            <div class="image-placeholder mini-image"></div>
+            <h3>Detection Lab</h3>
+            <p>Rule validation, Sigma testing and alert analysis.</p>
+        </div>
+
+        <div class="card">
+            <div class="image-placeholder mini-image"></div>
+            <h3>Active Directory Lab</h3>
+            <p>AD attacks, privilege escalation and endpoint testing.</p>
+        </div>
+
+        <div class="card">
+            <div class="image-placeholder mini-image"></div>
+            <h3>Pentest Environment</h3>
+            <p>Web application testing and network enumeration.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section blog-preview">
+
+    <div class="section-title">
+        <span>BLOG & RESEARCH</span>
+        <h2>Latest Research & Writeups</h2>
+    </div>
+
+    <div class="blog-grid">
+
+        <div class="blog-card">
+            <div class="image-placeholder blog-image"></div>
+            <div class="blog-content">
+                <span class="category soc">SOC</span>
+                <h3>Investigating Malware Alerts in Elastic SIEM</h3>
+                <p>Step-by-step walkthrough of investigation and analysis workflows.</p>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <div class="image-placeholder blog-image"></div>
+            <div class="blog-content">
+                <span class="category threat">Threat Hunting</span>
+                <h3>Hunting Suspicious PowerShell Activity</h3>
+                <p>Understanding obfuscation and suspicious execution patterns.</p>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <div class="image-placeholder blog-image"></div>
+            <div class="blog-content">
+                <span class="category vuln">Vulnerability Research</span>
+                <h3>Detection Validation & Alert Tuning</h3>
+                <p>Reducing false positives and improving alert reliability.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+        <div>
+            <h2>PSV</h2>
+            <p>
+                Cybersecurity investigations, SOC operations,
+                security testing and practical operational learning.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="investigations.html">Investigations</a></li>
+                <li><a href="labs.html">Labs</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Connect</h3>
+            <div class="socials">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 PSV — All Rights Reserved.
+    </div>
+
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
