@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PSV | Cybersecurity Portfolio</title>
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/animations.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<header class="navbar">
+<!-- BACKGROUND GLOW -->
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- NAVBAR -->
+<header class="navbar premium-navbar">
+
     <div class="logo">PSV</div>
 
     <nav>
@@ -26,14 +38,345 @@
     </nav>
 
     <a href="#contact" class="btn-primary">Connect</a>
+
 </header>
 
-<section class="hero">
+<!-- PREMIUM HERO -->
+<section class="premium-hero">
 
-    <div class="hero-content">
-        <span class="hero-badge">SOC OPERATIONS • INVESTIGATIONS • LABS</span>
+    <div class="hero-left">
+
+        <span class="hero-badge">
+            CYBERSECURITY PROFESSIONAL
+        </span>
 
         <h1>
+            Securing Systems.<br>
+            Investigating Threats.<br>
+            Building A Safer
+            <span>Digital World.</span>
+        </h1>
+
+        <p>
+            Focused on SOC operations, cybersecurity investigations,
+            fraud analysis, SIEM monitoring, detection engineering
+            and hands-on security testing.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="investigations.html" class="btn-primary">Explore My Work</a>
+            <a href="about.html" class="btn-secondary">Download Resume</a>
+        </div>
+
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <div class="hero-dashboard-card floating-card">
+
+            <img src="assets/images/hero/globe-dashboard.png" alt="SOC Dashboard">
+
+        </div>
+
+        <div class="mini-alert-card glass-card">
+            <div class="alert-dot"></div>
+            <div>
+                <h4>Active Defender</h4>
+                <p>Monitoring threats 24/7</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATS -->
+<section class="premium-stats">
+
+    <div class="premium-stat-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>50+</h3>
+        <p>Investigations Handled</p>
+    </div>
+
+    <div class="premium-stat-card">
+        <i class="fas fa-search"></i>
+        <h3>25+</h3>
+        <p>Detection Rules Engineered</p>
+    </div>
+
+    <div class="premium-stat-card">
+        <i class="fas fa-flask"></i>
+        <h3>10+</h3>
+        <p>Labs & Projects Built</p>
+    </div>
+
+    <div class="premium-stat-card">
+        <i class="fas fa-user-secret"></i>
+        <h3>3+</h3>
+        <p>Years Experience</p>
+    </div>
+
+</section>
+
+<!-- ABOUT PREVIEW -->
+<section class="premium-section split-section">
+
+    <div class="split-left">
+
+        <span class="section-label">ABOUT ME</span>
+
+        <h2>
+            Driven By Curiosity.<br>
+            Guided By Purpose.
+        </h2>
+
+        <p>
+            I specialize in SOC operations, threat hunting,
+            fraud analysis and investigation workflows.
+            My focus is on understanding how attacks behave,
+            improving visibility and strengthening detection capabilities.
+        </p>
+
+        <a href="about.html" class="btn-secondary">
+            Read More About Me
+        </a>
+
+    </div>
+
+    <div class="split-right">
+
+        <div class="skill-progress-card glass-card">
+
+            <div class="skill-row">
+                <span>SOC Operations</span>
+                <span>90%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill w90"></div></div>
+
+            <div class="skill-row">
+                <span>Threat Hunting</span>
+                <span>85%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill w85"></div></div>
+
+            <div class="skill-row">
+                <span>Incident Response</span>
+                <span>80%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill w80"></div></div>
+
+            <div class="skill-row">
+                <span>Detection Engineering</span>
+                <span>85%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill w85"></div></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CORE EXPERTISE -->
+<section class="premium-section">
+
+    <div class="section-header-inline">
+        <div>
+            <span class="section-label">WHAT I DO</span>
+            <h2>Cybersecurity Services & Expertise</h2>
+        </div>
+    </div>
+
+    <div class="expertise-grid">
+
+        <div class="expertise-card glass-card">
+            <img src="assets/images/icons/soc.png" alt="SOC">
+            <h3>SOC Monitoring</h3>
+            <p>24/7 monitoring, log analysis and investigations.</p>
+        </div>
+
+        <div class="expertise-card glass-card">
+            <img src="assets/images/icons/threat.png" alt="Threat Hunting">
+            <h3>Threat Hunting</h3>
+            <p>Behavior analysis and operational visibility workflows.</p>
+        </div>
+
+        <div class="expertise-card glass-card">
+            <img src="assets/images/icons/detection.png" alt="Detection">
+            <h3>Detection Engineering</h3>
+            <p>Detection validation and SIEM rule optimization.</p>
+        </div>
+
+        <div class="expertise-card glass-card">
+            <img src="assets/images/icons/pentest.png" alt="Pentesting">
+            <h3>Penetration Testing</h3>
+            <p>Infrastructure testing and web application analysis.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INVESTIGATIONS -->
+<section class="premium-section dark-panel-section">
+
+    <div class="section-header-inline">
+
+        <div>
+            <span class="section-label">FEATURED INVESTIGATIONS</span>
+            <h2>Real Cases. Real Impact.</h2>
+        </div>
+
+        <a href="investigations.html" class="btn-secondary">
+            View All Investigations
+        </a>
+
+    </div>
+
+    <div class="case-grid">
+
+        <div class="case-card glass-card">
+            <img src="assets/images/investigations/investigation-1.jpg" alt="Investigation">
+            <div class="case-content">
+                <span class="tag">Malware Analysis</span>
+                <h3>Lumma Stealer Investigation</h3>
+                <p>IOC extraction, SIEM correlation and malware behavior analysis.</p>
+            </div>
+        </div>
+
+        <div class="case-card glass-card">
+            <img src="assets/images/investigations/investigation-2.jpg" alt="Investigation">
+            <div class="case-content">
+                <span class="tag">SIEM Investigation</span>
+                <h3>Brute Force Attack Detection</h3>
+                <p>Authentication analysis and operational alert correlation.</p>
+            </div>
+        </div>
+
+        <div class="case-card glass-card">
+            <img src="assets/images/investigations/investigation-3.jpg" alt="Investigation">
+            <div class="case-content">
+                <span class="tag">Threat Hunting</span>
+                <h3>PowerShell Obfuscation Hunting</h3>
+                <p>Detection engineering and encoded execution analysis.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LABS -->
+<section class="premium-section">
+
+    <div class="section-header-inline">
+
+        <div>
+            <span class="section-label">LABS & PROJECTS</span>
+            <h2>Hands-On Labs & Simulations</h2>
+        </div>
+
+        <a href="labs.html" class="btn-secondary">
+            View All Labs
+        </a>
+
+    </div>
+
+    <div class="lab-grid">
+
+        <div class="lab-card glass-card">
+            <img src="assets/images/labs/elastic.png" alt="Elastic">
+            <h3>Elastic SIEM Lab</h3>
+            <p>Centralized monitoring and detection workflows.</p>
+        </div>
+
+        <div class="lab-card glass-card">
+            <img src="assets/images/labs/kali.png" alt="Kali Linux">
+            <h3>Detection Lab</h3>
+            <p>Threat simulation and alert validation workflows.</p>
+        </div>
+
+        <div class="lab-card glass-card">
+            <img src="assets/images/labs/windows.png" alt="Windows">
+            <h3>Active Directory Lab</h3>
+            <p>Enterprise attack simulation and visibility testing.</p>
+        </div>
+
+        <div class="lab-card glass-card">
+            <img src="assets/images/labs/pentest.png" alt="Pentest">
+            <h3>Penetration Testing Lab</h3>
+            <p>Controlled offensive security environments.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section class="premium-cta">
+
+    <div>
+        <span class="section-label">LET'S WORK TOGETHER</span>
+        <h2>Have A Project Or Opportunity?</h2>
+        <p>
+            Open to discussing cybersecurity projects,
+            operational security and investigation workflows.
+        </p>
+    </div>
+
+    <div class="cta-visual">
+        <img src="assets/images/hero/shield-3d.png" alt="3D Shield">
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="premium-footer" id="contact">
+
+    <div class="footer-grid">
+
+        <div>
+            <h2>PSV</h2>
+            <p>Cybersecurity investigations, operational analysis and practical learning.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="investigations.html">Investigations</a></li>
+                <li><a href="labs.html">Labs</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="security-tools.html">Tools I Use</a></li>
+                <li><a href="blog.html">Research</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 PSV — All Rights Reserved.
+    </div>
+
+</footer>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
             Investigating Threats.<br>
             Building Detection.<br>
             Strengthening Security.
