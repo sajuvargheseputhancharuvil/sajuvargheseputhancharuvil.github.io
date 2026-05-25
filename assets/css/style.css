@@ -513,3 +513,122 @@ footer li {
     }
 
 }
+
+.lab-overview-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.lab-main-image {
+    min-height: 450px;
+}
+
+.lab-category-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+}
+
+.lab-category-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 35px;
+    transition: 0.3s ease;
+}
+
+.lab-category-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(37,99,235,0.4);
+}
+
+.feature-list {
+    margin-top: 25px;
+    padding-left: 20px;
+}
+
+.feature-list li {
+    margin-bottom: 12px;
+    color: var(--muted);
+}
+
+.infrastructure-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.infra-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.infra-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(37,99,235,0.4);
+}
+
+.infra-card i {
+    font-size: 2rem;
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.architecture-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.architecture-text p {
+    margin-bottom: 25px;
+    color: var(--muted);
+}
+
+.architecture-image {
+    min-height: 450px;
+}
+
+.notice-box {
+    background: rgba(255,165,0,0.08);
+    border: 1px solid rgba(255,165,0,0.2);
+    border-radius: 20px;
+    padding: 35px;
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.notice-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    background: rgba(255,165,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: orange;
+    font-size: 1.5rem;
+}
+
+@media(max-width: 768px) {
+
+    .lab-overview-grid,
+    .lab-category-grid,
+    .infrastructure-grid,
+    .architecture-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .notice-box {
+        flex-direction: column;
+    }
+
+}
