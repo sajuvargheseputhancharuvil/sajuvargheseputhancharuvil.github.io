@@ -161,6 +161,101 @@
 
     </section>
 
+    <!-- ================= LAB TOPOLOGY SECTION ================= -->
+    <section class="custom-card rounded-xl p-8 border border-slate-800">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-800 pb-6 mb-8">
+        <div>
+          <h2 class="text-xl font-bold text-white">Lab Topology & Telemetry Architecture</h2>
+          <p class="text-xs text-slate-400 mt-1">Simulating production conditions to analyze log fidelity, detection coverage, and alert latency across virtualized network segments.</p>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="flex flex-wrap gap-4">
+          <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3 flex items-center space-x-3 min-w-[160px]">
+            <i class="fa-solid fa-network-wired text-blue-400 text-lg"></i>
+            <div>
+              <div class="text-[11px] font-bold text-white">Network Visibility</div>
+              <div class="text-[10px] text-slate-400">pfSense, Suricata, Zeek telemetry</div>
+            </div>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3 flex items-center space-x-3 min-w-[160px]">
+            <i class="fa-solid fa-desktop text-blue-400 text-lg"></i>
+            <div>
+              <div class="text-[11px] font-bold text-white">Endpoint Telemetry</div>
+              <div class="text-[10px] text-slate-400">Windows Security Events, Sysmon, Auditd</div>
+            </div>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3 flex items-center space-x-3 min-w-[160px]">
+            <i class="fa-solid fa-database text-blue-400 text-lg"></i>
+            <div>
+              <div class="text-[11px] font-bold text-white">Ingestion Pipeline</div>
+              <div class="text-[10px] text-slate-400">Filebeat, Logstash into Elastic / Wazuh</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagram Flow Area -->
+      <div class="py-6 px-4 bg-slate-950/40 rounded-lg border border-slate-900/80">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center relative">
+          
+          <!-- Box 1 -->
+          <div class="bg-slate-900 border border-blue-900/50 rounded-lg p-4 text-center space-y-2">
+            <i class="fa-solid fa-user-ninja text-blue-400 text-xl"></i>
+            <div class="text-xs font-bold text-white">Attack & Traffic Sources</div>
+          </div>
+
+          <!-- Arrow 1 -->
+          <div class="hidden md:flex justify-center text-blue-500">
+            <div class="flex flex-col items-center">
+              <span class="text-[10px] text-slate-500 mb-1">SPAN / Mirror Port</span>
+              <i class="fa-solid fa-arrow-right text-lg"></i>
+            </div>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="bg-slate-900 border border-blue-900/50 rounded-lg p-4 text-center space-y-2">
+            <i class="fa-solid fa-shield-halved text-blue-400 text-xl"></i>
+            <div class="text-xs font-bold text-white">pfSense Firewall</div>
+          </div>
+
+          <!-- Arrow 2 -->
+          <div class="hidden md:flex justify-center text-blue-500">
+            <i class="fa-solid fa-arrow-right text-lg"></i>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="bg-slate-900 border border-blue-900/50 rounded-lg p-4 text-center space-y-2">
+            <i class="fa-solid fa-wave-square text-blue-400 text-xl"></i>
+            <div class="text-xs font-bold text-white">Suricata IDS</div>
+          </div>
+
+          <!-- Arrow 3 -->
+          <div class="hidden md:flex justify-center text-blue-500">
+            <i class="fa-solid fa-arrow-right text-lg"></i>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="bg-slate-900 border border-blue-900/50 rounded-lg p-4 text-center space-y-2">
+            <i class="fa-solid fa-server text-blue-400 text-xl"></i>
+            <div class="text-xs font-bold text-white">Centralized SIEM</div>
+          </div>
+
+        </div>
+
+        <!-- Secondary Bottom Box Connection -->
+        <div class="mt-6 flex justify-center">
+          <div class="bg-slate-900 border border-blue-900/50 rounded-lg p-3 px-8 text-center flex items-center space-x-3">
+            <i class="fa-solid fa-laptop text-blue-400"></i>
+            <div class="text-left">
+              <div class="text-xs font-bold text-white">Managed Host Endpoints</div>
+              <div class="text-[10px] text-slate-500">Windows / Linux - Sysmon & Auditd Logs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= PAGE 2: INVESTIGATIONS ================= -->
     <section id="page-investigations" class="page-section space-y-8">
       <div>
