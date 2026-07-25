@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Privacy Skill Vault</title>
+  
+  <meta name="description" content="Documenting real-world threat analysis, cyber fraud administration, and lab-based defensive engineering. Focused on understanding why security controls fail and how detections perform under stress.">
+  <meta property="og:title" content="About | Privacy Skill Vault">
+  <meta property="og:description" content="Bridging theory and operational reality in cybersecurity, threat analysis, and fraud prevention.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="navbar">
+    <div class="max-container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-halved brand-logo-icon"></i>
+        <div>
+          <div class="brand-title">PRIVACY <span style="color: var(--accent-blue);">SKILL VAULT</span></div>
+          <div class="brand-subtitle">Security Operations | Investigations | Lab Testing</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="investigations.html">Investigations</a>
+        <a href="fraud-analysis.html">Fraud Analysis</a>
+        <a href="lab-setup.html">Lab Setup</a>
+        <a href="tools.html">Tools</a>
+        <a href="about.html" class="active">About</a>
+      </nav>
+
+      <div style="color: var(--text-muted); cursor: pointer;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
+
+    <!-- 1. HEADER & INTRO SECTION -->
+    <section style="margin-bottom: 2.5rem;">
+      <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--cyan-glow); text-transform: uppercase;">
+        ABOUT
+      </span>
+      <h1 style="font-size: 2.25rem; line-height: 1.2; margin-top: 0.5rem; margin-bottom: 0.75rem;">
+        Bridging Theory and Operational Reality
+      </h1>
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; max-width: 950px;">
+        Documenting real-world threat analysis, cyber fraud administration, and lab-based defensive engineering. Focused on understanding why security controls fail and how detections perform under stress.[cite: 1]
+      </p>
+    </section>
+
+    <!-- 2. SECTION 1: PLATFORM MISSION -->
+    <section class="section-card space-y" style="margin-top: 0;">
+      <div style="display: flex; items-center; gap: 0.75rem; margin-bottom: 1rem;">
+        <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; background: rgba(56, 189, 248, 0.1); color: var(--cyan-glow); border: 1px solid rgba(56, 189, 248, 0.2); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+          <i class="fa-solid fa-cube"></i>
+        </div>
+        <div>
+          <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700; uppercase; letter-spacing: 0.05em;">1. PLATFORM MISSION</span>
+          <h2 style="font-size: 1.35rem; margin-top: 0.1rem;">Why Privacy Skill Vault Exists</h2>[cite: 1]
+        </div>
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem;">
+        A significant amount of cybersecurity content focuses heavily on ideal scenarios, theoretical frameworks, or simplified demonstrations that rarely reflect production environments.[cite: 1]
+      </p>
+
+      <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--border-color); margin-bottom: 1.25rem;">
+        <strong style="color: #fff; font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Operational analysis in the real world is messy:</strong>[cite: 1]
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.8rem;">
+          <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+            <i class="fa-solid fa-circle-xmark" style="color: #ef4444; margin-top: 0.2rem;"></i>
+            <span>Alerts can be extremely noisy and prone to false positives.[cite: 1]</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+            <i class="fa-solid fa-circle-xmark" style="color: #ef4444; margin-top: 0.2rem;"></i>
+            <span>Logs are often missing, unparsed, or partially configured.[cite: 1]</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+            <i class="fa-solid fa-circle-xmark" style="color: #ef4444; margin-top: 0.2rem;"></i>
+            <span>Security tools and detection rules behave differently depending on host OS, network topology, and logging depth.[cite: 1]</span>
+          </li>
+        </ul>
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+        Privacy Skill Vault was created as a dedicated technical repository to document the operational friction points. The objective is not simply to showcase successful security outcomes, but to examine root causes during misconfigurations, analyze raw log behavior, and share hands-on methodologies for threat triage and fraud prevention.[cite: 1]
+      </p>
+    </section>
+
+    <!-- 3. SECTION 2: AUTHOR PROFILE -->
+    <section class="space-y">
+      <div class="grid-3" style="align-items: stretch;">
+        
+        <!-- Left Profile Badge Card -->
+        <div class="section-card" style="padding: 1.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="width: 4.5rem; height: 4.5rem; border-radius: 50%; background: var(--bg-surface-alt); border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto; font-size: 2rem; color: var(--text-muted);">
+              <i class="fa-solid fa-user-secret"></i>
+            </div>
+            <h2 style="font-size: 1.125rem; margin-bottom: 0.25rem;">Security Practitioner</h2>[cite: 1]
+            <p style="color: var(--cyan-glow); font-size: 0.75rem; font-weight: 600;">Cyber Fraud Administrator & Security Analyst</p>[cite: 1]
+            
+            <div style="display: flex; gap: 0.35rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; font-size: 0.65rem;">
+              <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.2rem 0.4rem; border-radius: 0.25rem; color: var(--text-muted);">SOC Operations</span>
+              <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.2rem 0.4rem; border-radius: 0.25rem; color: var(--text-muted);">Incident Investigation</span>
+              <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.2rem 0.4rem; border-radius: 0.25rem; color: var(--text-muted);">Pentesting</span>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border-color); margin-top: 1.25rem; padding-top: 1rem;">
+            <span style="font-size: 0.65rem; color: var(--text-muted); uppercase;">Certifications:</span>[cite: 1]
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--purple-glow); margin-top: 0.25rem;" class="mono-font">eJPT</div>[cite: 1]
+            <span style="font-size: 0.65rem; color: var(--text-muted);">eLearnSecurity Junior Penetration Tester</span>[cite: 1]
+          </div>
+        </div>
+
+        <!-- Right Biography Container -->
+        <div class="section-card" style="grid-column: span 2; padding: 1.75rem; display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700; uppercase; letter-spacing: 0.05em;">2. AUTHOR PROFILE</span>
+          <h2 style="font-size: 1.35rem; margin-top: 0.15rem; margin-bottom: 1rem;">Behind the Operations</h2>[cite: 1]
+          
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem;">
+            Privacy Skill Vault is built and maintained by a security practitioner specializing in Cyber Fraud Administration, Incident Investigation, SOC Operations, and Penetration Testing.[cite: 1]
+          </p>
+          
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+            With practical experience investigating complex threat vectors—such as Account Takeover (ATO), Authorized Push Payment (APP) scams, anti-detect browser usage, and proxy botnets—and holding practical credentials like the eJPT, the insights on this site stem directly from hands-on analysis and controlled lab experimentation.[cite: 1]
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. SECTION 3: CORE METHODOLOGY -->
+    <section class="space-y">
+      <div style="margin-bottom: 1.25rem;">
+        <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700; uppercase; letter-spacing: 0.05em;">3. CORE METHODOLOGY</span>
+        <h2 style="font-size: 1.35rem; margin-top: 0.15rem;">Operational Framework & Triage Principles</h2>[cite: 1]
+      </div>
+
+      <div class="grid-3" style="font-size: 0.825rem;">
+        
+        <div class="section-card" style="padding: 1.5rem;">
+          <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; background: rgba(56, 189, 248, 0.1); color: var(--cyan-glow); border: 1px solid rgba(56, 189, 248, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.25rem;">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Practical Learning over Theory</h3>[cite: 1]
+          <p style="color: var(--text-muted); line-height: 1.5;">
+            Validating security controls, firewall rules, and IDS signatures inside isolated test labs before trusting them in production.[cite: 1]
+          </p>
+        </div>
+
+        <div class="section-card" style="padding: 1.5rem;">
+          <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; background: rgba(168, 85, 247, 0.1); color: var(--purple-glow); border: 1px solid rgba(168, 85, 247, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.25rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Documenting Failure Points</h3>[cite: 1]
+          <p style="color: var(--text-muted); line-height: 1.5;">
+            Analyzing why alerts failed to trigger, how evasion techniques bypassed filters, and how misconfigurations occur.[cite: 1]
+          </p>
+        </div>
+
+        <div class="section-card" style="padding: 1.5rem;">
+          <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; background: rgba(20, 184, 166, 0.1); color: var(--teal-glow); border: 1px solid rgba(20, 184, 166, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.25rem;">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+          </div>
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Evidence-Based Triage</h3>[cite: 1]
+          <p style="color: var(--text-muted); line-height: 1.5;">
+            Approaching every security alert and fraud anomaly through structured log correlation and entity-relationship analysis.[cite: 1]
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. SECTION 4: PROFESSIONAL QUALIFICATIONS & STACK HIGHLIGHTS -->
+    <section class="space-y">
+      <div style="margin-bottom: 1.25rem;">
+        <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700; uppercase; letter-spacing: 0.05em;">4. PROFESSIONAL QUALIFICATIONS & STACK HIGHLIGHTS</span>
+        <h2 style="font-size: 1.35rem; margin-top: 0.15rem;">Certifications & Specializations</h2>[cite: 1]
+      </div>
+
+      <div class="grid-3" style="font-size: 0.825rem;">
+        
+        <div class="section-card" style="padding: 1.5rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--cyan-glow);">Cyber Fraud Administration</h3>[cite: 1]
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; color: var(--text-muted);">
+            <li><i class="fa-solid fa-check" style="color: var(--cyan-glow); margin-right: 0.4rem;"></i> ATO Detection[cite: 1]</li>
+            <li><i class="fa-solid fa-check" style="color: var(--cyan-glow); margin-right: 0.4rem;"></i> Device Fingerprinting[cite: 1]</li>
+            <li><i class="fa-solid fa-check" style="color: var(--cyan-glow); margin-right: 0.4rem;"></i> Anomaly Analysis[cite: 1]</li>
+          </ul>
+        </div>
+
+        <div class="section-card" style="padding: 1.5rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--purple-glow);">Defensive Engineering</h3>[cite: 1]
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; color: var(--text-muted);">
+            <li><i class="fa-solid fa-check" style="color: var(--purple-glow); margin-right: 0.4rem;"></i> SIEM Log Correlation[cite: 1]</li>
+            <li><i class="fa-solid fa-check" style="color: var(--purple-glow); margin-right: 0.4rem;"></i> Sysmon & Windows Auditing[cite: 1]</li>
+            <li><i class="fa-solid fa-check" style="color: var(--purple-glow); margin-right: 0.4rem;"></i> Auditd & Linux Telemetry[cite: 1]</li>
+            <li><i class="fa-solid fa-check" style="color: var(--purple-glow); margin-right: 0.4rem;"></i> Suricata IDS & pfSense[cite: 1]</li>
+          </ul>
+        </div>
+
+        <div class="section-card" style="padding: 1.5rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--teal-glow);">Technical Qualifications</h3>[cite: 1]
+          <div style="background: var(--bg-surface-alt); padding: 0.85rem; border-radius: 0.35rem; border: 1px solid var(--border-color);">
+            <strong style="color: #fff; font-size: 0.9rem; display: block;" class="mono-font">eJPT</strong>[cite: 1]
+            <span style="font-size: 0.75rem; color: var(--text-muted);">eLearnSecurity Junior Penetration Tester</span>[cite: 1]
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. SECTION 5: GET IN TOUCH / CONNECT -->
+    <section class="section-card space-y" style="background: linear-gradient(180deg, #0b1736 0%, #050c21 100%); border-color: rgba(56, 189, 248, 0.3); padding: 1.75rem;">
+      <div class="flex-between" style="flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+          <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700; uppercase; letter-spacing: 0.05em;">5. GET IN TOUCH / CONNECT</span>
+          <h2 style="font-size: 1.35rem; margin-top: 0.15rem; margin-bottom: 0.35rem;">Have questions, feedback, or a technical scenario to discuss?</h2>[cite: 1]
+          <p style="color: var(--text-muted); font-size: 0.825rem; max-width: 700px;">
+            Feel free to explore the repository, review published investigations, or connect directly via professional channels.[cite: 1]
+          </p>
+        </div>
+        
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+          <a href="investigations.html" class="btn btn-primary">
+            <i class="fa-solid fa-folder-open"></i> Explore Investigations[cite: 1]
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn[cite: 1]
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <i class="fa-brands fa-github"></i> View GitHub Repo[cite: 1]
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="max-container flex-between">
+      <div>Copyright © 2026 Privacy Skill Vault. All rights reserved.</div>[cite: 3]
+      <div style="display: flex; gap: 1.25rem;">
+        <a href="index.html">Home</a>[cite: 3]
+        <a href="investigations.html">Investigations</a>[cite: 3]
+        <a href="fraud-analysis.html">Fraud Analysis</a>[cite: 3]
+        <a href="lab-setup.html">Lab Setup</a>[cite: 3]
+        <a href="tools.html">Tools</a>[cite: 3]
+        <a href="about.html">About</a>[cite: 3]
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>
