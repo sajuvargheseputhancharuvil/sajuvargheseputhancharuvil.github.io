@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tactical Security Tools & Quick References | Privacy Skill Vault</title>
+  
+  <meta name="description" content="A collection of custom log parsers, detection rules (Sigma/YARA), and operational cheat sheets built for threat hunting, telemetry analysis, and incident response.">
+  <meta property="og:title" content="Tactical Security Tools & Quick References | Privacy Skill Vault">
+  <meta property="og:description" content="Custom log parsers, Sigma detection rules, and SOC analyst cheat sheets.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="navbar">
+    <div class="max-container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-halved brand-logo-icon"></i>
+        <div>
+          <div class="brand-title">PRIVACY <span style="color: var(--accent-blue);">SKILL VAULT</span></div>
+          <div class="brand-subtitle">Security Operations | Investigations | Lab Testing</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="investigations.html">Investigations</a>
+        <a href="fraud-analysis.html">Fraud Analysis</a>
+        <a href="lab-setup.html">Lab Setup</a>
+        <a href="tools.html" class="active">Tools</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div style="color: var(--text-muted); cursor: pointer;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
+
+    <!-- HEADER & INTRO SECTION -->
+    <section style="margin-bottom: 2.5rem;">
+      <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--cyan-glow); text-transform: uppercase;">
+        TOOLS
+      </span>
+      <h1 style="font-size: 2.25rem; line-height: 1.2; margin-top: 0.5rem; margin-bottom: 0.75rem;">
+        Tactical Security Tools & Quick References
+      </h1>
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; max-width: 950px;">
+        A collection of custom log parsers, detection rules (Sigma/YARA), and operational cheat sheets built for threat hunting, telemetry analysis, and incident response.
+      </p>
+    </section>
+
+    <!-- 3 CATEGORY CARDS -->
+    <section class="space-y" style="margin-top: 0;">
+      <div class="grid-3" style="font-size: 0.825rem;">
+        
+        <div class="section-card" style="padding: 1.5rem;">
+          <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; background: rgba(56, 189, 248, 0.1); color: var(--cyan-glow); border: 1px solid rgba(56, 189, 248, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.25rem;">
+            <i class="fa-solid fa-terminal"></i>
+          </div>
+          <h2 style="font-size: 1rem; margin-bottom: 0.5rem;">1. Custom Utility Scripts</h2>
+          <p style="color: var(--text-muted); line-height: 1.5; margin-bottom: 0.75rem;">
+            Python and Bash automation scripts for parsing raw log formats, extracting IOCs, and enriching telemetry against threat feeds.
+          </p>
+          <strong style="color: #fff; font-size: 0.75rem; display: block; margin-bottom: 0.35rem;">Featured Utilities:</strong>
+          <ul style="color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem; list-style: none;">
+            <li><i class="fa-solid fa-check" style="color: var(--cyan-glow); margin-right: 0.35rem;"></i> Log field extractors</li>
+            <li><i class="fa-solid fa-check" style="color: var(--cyan-glow); margin-right: 0.35rem;"></i> PCAP header parsers</li>
+            <li><i class="fa-solid fa-check" style="color: var(--cyan-glow); margin-right: 0.35rem;"></i> Automated geohash / IP lookup tools</li>
+          </ul>
+        </div>
+
+        <div class="section-card" style="padding: 1.5rem;">
+          <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; background: rgba(168, 85, 247, 0.1); color: var(--purple-glow); border: 1px solid rgba(168, 85, 247, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.25rem;">
+            <i class="fa-solid fa-shield-cat"></i>
+          </div>
+          <h2 style="font-size: 1rem; margin-bottom: 0.5rem;">2. Detection Rule Sets</h2>
+          <p style="color: var(--text-muted); line-height: 1.5; margin-bottom: 0.75rem;">
+            Pre-compiled YARA and Sigma rules for identifying adversary techniques across Windows Event Logs, Linux Auditd, and WAF traffic.
+          </p>
+          <strong style="color: #fff; font-size: 0.75rem; display: block; margin-bottom: 0.35rem;">Featured Rules:</strong>
+          <ul style="color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem; list-style: none;">
+            <li><i class="fa-solid fa-check" style="color: var(--purple-glow); margin-right: 0.35rem;"></i> Unsigned process execution</li>
+            <li><i class="fa-solid fa-check" style="color: var(--purple-glow); margin-right: 0.35rem;"></i> Obfuscated command-line detection</li>
+            <li><i class="fa-solid fa-check" style="color: var(--purple-glow); margin-right: 0.35rem;"></i> Credential stuffing behavioral signatures</li>
+          </ul>
+        </div>
+
+        <div class="section-card" style="padding: 1.5rem;">
+          <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; background: rgba(20, 184, 166, 0.1); color: var(--teal-glow); border: 1px solid rgba(20, 184, 166, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.25rem;">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <h2 style="font-size: 1rem; margin-bottom: 0.5rem;">3. Operational Cheatsheets</h2>
+          <p style="color: var(--text-muted); line-height: 1.5; margin-bottom: 0.75rem;">
+            High-value reference guides for day-to-day SOC triage, network packet analysis, and forensic artifact locations.
+          </p>
+          <strong style="color: #fff; font-size: 0.75rem; display: block; margin-bottom: 0.35rem;">Featured References:</strong>
+          <ul style="color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem; list-style: none;">
+            <li><i class="fa-solid fa-check" style="color: var(--teal-glow); margin-right: 0.35rem;"></i> Essential Windows Event IDs</li>
+            <li><i class="fa-solid fa-check" style="color: var(--teal-glow); margin-right: 0.35rem;"></i> Wireshark display filters</li>
+            <li><i class="fa-solid fa-check" style="color: var(--teal-glow); margin-right: 0.35rem;"></i> tshark command-line syntax</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TACTICAL CODE SNIPPETS & DETECTION RULES -->
+    <section class="space-y">
+      <div class="flex-between" style="margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+        <h2 style="font-size: 1.25rem;"><i class="fa-solid fa-code" style="color: var(--cyan-glow); margin-right: 0.5rem;"></i>Tactical Code Snippets & Detection Rules</h2>
+        <a href="#" style="font-size: 0.75rem; color: var(--cyan-glow); font-weight: 600;">View All Snippets →</a>
+      </div>
+
+      <div class="grid-2">
+        
+        <!-- Tool 1 -->
+        <div class="section-card" style="padding: 1.5rem;">
+          <div class="flex-between" style="margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="font-size: 0.95rem;">Tool 1: Log Parser & IOC Extractor (<span class="mono-font" style="color: var(--cyan-glow);">log_parser.py</span>)</h3>
+            <button onclick="copySnippet(this)" class="copy-btn" style="position: static;">Copy Code</button>
+          </div>
+          <div style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.4rem; border-radius: 0.2rem;">Category: Python Utility</span>
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.4rem; border-radius: 0.2rem;">Target: Web / WAF Logs</span>
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.4rem; border-radius: 0.2rem;">Use Case: IOC Extraction</span>
+          </div>
+          <div class="code-container">
+            <pre><code>import re
+import sys
+
+# Regex pattern for IPv4 addresses and User-Agent extraction
+IP_PATTERN = r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b'
+
+def extract_iocs(log_file_path):
+    unique_ips = set()
+    try:
+        with open(log_file_path, 'r') as file:
+            for line in file:
+                ips = re.findall(IP_PATTERN, line)
+                for ip in ips:
+                    unique_ips.add(ip)
+        
+        print(f"[+] Extracted {len(unique_ips)} unique IP addresses:\n")
+        for ip in sorted(unique_ips):
+            print(ip)
+            
+    except FileNotFoundError:
+        print(f"[-] Error: File '{log_file_path}' not found.")
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        extract_iocs(sys.argv[1])
+    else:
+        print("Usage: python3 log_parser.py <path_to_log_file>")</code></pre>
+          </div>
+        </div>
+
+        <!-- Tool 2 -->
+        <div class="section-card" style="padding: 1.5rem;">
+          <div class="flex-between" style="margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="font-size: 0.95rem;">Tool 2: Sigma Rule — Suspicious PowerShell Parent Process</h3>
+            <button onclick="copySnippet(this)" class="copy-btn" style="position: static;">Copy Code</button>
+          </div>
+          <div style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.4rem; border-radius: 0.2rem;">Category: Sigma Rule</span>
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.4rem; border-radius: 0.2rem;">Target: Windows Event 4688 / Sysmon 1</span>
+            <span style="background: rgba(16,185,129,0.1); color: var(--emerald-success); border: 1px solid rgba(16,185,129,0.2); padding: 0.15rem 0.4rem; border-radius: 0.2rem;">Status: Active</span>
+          </div>
+          <div class="code-container">
+            <pre><code>title: Suspicious PowerShell Child Process Execution
+id: f38a29a1-7e82-4c22-b98a-112233445566
+status: experimental
+description: Detects powershell.exe being spawned by unexpected parent processes like Microsoft Office, MSHTA, or WMI.
+author: Privacy Skill Vault
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith: '\powershell.exe'
+        ParentImage|endswith:
+            - '\winword.exe'
+            - '\excel.exe'
+            - '\mshta.exe'
+            - '\wmiprvse.exe'
+    condition: selection
+falsepositives:
+    - Custom administrative automation scripts (verify parent path)
+level: high
+tags:
+    - attack.execution
+    - attack.t1059.001</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- QUICK REFERENCE CHEATSHEETS -->
+    <section class="space-y">
+      <div style="margin-bottom: 1.25rem;">
+        <h2 style="font-size: 1.25rem;"><i class="fa-solid fa-table" style="color: var(--teal-glow); margin-right: 0.5rem;"></i>Quick Reference Cheatsheets</h2>
+        <p style="color: var(--text-muted); font-size: 0.825rem; margin-top: 0.25rem;">High-frequency operational metrics and filter syntaxes for quick lookup.</p>
+      </div>
+
+      <div class="grid-2" style="font-size: 0.75rem;">
+        
+        <div class="section-card" style="padding: 1.5rem;">
+          <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--cyan-glow);">
+            Cheat Sheet A: Essential Windows Event IDs for SOC Analysts
+          </h3>
+          <table style="width: 100%; border-collapse: collapse; text-align: left; color: var(--text-muted);">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-color); color: #fff;">
+                <th style="padding: 0.4rem 0;">Event ID</th>
+                <th style="padding: 0.4rem 0;">Provider / Log Source</th>
+                <th style="padding: 0.4rem 0;">Description & Triage Focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td class="mono-font" style="color: #fff;">4624</td>
+                <td>Security</td>
+                <td>Successful Logon (Check Logon Type 3 for Network, 10 for RDP)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td class="mono-font" style="color: #fff;">4625</td>
+                <td>Security</td>
+                <td>Failed Logon Attempt (Brute-force / Credential Stuffing indicator)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td class="mono-font" style="color: #fff;">4688</td>
+                <td>Security</td>
+                <td>New Process Created (Inspect command line flags and parent process)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td class="mono-font" style="color: #fff;">4720</td>
+                <td>Security</td>
+                <td>A user account was created (Check for unauthorized privilege escalation)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td class="mono-font" style="color: #fff;">4104</td>
+                <td>PowerShell / Operational</td>
+                <td>Script Block Logging (Contains raw, un-obfuscated script code)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td class="mono-font" style="color: #fff;">1</td>
+                <td>Sysmon</td>
+                <td>Process Creation (Includes File Hashes, Parent Command Line, User)</td>
+              </tr>
+              <tr>
+                <td class="mono-font" style="color: #fff;">3</td>
+                <td>Sysmon</td>
+                <td>Network Connection (Binds process ID to destination IP and Port)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-card" style="padding: 1.5rem;">
+          <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--cyan-glow);">
+            Cheat Sheet B: High-Value Wireshark / TShark Filters
+          </h3>
+          <table style="width: 100%; border-collapse: collapse; text-align: left; color: var(--text-muted);">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-color); color: #fff;">
+                <th style="padding: 0.4rem 0;">Analysis Objective</th>
+                <th style="padding: 0.4rem 0;">Wireshark Display Filter Syntax</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td>HTTP POST Data (Form Submissions)</td>
+                <td class="mono-font" style="color: var(--cyan-glow);">http.request.method == "POST"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td>DNS Queries for Suspicious Domains</td>
+                <td class="mono-font" style="color: var(--cyan-glow);">dns.flags.response == 0 and dns.qry.name contains "xyz"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td>SYN Flood / Port Scan Traffic</td>
+                <td class="mono-font" style="color: var(--cyan-glow);">tcp.flags.syn == 1 and tcp.flags.ack == 0</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);">
+                <td>Cleartext Credentials (Basic Auth)</td>
+                <td class="mono-font" style="color: var(--cyan-glow);">http.authorization contains "Basic"</td>
+              </tr>
+              <tr>
+                <td>TLS Client Hello (JA3 Extraction)</td>
+                <td class="mono-font" style="color: var(--cyan-glow);">tls.handshake.type == 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BOTTOM MAINTENANCE BANNER -->
+    <section class="section-card space-y" style="background: rgba(11, 23, 54, 0.6); padding: 1.25rem 1.5rem;">
+      <div class="flex-between" style="flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <i class="fa-solid fa-circle-info" style="color: var(--cyan-glow); font-size: 1.5rem;"></i>
+          <div>
+            <strong style="color: #fff; font-size: 0.875rem; display: block;">These tools and references are maintained and updated regularly.</strong>
+            <span style="color: var(--text-muted); font-size: 0.75rem;">Use responsibly, test in isolated environments, and follow all applicable laws and policies.</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="#" class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;"><i class="fa-solid fa-code-branch"></i> Contribute Tools</a>
+          <a href="#" class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;"><i class="fa-solid fa-paper-plane"></i> Request a Tool</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="max-container flex-between">
+      <div>Copyright © 2026 Privacy Skill Vault. All rights reserved.</div>
+      <div style="display: flex; gap: 1.25rem;">
+        <a href="index.html">Home</a>
+        <a href="investigations.html">Investigations</a>
+        <a href="fraud-analysis.html">Fraud Analysis</a>
+        <a href="lab-setup.html">Lab Setup</a>
+        <a href="tools.html">Tools</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>
