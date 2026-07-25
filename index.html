@@ -1,298 +1,577 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PSV | Cybersecurity Operations</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRIVACY SKILL VAULT | Cyber Security Operations & Labs</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            vaultBg: '#050a15',
+            panelBg: '#0b132b',
+            cardBg: '#0e172e',
+            cardBorder: '#1c2c4c',
+            accentBlue: '#2563eb',
+            cyanGlow: '#38bdf8',
+            emeraldGlow: '#10b981',
+            amberAlert: '#f59e0b'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body { background-color: #050a15; color: #f1f5f9; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .glow-card { border: 1px solid #1c2c4c; background: #0e172e; transition: all 0.2s ease-in-out; }
+    .glow-card:hover { border-color: #2563eb; box-shadow: 0 0 20px rgba(37, 99, 235, 0.15); }
+    .code-block { font-family: 'Fira Code', 'Consolas', 'Courier New', monospace; background-color: #080f1d; }
+    .active-nav { color: #38bdf8 !important; border-bottom: 2px solid #38bdf8; }
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
-<div class="noise-overlay"></div>
-<div class="hero-blur blur-one"></div>
-<div class="hero-blur blur-two"></div>
-
-<header class="navbar">
-
-    <div class="logo">PSV</div>
-
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="investigations.html">Investigations</a></li>
-            <li><a href="labs.html">Lab Setup</a></li>
-            <li><a href="security-tools.html">Security Tools</a></li>
-            <li><a href="blog.html">Blog</a></li>
-        </ul>
-    </nav>
-
-</header>
-
-<section class="hero-section">
-
-    <div class="hero-left">
-
-        <span class="hero-tag">
-            SOC OPERATIONS • INVESTIGATIONS • SECURITY TESTING
-        </span>
-
-        <h1>
-            SOC Operations,<br>
-            Investigations,<br>
-            and Hands-On<br>
-            Security Testing
-        </h1>
-
-        <p>
-            Documenting investigations, detection workflows,
-            security testing and lab-based operational learning.
-        </p>
-
-        <p>
-            Combining cybersecurity fundamentals with practical analysis,
-            troubleshooting, SIEM investigations and controlled lab experimentation
-            to better understand how security systems and detections behave
-            in real environments.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="investigations.html" class="primary-btn">Explore Investigations</a>
-            <a href="labs.html" class="secondary-btn">Build Your Lab</a>
+  <!-- GLOBAL NAVBAR -->
+  <header class="sticky top-0 z-50 bg-[#050a15]/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" onclick="navTo('home')" class="flex items-center space-x-3 group">
+        <div class="p-2 bg-blue-600/20 border border-blue-500/40 rounded-lg text-blue-400 group-hover:border-blue-400 transition">
+          <i class="fa-solid fa-shield-halved text-xl"></i>
         </div>
-
-        <div class="focus-tags">
-            <span>Security Operations</span>
-            <span>Alert Investigation</span>
-            <span>Fraud Analysis</span>
-            <span>SIEM & Log Analysis</span>
-            <span>Detection Validation</span>
-            <span>Security Lab Testing</span>
+        <div>
+          <div class="font-bold text-base sm:text-lg tracking-wider text-white">PRIVACY <span class="text-blue-500">SKILL VAULT</span></div>
+          <p class="hidden sm:block text-[10px] text-slate-400 uppercase tracking-widest">Security Operations | Investigations | Lab Testing</p>
         </div>
+      </a>
 
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+        <a href="#home" id="nav-home" onclick="navTo('home')" class="py-1 hover:text-cyan-400 transition active-nav">Home</a>
+        <a href="#investigations" id="nav-investigations" onclick="navTo('investigations')" class="py-1 hover:text-cyan-400 transition">Investigations</a>
+        <a href="#fraud-analysis" id="nav-fraud-analysis" onclick="navTo('fraud-analysis')" class="py-1 hover:text-cyan-400 transition">Fraud Analysis</a>
+        <a href="#lab-setup" id="nav-lab-setup" onclick="navTo('lab-setup')" class="py-1 hover:text-cyan-400 transition">Lab Setup</a>
+        <a href="#tools" id="nav-tools" onclick="navTo('tools')" class="py-1 hover:text-cyan-400 transition">Tools</a>
+        <a href="#about" id="nav-about" onclick="navTo('about')" class="py-1 hover:text-cyan-400 transition">About</a>
+      </nav>
+
+      <!-- Right Utility Controls -->
+      <div class="flex items-center space-x-4 text-slate-400">
+        <button class="hover:text-white transition p-2" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="hover:text-white transition p-2" title="Theme"><i class="fa-solid fa-moon"></i></button>
+      </div>
     </div>
+  </header>
 
-    <div class="hero-right">
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
 
-        <div class="hero-image-main glass-panel">
-            <img src="assets/images/hero/soc-hero.jpg" alt="SOC Monitoring">
+    <!-- ================= PAGE 1: HOME ================= -->
+    <section id="page-home" class="page-section active space-y-12">
+      
+      <!-- Hero Header -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center py-8">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/30">
+            Practical Security • Operational Insights
+          </span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 leading-tight">
+            Defensive Operations, Threat Analysis & <span class="text-blue-500">Security Testing</span>
+          </h1>
+          <p class="text-slate-400 mt-4 leading-relaxed text-sm sm:text-base">
+            Documenting real-world SIEM workflows, fraud detection, and lab-based security experimentation. Focused on understanding why security controls fail, how alerts behave, and how systems perform under operational analysis.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <button onclick="navTo('investigations')" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg text-sm transition flex items-center shadow-lg shadow-blue-600/20">
+              Explore Investigations <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            </button>
+            <button onclick="navTo('lab-setup')" class="border border-slate-700 hover:border-slate-500 text-slate-300 font-medium px-6 py-3 rounded-lg text-sm transition">
+              View Lab Setups <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            </button>
+          </div>
         </div>
 
-        <div class="floating-dashboard glass-panel">
-            <img src="assets/images/hero/dashboard-overlay.png" alt="Dashboard">
+        <!-- Terminal Terminal Mockup -->
+        <div class="glow-card rounded-xl p-4 shadow-2xl relative">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">SOC Monitor — Active Telemetry Stream</span>
+          </div>
+          <div class="code-block p-4 rounded-lg text-xs space-y-2 text-slate-300 overflow-x-auto">
+            <p class="text-blue-400"><span class="text-slate-500">[2026-07-25 01:14:02]</span> SIEM_INGEST: Sysmon Event ID 1 (Process Creation)</p>
+            <p class="text-amber-400"><span class="text-slate-500">[ALERT]</span> Suspicious PowerShell Execution: `-NoP -NonI -W Hidden -e aX...`</p>
+            <p class="text-slate-400"><span class="text-slate-500">[ANALYSIS]</span> Parent Image: `C:\Windows\System32\taskeng.exe` (Scheduled Task)</p>
+            <p class="text-emerald-400"><span class="text-slate-500">[CORRELATION]</span> Matched Rule: `ATO_MFA_BYPASS_BEHAVIOR_09` (Risk Score: 85/100)</p>
+          </div>
         </div>
+      </div>
 
-    </div>
-
-</section>
-
-<section class="investigation-section">
-
-    <div class="section-heading">
-        <span>INSIDE THE LAB & INVESTIGATIONS</span>
-        <h2>Practical Workflows & Operational Analysis</h2>
-    </div>
-
-    <div class="investigation-grid">
-
-        <div class="investigation-content glass-panel">
-
-            <p>
-                These examples reflect practical workflows,
-                testing scenarios, and investigation processes
-                documented throughout the site.
+      <!-- Focus Areas -->
+      <div>
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-white">Focus Areas</h2>
+          <p class="text-slate-400 text-sm mt-1">Core areas I work on and document through real-world analysis and lab testing.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glow-card p-6 rounded-xl">
+            <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-lg flex items-center justify-center border border-blue-500/20 mb-4 text-xl">
+              <i class="fa-solid fa-shield-virus"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">SOC & Alert Triage</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Deep-dives into event correlation, false-positive reduction, and mapping alert workflows against attack vectors. Focused on raw log telemetry across Windows Security Events, Auditd, and Sysmon.
             </p>
-
-            <p>
-                The focus is not only on successful outcomes,
-                but also on understanding why something failed,
-                what was misconfigured, how alerts behaved,
-                and how issues were identified during analysis
-                and testing workflows.
+          </div>
+          <div class="glow-card p-6 rounded-xl">
+            <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-lg flex items-center justify-center border border-purple-500/20 mb-4 text-xl">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Fraud & Anomaly Detection</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Investigating account abuse patterns, operational anomalies, velocity spikes, and risk scoring logic to identify suspicious activity across application and transaction workflows.
             </p>
-
-            <div class="workflow-list">
-                <div>Alert investigation using log analysis</div>
-                <div>Detection validation and false positive analysis</div>
-                <div>SIEM correlation and alert review</div>
-                <div>Network scanning and service discovery</div>
-                <div>Security monitoring and traffic analysis</div>
-                <div>Security lab deployment and troubleshooting</div>
-                <div>Practical testing of security tools in controlled environments</div>
+          </div>
+          <div class="glow-card p-6 rounded-xl">
+            <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-lg flex items-center justify-center border border-emerald-500/20 mb-4 text-xl">
+              <i class="fa-solid fa-flask"></i>
             </div>
-
-        </div>
-
-        <div class="dashboard-grid">
-
-            <div class="dashboard-card glass-panel">
-                <img src="assets/images/investigations/siem-dashboard.jpg" alt="SIEM">
-            </div>
-
-            <div class="dashboard-card glass-panel">
-                <img src="assets/images/investigations/detection-timeline.jpg" alt="Timeline">
-            </div>
-
-            <div class="dashboard-card glass-panel">
-                <img src="assets/images/labs/topology.png" alt="Topology">
-            </div>
-
-            <div class="dashboard-card glass-panel">
-                <img src="assets/images/investigations/traffic-analysis.jpg" alt="Traffic Analysis">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="focus-section">
-
-    <div class="section-heading">
-        <span>CURRENT FOCUS</span>
-        <h2>Operational Security Areas</h2>
-    </div>
-
-    <div class="focus-grid">
-
-        <div class="focus-card glass-panel">
-            <img src="assets/images/icons/soc.svg" alt="SOC">
-            <h3>SOC & Alert Investigation</h3>
-            <p>
-                Understanding how alerts are generated, reviewed,
-                correlated, and validated through logs, timelines,
-                and analyst investigation workflows.
+            <h3 class="text-lg font-bold text-white mb-2">Lab Experimentation</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Building isolated lab environments (pfSense, Suricata, Elastic) to test network visibility, evaluate firewall rules, and observe real-time detection triggers.
             </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= PAGE 2: INVESTIGATIONS ================= -->
+    <section id="page-investigations" class="page-section space-y-8">
+      <div>
+        <span class="text-xs font-semibold uppercase text-blue-400">Investigations</span>
+        <h1 class="text-3xl font-extrabold text-white mt-1">Operational Investigations & Threat Triage</h1>
+        <p class="text-slate-400 text-sm mt-2">Structured walkthroughs of alert triage, raw log correlation, and forensic analysis across simulated threat scenarios.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-3">
+        <button class="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-xs font-medium">All</button>
+        <button class="bg-slate-800 text-slate-300 hover:bg-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium transition">SIEM & Log Analysis</button>
+        <button class="bg-slate-800 text-slate-300 hover:bg-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium transition">Network & PCAP</button>
+        <button class="bg-slate-800 text-slate-300 hover:bg-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium transition">Endpoint Telemetry</button>
+        <button class="bg-slate-800 text-slate-300 hover:bg-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium transition">False Positives</button>
+      </div>
+
+      <!-- Featured Case Study Card (Sample 1 Style) -->
+      <div class="glow-card rounded-xl p-6 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">★ Featured Case Study</span>
+            <div class="text-xs font-mono text-slate-400 mt-0.5">CASE STUDY ID: INV-024</div>
+            <h2 class="text-xl font-bold text-white mt-1">Investigating Obfuscated PowerShell Execution via Scheduled Tasks</h2>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold">
+            <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">● Severity: Medium</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">● Status: Closed / Resolved</span>
+            <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">Category: Host Telemetry & SIEM</span>
+          </div>
         </div>
 
-        <div class="focus-card glass-panel">
-            <img src="assets/images/icons/fraud.svg" alt="Fraud">
-            <h3>Fraud Analysis & Behavioral Monitoring</h3>
-            <p>
-                Reviewing transactions, session activity,
-                and behavioral patterns to identify suspicious activity.
-            </p>
+        <!-- 5-Node IR Flowchart -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 py-2 text-center text-xs">
+          <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+            <i class="fa-solid fa-bell text-amber-400 text-base mb-1"></i>
+            <div class="font-bold text-white">1. Alert Fired</div>
+          </div>
+          <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+            <i class="fa-solid fa-code text-blue-400 text-base mb-1"></i>
+            <div class="font-bold text-white">2. Extract Base64</div>
+          </div>
+          <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+            <i class="fa-solid fa-sitemap text-purple-400 text-base mb-1"></i>
+            <div class="font-bold text-white">3. Parent Process</div>
+          </div>
+          <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+            <i class="fa-solid fa-globe text-cyan-400 text-base mb-1"></i>
+            <div class="font-bold text-white">4. Correlate Network</div>
+          </div>
+          <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+            <i class="fa-solid fa-shield-check text-emerald-400 text-base mb-1"></i>
+            <div class="font-bold text-white">5. Verdict</div>
+          </div>
         </div>
 
-        <div class="focus-card glass-panel">
-            <img src="assets/images/icons/detection.svg" alt="Detection">
-            <h3>Detection Validation & Log Analysis</h3>
-            <p>
-                Analyzing detections, correlating events,
-                validating alerts and reviewing logs.
-            </p>
-        </div>
-
-        <div class="focus-card glass-panel">
-            <img src="assets/images/icons/lab.svg" alt="Lab">
-            <h3>Security Lab Testing</h3>
-            <p>
-                Building controlled environments to test detections,
-                monitor activity and analyze system behavior.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="featured-section">
-
-    <div class="section-heading">
-        <span>FEATURED INVESTIGATIONS & LABS</span>
-        <h2>Investigations & Technical Walkthroughs</h2>
-    </div>
-
-    <div class="featured-grid">
-
-        <div class="featured-card glass-panel large-card">
-            <img src="assets/images/investigations/powershell.jpg" alt="PowerShell">
-            <div class="featured-content">
-                <span class="mini-tag">INVESTIGATION</span>
-                <h3>Investigating Encoded PowerShell Execution Through SIEM Correlation</h3>
+        <!-- Details Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
+          <!-- Left Column -->
+          <div class="space-y-4">
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
+              <h3 class="font-bold text-sm text-blue-400 mb-2">1. Incident Trigger & Initial Context</h3>
+              <ul class="space-y-1.5 text-slate-300">
+                <li><strong class="text-white">Alert Name:</strong> SUSPICIOUS_POWERSHELL_BASE64_EXEC</li>
+                <li><strong class="text-white">Trigger Source:</strong> Windows Security Event Log (Event ID 4688) on endpoint HOST-FIN-02.</li>
+                <li><strong class="text-white">Observation:</strong> Automated SIEM alert flagged an obfuscated PowerShell command under SYSTEM account.</li>
+              </ul>
             </div>
-        </div>
 
-        <div class="featured-card glass-panel">
-            <img src="assets/images/labs/elastic.png" alt="Elastic">
-            <div class="featured-content">
-                <span class="mini-tag">LAB</span>
-                <h3>Building a Home SOC Lab with Elastic Stack</h3>
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
+              <h3 class="font-bold text-sm text-blue-400 mb-2">3. Investigation & Triage Workflow</h3>
+              <ol class="list-decimal list-inside space-y-2 text-slate-300">
+                <li><strong>Payload Decoding:</strong> Extracted Base64 string from Sysmon Event 1 and decoded using CyberChef to identify outbound destination.</li>
+                <li><strong>Parent-Child Analysis:</strong> Verified powershell.exe was spawned by taskeng.exe (Windows Scheduled Tasks).</li>
+                <li><strong>Network Correlation:</strong> Cross-referenced firewall logs for outbound connections to 192.0.2.45.</li>
+              </ol>
             </div>
-        </div>
+          </div>
 
-        <div class="featured-card glass-panel">
-            <img src="assets/images/labs/nmap.jpg" alt="Nmap">
-            <div class="featured-content">
-                <span class="mini-tag">ENUMERATION</span>
-                <h3>Internal Network Enumeration and Service Discovery Using Nmap</h3>
+          <!-- Right Column -->
+          <div class="space-y-4">
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
+              <h3 class="font-bold text-sm text-blue-400 mb-2">2. Telemetry & Log Evidence</h3>
+              <div class="code-block p-3 rounded text-slate-300 space-y-1 overflow-x-auto relative group">
+                <button onclick="copySnippet(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-[10px]">Copy</button>
+                <p><span class="text-emerald-400">UtcTime:</span> 2026-07-12 02:14:08.112</p>
+                <p><span class="text-emerald-400">ProcessId:</span> 4820</p>
+                <p><span class="text-emerald-400">CommandLine:</span> powershell.exe -NoP -NonI -W Hidden -e aX...</p>
+                <p><span class="text-emerald-400">ParentImage:</span> C:\Windows\System32\taskeng.exe</p>
+              </div>
             </div>
-        </div>
 
-        <div class="featured-card glass-panel">
-            <img src="assets/images/labs/burp.jpg" alt="Burp Suite">
-            <div class="featured-content">
-                <span class="mini-tag">WEB TESTING</span>
-                <h3>Web Security Testing with Burp Suite</h3>
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
+              <h3 class="font-bold text-sm text-blue-400 mb-2">4. Root Cause & Detection Tuning</h3>
+              <p class="text-slate-300 mb-2"><strong class="text-white">Verdict:</strong> Authorized Administrator Misconfiguration (True Positive for policy violation, False Positive for active malware).</p>
+              <ul class="space-y-1 text-slate-300">
+                <li class="text-emerald-400">✓ Reconfigured task to run via dedicated service account with restricted privileges.</li>
+                <li class="text-emerald-400">✓ Updated SIEM detection rule to alert specifically on unquoted script paths.</li>
+              </ul>
             </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- ================= PAGE 3: FRAUD ANALYSIS ================= -->
+    <section id="page-fraud-analysis" class="page-section space-y-8">
+      <div>
+        <span class="text-xs font-semibold uppercase text-blue-400">Fraud Analysis</span>
+        <h1 class="text-3xl font-extrabold text-white mt-1">Cyber Fraud Administrator & Specialist Core Capabilities</h1>
+        <p class="text-slate-400 text-sm mt-2">Comprehensive expertise in identifying, analyzing, and mitigating cyber fraud threats targeting digital identities and user accounts.</p>
+      </div>
 
-</section>
-
-<section class="why-section">
-
-    <div class="why-left glass-panel">
-
-        <span>WHY THIS SITE EXISTS</span>
-
-        <h2>
-            Real Operational Learning<br>
-            Looks Different.
+      <!-- Section 1 -->
+      <div class="space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center">
+          <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center mr-2">1</span>
+          Anti-Fraud Threat Topology & TTP Analysis
         </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="glow-card p-4 rounded-lg space-y-2">
+            <i class="fa-solid fa-user-lock text-blue-400 text-lg"></i>
+            <h3 class="font-bold text-white text-sm">Account Takeover (ATO) Detection</h3>
+            <p class="text-slate-400">Identifying unauthorized access via device fingerprinting, global IDs, parallel sessions, and geolocation shifts.</p>
+          </div>
+          <div class="glow-card p-4 rounded-lg space-y-2">
+            <i class="fa-solid fa-bug text-purple-400 text-lg"></i>
+            <h3 class="font-bold text-white text-sm">Malware & Remote Access</h3>
+            <p class="text-slate-400">Detecting Trojans, keyloggers, screen sharing (AnyDesk, TeamViewer), accessibility abuse, and overlays.</p>
+          </div>
+          <div class="glow-card p-4 rounded-lg space-y-2">
+            <i class="fa-solid fa-user-ninja text-emerald-400 text-lg"></i>
+            <h3 class="font-bold text-white text-sm">Anonymization & Evasion</h3>
+            <p class="text-slate-400">Tracking VPNs, proxies, hosting subnets, application cloning, Android emulators, and anti-detect browsers.</p>
+          </div>
+        </div>
+      </div>
 
-        <p>
-            A large amount of cybersecurity content focuses heavily
-            on theory or simplified demonstrations that do not fully
-            reflect operational environments.
-        </p>
+      <!-- Section 2 -->
+      <div class="space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center">
+          <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center mr-2">2</span>
+          Fraud Detection Systems & Rule Engineering
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+          <div class="glow-card p-4 rounded-lg space-y-2">
+            <i class="fa-solid fa-code text-cyan-400 text-lg"></i>
+            <h3 class="font-bold text-white text-sm">Custom Rule Development</h3>
+            <p class="text-slate-400">Building and testing logic rules combining behavioral metrics, session properties, and device attributes.</p>
+          </div>
+          <div class="glow-card p-4 rounded-lg space-y-2">
+            <i class="fa-solid fa-chart-line text-blue-400 text-lg"></i>
+            <h3 class="font-bold text-white text-sm">Rule Optimization</h3>
+            <p class="text-slate-400">Measuring efficiency using precision metrics (Accuracy, Recall, Efficiency Score) to minimize false positives.</p>
+          </div>
+          <div class="glow-card p-4 rounded-lg space-y-2">
+            <i class="fa-solid fa-shield text-emerald-400 text-lg"></i>
+            <h3 class="font-bold text-white text-sm">Blocklist Management</h3>
+            <p class="text-slate-400">Maintaining updated repositories for confirmed mule identities, compromised device IDs, and hosting subnets.</p>
+          </div>
+          <div class="glow-card p-4 rounded-lg space-y-2">
+            <i class="fa-solid fa-gears text-amber-400 text-lg"></i>
+            <h3 class="font-bold text-white text-sm">Integration & API Workflows</h3>
+            <p class="text-slate-400">Configuring automated risk event streams (PUSH APIs), debugging integrations, and analyzing log streams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <p>
-            Alerts can be noisy. Logs may be incomplete.
-            Misconfigurations happen. Security tools behave differently
-            depending on the environment, setup and available data.
-        </p>
+    <!-- ================= PAGE 4: LAB SETUP ================= -->
+    <section id="page-lab-setup" class="page-section space-y-8">
+      <div>
+        <span class="text-xs font-semibold uppercase text-blue-400">Lab Setup</span>
+        <h1 class="text-3xl font-extrabold text-white mt-1">Virtual Security Lab Architecture & Complete Setup Guide</h1>
+        <p class="text-slate-400 text-sm mt-2">Ground-up guide to building an isolated SOC (Defensive) and Pentesting (Offensive) lab environment.</p>
+      </div>
 
-        <p>
-            I started documenting investigations, lab experiments,
-            and operational workflows as a way to better understand
-            how detections, security tools and monitoring environments
-            behave in practice.
-        </p>
+      <!-- Network Architecture & Table Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glow-card p-6 rounded-xl space-y-4">
+          <h2 class="text-lg font-bold text-white"><i class="fa-solid fa-network-wired text-blue-400 mr-2"></i>Lab Network Topology</h2>
+          
+          <!-- SVG Architecture Diagram -->
+          <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-800 flex justify-center">
+            <svg viewBox="0 0 500 220" class="w-full h-auto text-xs">
+              <!-- Router -->
+              <rect x="200" y="20" width="100" height="35" rx="5" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+              <text x="250" y="42" fill="#fff" text-anchor="middle" font-weight="bold">pfSense Router</text>
 
-    </div>
+              <!-- Lines -->
+              <line x1="250" y1="55" x2="100" y2="120" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4"/>
+              <line x1="250" y1="55" x2="250" y2="120" stroke="#10b981" stroke-width="1.5"/>
+              <line x1="250" y1="55" x2="400" y2="120" stroke="#ef4444" stroke-width="1.5"/>
 
-    <div class="why-right">
+              <!-- Subnets -->
+              <rect x="30" y="120" width="140" height="70" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+              <text x="100" y="140" fill="#38bdf8" text-anchor="middle" font-weight="bold">SOC Segment</text>
+              <text x="100" y="160" fill="#94a3b8" text-anchor="middle">10.0.20.0/24</text>
+              <text x="100" y="175" fill="#64748b" text-anchor="middle">SIEM / Suricata</text>
 
-        <div class="workspace-card glass-panel">
-            <img src="assets/images/backgrounds/workspace.jpg" alt="Workspace">
+              <rect x="180" y="120" width="140" height="70" rx="5" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+              <text x="250" y="140" fill="#10b981" text-anchor="middle" font-weight="bold">Target Endpoints</text>
+              <text x="250" y="160" fill="#94a3b8" text-anchor="middle">10.0.30.0/24</text>
+              <text x="250" y="175" fill="#64748b" text-anchor="middle">Win AD / Linux</text>
+
+              <rect x="330" y="120" width="140" height="70" rx="5" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+              <text x="400" y="140" fill="#ef4444" text-anchor="middle" font-weight="bold">Attack Segment</text>
+              <text x="400" y="160" fill="#94a3b8" text-anchor="middle">10.0.40.0/24</text>
+              <text x="400" y="175" fill="#64748b" text-anchor="middle">Kali Linux</text>
+            </svg>
+          </div>
         </div>
 
-        <div class="workspace-card glass-panel">
-            <img src="assets/images/backgrounds/research.jpg" alt="Research">
+        <!-- Subnet Table -->
+        <div class="glow-card p-6 rounded-xl space-y-4">
+          <h2 class="text-lg font-bold text-white"><i class="fa-solid fa-list text-emerald-400 mr-2"></i>Lab Subnet Mapping</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-300">
+              <thead class="bg-slate-900 text-blue-400 border-b border-slate-800">
+                <tr>
+                  <th class="p-2">Segment</th>
+                  <th class="p-2">Subnet</th>
+                  <th class="p-2">Purpose</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/50">
+                <tr><td class="p-2 font-bold text-white">WAN / Gateway</td><td class="p-2 font-mono">192.168.1.0/24</td><td class="p-2">Internet Egress</td></tr>
+                <tr><td class="p-2 font-bold text-white">Internal SOC</td><td class="p-2 font-mono">10.0.20.0/24</td><td class="p-2">SIEM, Suricata, Logstash</td></tr>
+                <tr><td class="p-2 font-bold text-white">Target Endpoints</td><td class="p-2 font-mono">10.0.30.0/24</td><td class="p-2">Windows AD DC, Linux</td></tr>
+                <tr><td class="p-2 font-bold text-white">Attack Segment</td><td class="p-2 font-mono">10.0.40.0/24</td><td class="p-2">Isolated Kali Node</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PAGE 5: TOOLS ================= -->
+    <section id="page-tools" class="page-section space-y-8">
+      <div>
+        <span class="text-xs font-semibold uppercase text-blue-400">Tools</span>
+        <h1 class="text-3xl font-extrabold text-white mt-1">Tactical Security Tools & Quick References</h1>
+        <p class="text-slate-400 text-sm mt-2">Custom log parsers, detection rules (Sigma/YARA), and operational cheat sheets.</p>
+      </div>
+
+      <!-- Code Snippets Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Tool 1 -->
+        <div class="glow-card p-5 rounded-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-white text-sm">Tool 1: Log Parser & IOC Extractor</h3>
+            <button onclick="copySnippet(this)" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs transition">Copy Code</button>
+          </div>
+          <div class="code-block p-4 rounded-lg text-xs text-slate-300 overflow-x-auto">
+            <pre><code>import re
+
+IP_PATTERN = r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b'
+
+def extract_iocs(log_path):
+    unique_ips = set()
+    with open(log_path, 'r') as f:
+        for line in f:
+            for ip in re.findall(IP_PATTERN, line):
+                unique_ips.add(ip)
+    print(f"[+] Extracted {len(unique_ips)} IPs:")
+    for ip in sorted(unique_ips):
+        print(ip)</code></pre>
+          </div>
         </div>
 
-    </div>
+        <!-- Tool 2 -->
+        <div class="glow-card p-5 rounded-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-white text-sm">Tool 2: Sigma Rule — Suspicious PowerShell</h3>
+            <button onclick="copySnippet(this)" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs transition">Copy Code</button>
+          </div>
+          <div class="code-block p-4 rounded-lg text-xs text-slate-300 overflow-x-auto">
+            <pre><code>title: Suspicious PowerShell Child Process
+id: f38a29a1-7e82-4c22-b98a-112233445566
+status: experimental
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith: '\powershell.exe'
+        ParentImage|endswith: '\winword.exe'
+    condition: selection
+level: high</code></pre>
+          </div>
+        </div>
 
-</section>
+      </div>
+    </section>
+
+    <!-- ================= PAGE 6: ABOUT ================= -->
+    <section id="page-about" class="page-section space-y-8">
+      <div>
+        <span class="text-xs font-semibold uppercase text-blue-400">About</span>
+        <h1 class="text-3xl font-extrabold text-white mt-1">Bridging Theory and Operational Reality</h1>
+        <p class="text-slate-400 text-sm mt-2">Documenting real-world threat analysis, cyber fraud administration, and lab-based defensive engineering.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Author Profile Card -->
+        <div class="glow-card p-6 rounded-xl space-y-4">
+          <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 text-2xl border border-slate-700 mx-auto">
+            <i class="fa-solid fa-user-secret"></i>
+          </div>
+          <div class="text-center">
+            <h2 class="text-lg font-bold text-white">Security Practitioner</h2>
+            <p class="text-xs text-blue-400 font-medium">Cyber Fraud Admin & Security Analyst</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 justify-center text-[10px]">
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">SOC Operations</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Incident Investigation</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Pentesting</span>
+          </div>
+          <div class="border-t border-slate-800 pt-3 text-center">
+            <span class="text-xs text-slate-400">Certification:</span>
+            <div class="text-sm font-bold text-purple-400 mt-0.5">eJPT (eLearnSecurity Junior Penetration Tester)</div>
+          </div>
+        </div>
+
+        <!-- Platform Mission -->
+        <div class="lg:col-span-2 glow-card p-6 rounded-xl space-y-4">
+          <h2 class="text-xl font-bold text-white">Why Privacy Skill Vault Exists</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            A significant amount of cybersecurity content focuses heavily on ideal scenarios, theoretical frameworks, or simplified demonstrations that rarely reflect production environments.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li class="flex items-start"><i class="fa-solid fa-circle-xmark text-red-400 mr-2 mt-0.5"></i> Alerts can be extremely noisy and prone to false positives.</li>
+            <li class="flex items-start"><i class="fa-solid fa-circle-xmark text-red-400 mr-2 mt-0.5"></i> Logs are often missing, unparsed, or partially configured.</li>
+            <li class="flex items-start"><i class="fa-solid fa-circle-xmark text-red-400 mr-2 mt-0.5"></i> Detection rules behave differently depending on host OS and logging depth.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="border-t border-slate-800 bg-[#030712] py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 space-y-4 md:space-y-0">
+      <p>© 2026 Privacy Skill Vault. All rights reserved.</p>
+      <div class="flex space-x-6 text-slate-400">
+        <a href="#home" onclick="navTo('home')" class="hover:text-white transition">Home</a>
+        <a href="#investigations" onclick="navTo('investigations')" class="hover:text-white transition">Investigations</a>
+        <a href="#fraud-analysis" onclick="navTo('fraud-analysis')" class="hover:text-white transition">Fraud Analysis</a>
+        <a href="#lab-setup" onclick="navTo('lab-setup')" class="hover:text-white transition">Lab Setup</a>
+        <a href="#tools" onclick="navTo('tools')" class="hover:text-white transition">Tools</a>
+        <a href="#about" onclick="navTo('about')" class="hover:text-white transition">About</a>
+      </div>
+      <div class="flex space-x-4 text-base text-slate-400">
+        <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fa-solid fa-rss"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ROUTING & INTERACTIVE SCRIPT -->
+  <script>
+    function navTo(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+      
+      // Show targeted page
+      const target = document.getElementById('page-' + pageId);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      // Update Nav Link Styles
+      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active-nav'));
+      const activeNav = document.getElementById('nav-' + pageId);
+      if (activeNav) {
+        activeNav.classList.add('active-nav');
+      }
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Handle direct URL Hash changes (e.g. site.com/#tools)
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '') || 'home';
+      navTo(hash);
+    });
+
+    // Copy to Clipboard Utility
+    function copySnippet(btn) {
+      const code = btn.parentElement.nextElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = 'Copied!';
+        btn.classList.replace('bg-blue-600', 'bg-emerald-600');
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.classList.replace('bg-emerald-600', 'bg-blue-600');
+        }, 2000);
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const initialHash = window.location.hash.replace('#', '') || 'home';
+      navTo(initialHash);
+    });
+  </script>
 
 </body>
 </html>
