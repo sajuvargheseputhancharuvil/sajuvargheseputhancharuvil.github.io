@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tactical Security Tools & Vault | Privacy Skill Vault</title>
+  
+  <meta name="description" content="Client-side cryptographic tools, zero-knowledge secret sharing, hashing, encoding, and SOC analysis utilities.">
+  <meta property="og:title" content="Tactical Security Tools & Vault | Privacy Skill Vault">
+  <meta property="og:description" content="Client-side security tools, secret sharing, and log analysis utilities.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Site Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <!-- Application Libraries (Alpine.js & CryptoJS) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+  <style>
+    /* CUSTOM APP INTEGRATION OVERRIDES */
+    .psv-app-container {
+      display: flex;
+      min-height: 800px;
+      background-color: var(--bg-dark) !important;
+      color: var(--text-main) !important;
+      font-family: var(--font-sans);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .psv-sidebar {
+      width: 290px;
+      background: linear-gradient(180deg, rgba(11, 23, 54, 0.95) 0%, rgba(5, 12, 33, 0.95) 100%) !important;
+      border-right: 1px solid var(--border-color);
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+      overflow-y: auto;
+      max-height: 850px;
+    }
+
+    .psv-sidebar-header {
+      padding: 0 12px 14px 12px;
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #ffffff !important;
+    }
+
+    .psv-category-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-muted) !important;
+      padding: 9px 10px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .psv-category-btn:hover {
+      background-color: rgba(30, 41, 59, 0.6) !important;
+      color: #ffffff !important;
+    }
+
+    .psv-tool-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-left: 10px;
+      margin-top: 3px;
+    }
+
+    .psv-tool-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-muted) !important;
+      padding: 7px 10px;
+      text-align: left;
+      font-size: 0.825rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .psv-tool-btn:hover {
+      color: #ffffff !important;
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .psv-tool-btn.active {
+      background-color: var(--accent-blue) !important;
+      color: #ffffff !important;
+      font-weight: 600;
+    }
+
+    .psv-workspace {
+      flex: 1;
+      padding: 28px;
+      background-color: var(--bg-dark) !important;
+      overflow-y: auto;
+      max-height: 850px;
+    }
+
+    .psv-breadcrumbs {
+      font-size: 0.8rem;
+      color: var(--cyan-glow) !important;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .psv-tool-card {
+      background: linear-gradient(180deg, rgba(11, 23, 54, 0.8) 0%, rgba(5, 12, 33, 0.95) 100%) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 12px;
+      padding: 24px;
+      color: var(--text-main) !important;
+    }
+
+    .psv-tool-card h3, .psv-tool-card h2, .psv-tool-card strong {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: #ffffff !important;
+      margin-bottom: 6px;
+    }
+
+    .psv-tool-card p.desc, .psv-tool-card p {
+      color: var(--text-muted) !important;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .psv-form-group {
+      margin-bottom: 16px;
+    }
+
+    .psv-form-group label {
+      display: block;
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--text-muted) !important;
+      margin-bottom: 6px;
+    }
+
+    .psv-input, .psv-textarea, .psv-select, .psv-file-input {
+      width: 100%;
+      background-color: var(--bg-code) !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-main) !important;
+      border-radius: 8px;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .psv-file-input {
+      border: 1px dashed var(--border-color) !important;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+
+    .psv-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .psv-input:focus, .psv-textarea:focus {
+      border-color: var(--accent-blue) !important;
+    }
+
+    .psv-action-btn, .psv-btn {
+      background-color: var(--accent-blue) !important;
+      color: #ffffff !important;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    .psv-action-btn:hover, .psv-btn:hover {
+      background-color: var(--accent-blue-hover) !important;
+    }
+
+    .psv-result-box {
+      display: none;
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--bg-code) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 8px;
+      word-break: break-all;
+      color: var(--text-main) !important;
+    }
+
+    .psv-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .psv-app-container { flex-direction: column; }
+      .psv-sidebar { width: 100%; max-height: 300px; border-right: none; border-bottom: 1px solid var(--border-color); }
+      .psv-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="navbar">
+    <div class="max-container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-shield-halved brand-logo-icon"></i>
+        <div>
+          <div class="brand-title">PRIVACY <span style="color: var(--accent-blue);">SKILL VAULT</span></div>
+          <div class="brand-subtitle">Security Operations | Investigations | Lab Testing</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="investigations.html">Investigations</a>
+        <a href="fraud-analysis.html">Fraud Analysis</a>
+        <a href="lab-setup.html">Lab Setup</a>
+        <a href="tools.html">Tools</a>
+        <a href="vault.html" class="active">Tool Vault</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div style="color: var(--text-muted); cursor: pointer;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APPLICATION CONTAINER -->
+  <main class="max-container">
+
+    <div class="psv-app-container" x-data="{ 
+      activeCat: 'secret-share', 
+      activeTool: 'burn-note', 
+      inputVal: '',
+      inputVal2: '',
+      outputVal: '',
+      keyVal: '',
+      passLen: 16
+    }">
+
+      <!-- SIDEBAR NAVIGATION -->
+      <aside class="psv-sidebar">
+        <div class="psv-sidebar-header">🛡️ Tactical Tool Vault</div>
+
+        <!-- Category 0: Secret Share -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'secret-share' ? '' : 'secret-share')">
+            <span>🔐 Secure Secret Share</span><span x-text="activeCat === 'secret-share' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'secret-share'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'burn-note' }" @click="activeTool = 'burn-note';">Ephemeral Secret Share</button>
+          </div>
+        </div>
+
+        <!-- Category 1: Cryptography -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'crypto' ? '' : 'crypto')">
+            <span>🔑 Cryptography</span><span x-text="activeCat === 'crypto' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'crypto'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'aes' }" @click="activeTool = 'aes'; inputVal=''; outputVal='';">AES Encrypt / Decrypt</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'rsa' }" @click="activeTool = 'rsa'; inputVal=''; outputVal='';">RSA Encrypt / Decrypt</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'rsa-gen' }" @click="activeTool = 'rsa-gen'; outputVal='';">RSA Key Generator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'ecc-gen' }" @click="activeTool = 'ecc-gen'; outputVal='';">ECC Key Generator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'rand-gen' }" @click="activeTool = 'rand-gen'; outputVal='';">Random Key Generator</button>
+          </div>
+        </div>
+
+        <!-- Category 2: Hashing -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'hash' ? '' : 'hash')">
+            <span># Hashing & Integrity</span><span x-text="activeCat === 'hash' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'hash'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'md5' }" @click="activeTool = 'md5'; inputVal=''; outputVal='';">MD5 Generator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'sha1' }" @click="activeTool = 'sha1'; inputVal=''; outputVal='';">SHA-1 Generator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'sha256' }" @click="activeTool = 'sha256'; inputVal=''; outputVal='';">SHA-256 Generator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'sha512' }" @click="activeTool = 'sha512'; inputVal=''; outputVal='';">SHA-512 Generator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'hmac' }" @click="activeTool = 'hmac'; inputVal=''; outputVal='';">HMAC Generator</button>
+          </div>
+        </div>
+
+        <!-- Category 3: Encodings -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'encode' ? '' : 'encode')">
+            <span>&lt;/&gt; Encodings & Convert</span><span x-text="activeCat === 'encode' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'encode'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'base64' }" @click="activeTool = 'base64'; inputVal=''; outputVal='';">Base64 Encode/Decode</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'url' }" @click="activeTool = 'url'; inputVal=''; outputVal='';">URL Encode/Decode</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'html' }" @click="activeTool = 'html'; inputVal=''; outputVal='';">HTML Encode/Decode</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'hex' }" @click="activeTool = 'hex'; inputVal=''; outputVal='';">Hex Encode/Decode</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'binary' }" @click="activeTool = 'binary'; inputVal=''; outputVal='';">Binary Encode/Decode</button>
+          </div>
+        </div>
+
+        <!-- Category 4: Password & Secrets -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'pass' ? '' : 'pass')">
+            <span>🔐 Password & Secrets</span><span x-text="activeCat === 'pass' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'pass'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'pass-gen' }" @click="activeTool = 'pass-gen'; outputVal='';">Password Generator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'secret-gen' }" @click="activeTool = 'secret-gen'; outputVal='';">UUID & API Key Generator</button>
+          </div>
+        </div>
+
+        <!-- Category 5: JWT -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'jwt' ? '' : 'jwt')">
+            <span>🎫 JWT Tools</span><span x-text="activeCat === 'jwt' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'jwt'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'jwt-dec' }" @click="activeTool = 'jwt-dec'; inputVal=''; outputVal='';">JWT Decoder</button>
+          </div>
+        </div>
+
+        <!-- Category 6: Networking -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'net' ? '' : 'net')">
+            <span>🌐 Networking</span><span x-text="activeCat === 'net' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'net'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'ip-conv' }" @click="activeTool = 'ip-conv'; inputVal=''; outputVal='';">IP Address Converter</button>
+          </div>
+        </div>
+
+        <!-- Category 7: Text Utilities -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'text' ? '' : 'text')">
+            <span>📝 Text Utilities</span><span x-text="activeCat === 'text' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'text'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'json-fmt' }" @click="activeTool = 'json-fmt'; inputVal=''; outputVal='';">JSON Formatter</button>
+          </div>
+        </div>
+
+        <!-- Category 8: SOC & Cyber Fraud -->
+        <div>
+          <button class="psv-category-btn" @click="activeCat = (activeCat === 'soc' ? '' : 'soc')">
+            <span>🛡️ SOC & Fraud Ops</span><span x-text="activeCat === 'soc' ? '▾' : '▸'"></span>
+          </button>
+          <div class="psv-tool-list" x-show="activeCat === 'soc'">
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'ioc-ext' }" @click="activeTool = 'ioc-ext'; inputVal=''; outputVal='';">IOC Extractor</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'iban-val' }" @click="activeTool = 'iban-val'; inputVal=''; outputVal='';">IBAN Validator</button>
+            <button class="psv-tool-btn" :class="{ 'active': activeTool === 'threat-intel' }" @click="activeTool = 'threat-intel'; inputVal=''; outputVal='';">Threat Intel Lookup</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- DYNAMIC WORKSPACE -->
+      <main class="psv-workspace">
+        <div class="psv-breadcrumbs">
+          Category: <span x-text="activeCat"></span> &gt; <strong x-text="activeTool"></strong>
+        </div>
+
+        <!-- TOOL 0: ZERO-KNOWLEDGE SECRET SHARE -->
+        <div x-show="activeTool === 'burn-note'" class="psv-tool-card">
+          <h3>🔒 Zero-Knowledge Secret Share</h3>
+          <p>Encrypt messages or small files locally in your browser before sharing. Secrets self-destruct once read.</p>
+          
+          <!-- CREATE VIEW -->
+          <div id="psv-create-view">
+            <textarea id="psv-input-text" class="psv-textarea" placeholder="Type your secret text, password, or API key..."></textarea>  
+            <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:6px; margin-top:12px;">Attach File (Optional, Max 2MB):</label>
+            <input type="file" id="psv-file-input" class="psv-file-input">  
+            <button class="psv-btn" onclick="createSecretNote()">Generate One-Time Link</button>
+            <div id="psv-link-result" class="psv-result-box"></div>
+          </div>
+
+          <!-- READ VIEW -->
+          <div id="psv-read-view" style="display: none; max-width: 600px; margin: 20px auto; padding: 24px; background-color: var(--bg-surface-alt); border: 1px solid var(--border-color); border-radius: 12px; text-align: center;">
+            <p style="color: var(--amber-alert) !important; font-size: 0.9rem; margin-bottom: 16px;">
+              <strong>⚠️ Warning:</strong> This secret will be permanently destroyed from the server as soon as you reveal it.
+            </p>
+
+            <button class="psv-btn" style="width: 100%; max-width: 320px; margin: 0 auto; display: block;" onclick="revealSecretNote()">
+              Reveal & Destroy Secret
+            </button>
+
+            <div id="psv-secret-display" class="psv-result-box" style="text-align: left; margin-top: 20px; background-color: var(--bg-code); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;"></div>
+          </div>
+        </div>
+
+        <!-- AES ENCRYPT / DECRYPT -->
+        <div x-show="activeTool === 'aes'" class="psv-tool-card">
+          <h2>AES Encryption / Decryption</h2>
+          <p class="desc">Encrypt or decrypt text client-side using standard AES-256-GCM.</p>
+          
+          <div class="psv-form-group">
+            <label>Passphrase / Secret Key:</label>
+            <input type="text" class="psv-input" x-model="keyVal" placeholder="Enter encryption passphrase...">
+          </div>
+
+          <div class="psv-grid-2">
+            <div class="psv-form-group">
+              <label>Plaintext / Input:</label>
+              <textarea class="psv-textarea" x-model="inputVal" placeholder="Enter text to encrypt/decrypt..."></textarea>
+            </div>
+            <div class="psv-form-group">
+              <label>Result Output:</label>
+              <textarea class="psv-textarea" x-model="outputVal" readonly placeholder="Output will appear here..."></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px;">
+            <button class="psv-action-btn" @click="outputVal = await PSV_Engine.aesEncrypt(inputVal, keyVal)">Encrypt (AES-GCM)</button>
+            <button class="psv-action-btn" style="background:#374151 !important;" @click="outputVal = await PSV_Engine.aesDecrypt(inputVal, keyVal)">Decrypt</button>
+          </div>
+        </div>
+
+        <!-- HASHING TOOLS -->
+        <div x-show="['md5', 'sha1', 'sha256', 'sha512'].includes(activeTool)" class="psv-tool-card">
+          <h2 x-text="activeTool.toUpperCase() + ' Hash Generator'"></h2>
+          <p class="desc">Generate secure cryptographic digest locally in your browser.</p>
+
+          <div class="psv-form-group">
+            <label>Input Text:</label>
+            <textarea class="psv-textarea" x-model="inputVal" @input="
+              if(activeTool==='md5') outputVal = CryptoJS.MD5(inputVal).toString();
+              if(activeTool==='sha1') outputVal = await PSV_Engine.hash(inputVal, 'SHA-1');
+              if(activeTool==='sha256') outputVal = await PSV_Engine.hash(inputVal, 'SHA-256');
+              if(activeTool==='sha512') outputVal = await PSV_Engine.hash(inputVal, 'SHA-512');
+            " placeholder="Type text to compute live hash..."></textarea>
+          </div>
+
+          <div class="psv-form-group">
+            <label>Calculated Hash:</label>
+            <input type="text" class="psv-input" x-model="outputVal" readonly>
+          </div>
+        </div>
+
+        <!-- BASE64 ENCODE / DECODE -->
+        <div x-show="activeTool === 'base64'" class="psv-tool-card">
+          <h2>Base64 Encoder / Decoder</h2>
+          <p class="desc">Convert text to/from Base64 encoding scheme.</p>
+          
+          <div class="psv-grid-2">
+            <div class="psv-form-group">
+              <label>Input Text:</label>
+              <textarea class="psv-textarea" x-model="inputVal" placeholder="Type text..."></textarea>
+            </div>
+            <div class="psv-form-group">
+              <label>Output Text:</label>
+              <textarea class="psv-textarea" x-model="outputVal" readonly></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px;">
+            <button class="psv-action-btn" @click="outputVal = btoa(unescape(encodeURIComponent(inputVal)))">Base64 Encode</button>
+            <button class="psv-action-btn" style="background:#374151 !important;" @click="try { outputVal = decodeURIComponent(escape(atob(inputVal))) } catch(e){ outputVal='Invalid Base64' }">Base64 Decode</button>
+          </div>
+        </div>
+
+        <!-- PASSWORD GENERATOR -->
+        <div x-show="activeTool === 'pass-gen'" class="psv-tool-card">
+          <h2>Strong Password Generator</h2>
+          <p class="desc">Generate high-entropy cryptographically secure random passwords.</p>
+          
+          <div class="psv-form-group">
+            <label>Password Length: <span x-text="passLen"></span> characters</label>
+            <input type="range" min="8" max="64" x-model="passLen" class="psv-input">
+          </div>
+
+          <button class="psv-action-btn" @click="outputVal = PSV_Engine.genPassword(passLen)">Generate Password</button>
+
+          <div class="psv-form-group" style="margin-top:16px;">
+            <label>Generated Password:</label>
+            <input type="text" class="psv-input" x-model="outputVal" readonly>
+          </div>
+        </div>
+
+        <!-- JWT DECODER -->
+        <div x-show="activeTool === 'jwt-dec'" class="psv-tool-card">
+          <h2>JWT Token Decoder</h2>
+          <p class="desc">Decode JSON Web Tokens (Header, Payload, Claims) client-side.</p>
+
+          <div class="psv-form-group">
+            <label>Encoded JWT Token:</label>
+            <textarea class="psv-textarea" x-model="inputVal" placeholder="Paste eyJhbGciOi... token here"></textarea>
+          </div>
+
+          <button class="psv-action-btn" @click="outputVal = PSV_Engine.decodeJWT(inputVal)">Decode JWT</button>
+
+          <div class="psv-form-group" style="margin-top:16px;">
+            <label>Decoded Claims Header & Payload:</label>
+            <textarea class="psv-textarea" x-model="outputVal" readonly style="min-height:180px;"></textarea>
+          </div>
+        </div>
+
+        <!-- JSON FORMATTER -->
+        <div x-show="activeTool === 'json-fmt'" class="psv-tool-card">
+          <h2>JSON Formatter & Validator</h2>
+          <p class="desc">Validate and pretty-print raw JSON strings.</p>
+
+          <div class="psv-form-group">
+            <label>Raw JSON:</label>
+            <textarea class="psv-textarea" x-model="inputVal" placeholder='{"key":"value"}'></textarea>
+          </div>
+
+          <button class="psv-action-btn" @click="try { outputVal = JSON.stringify(JSON.parse(inputVal), null, 2); } catch(e) { outputVal = '❌ Invalid JSON Syntax: ' + e.message; }">Format JSON</button>
+
+          <div class="psv-form-group" style="margin-top:16px;">
+            <label>Formatted Output:</label>
+            <textarea class="psv-textarea" x-model="outputVal" readonly style="min-height:160px;"></textarea>
+          </div>
+        </div>
+
+        <!-- IOC EXTRACTOR -->
+        <div x-show="activeTool === 'ioc-ext'" class="psv-tool-card">
+          <h2>SOC IOC Extractor</h2>
+          <p class="desc">Extract IP addresses, domains, URLs, MD5/SHA256 hashes, and emails from raw logs.</p>
+
+          <div class="psv-form-group">
+            <label>Raw Log / Unstructured Text:</label>
+            <textarea class="psv-textarea" x-model="inputVal" placeholder="Paste server logs or security alert text here..."></textarea>
+          </div>
+
+          <button class="psv-action-btn" @click="outputVal = PSV_Engine.extractIOCs(inputVal)">Extract IOCs</button>
+
+          <div class="psv-form-group" style="margin-top:16px;">
+            <label>Extracted Indicators of Compromise:</label>
+            <textarea class="psv-textarea" x-model="outputVal" readonly style="min-height:180px;"></textarea>
+          </div>
+        </div>
+
+        <!-- IBAN VALIDATOR -->
+        <div x-show="activeTool === 'iban-val'" class="psv-tool-card">
+          <h2>IBAN Format & Checksum Validator</h2>
+          <p class="desc">Verify international bank account numbers using MOD-97 check-digit validation.</p>
+
+          <div class="psv-form-group">
+            <label>IBAN String:</label>
+            <input type="text" class="psv-input" x-model="inputVal" placeholder="GB33 BUXB 2020 1555 5555 55">
+          </div>
+
+          <button class="psv-action-btn" @click="outputVal = PSV_Engine.validateIBAN(inputVal)">Validate IBAN</button>
+
+          <div class="psv-form-group" style="margin-top:16px;">
+            <label>Validation Result:</label>
+            <input type="text" class="psv-input" x-model="outputVal" readonly>
+          </div>
+        </div>
+
+        <!-- THREAT INTEL LOOKUP -->
+        <div x-show="activeTool === 'threat-intel'" class="psv-tool-card">
+          <h2>🛡️ Threat Intelligence Quick Lookup</h2>
+          <p class="desc">Query IP addresses, file hashes, or domain names across VirusTotal, AbuseIPDB, and URLScan.io.</p>
+
+          <div class="psv-form-group">
+            <label>Target IOC (IP, Hash, or Domain):</label>
+            <input type="text" class="psv-input" x-model="inputVal" placeholder="e.g. 1.1.1.1, sha256 hash, or domain.com">
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;">
+            <button class="psv-action-btn" style="flex:1; min-width:180px;" @click="
+              if(!inputVal) return alert('Please enter an IP, Hash, or Domain');
+              window.open('https://www.virustotal.com/gui/search/' + encodeURIComponent(inputVal.trim()), '_blank');
+            ">Search VirusTotal ↗</button>
+
+            <button class="psv-action-btn" style="flex:1; min-width:180px; background:#dc2626 !important;" @click="
+              if(!inputVal) return alert('Please enter an IP Address');
+              window.open('https://www.abuseipdb.com/check/' + encodeURIComponent(inputVal.trim()), '_blank');
+            ">Check AbuseIPDB ↗</button>
+
+            <button class="psv-action-btn" style="flex:1; min-width:180px; background:#059669 !important;" @click="
+              if(!inputVal) return alert('Please enter a Domain or URL');
+              window.open('https://urlscan.io/search/#' + encodeURIComponent(inputVal.trim()), '_blank');
+            ">Inspect URLScan.io ↗</button>
+          </div>
+        </div>
+
+        <!-- FALLBACK WORKSPACE -->
+        <div x-show="!['burn-note', 'aes', 'md5', 'sha1', 'sha256', 'sha512', 'base64', 'pass-gen', 'jwt-dec', 'json-fmt', 'ioc-ext', 'iban-val', 'threat-intel'].includes(activeTool)" class="psv-tool-card">
+          <h2 x-text="activeTool.toUpperCase() + ' Utility'"></h2>
+          <p class="desc">Execute browser-based operations locally.</p>
+
+          <div class="psv-form-group">
+            <label>Input Data:</label>
+            <textarea class="psv-textarea" x-model="inputVal" placeholder="Enter parameters or text..."></textarea>
+          </div>
+
+          <button class="psv-action-btn" @click="
+            if(activeTool==='url') outputVal = encodeURIComponent(inputVal);
+            if(activeTool==='html') outputVal = inputVal.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';');
+            if(activeTool==='hex') outputVal = PSV_Engine.toHex(inputVal);
+            if(activeTool==='binary') outputVal = inputVal.split('').map(c=>c.charCodeAt(0).toString(2).padStart(8,'0')).join(' ');
+            if(activeTool==='ip-conv') outputVal = PSV_Engine.convertIP(inputVal);
+            if(activeTool==='secret-gen') outputVal = crypto.randomUUID();
+          ">Process Data</button>
+
+          <div class="psv-form-group" style="margin-top:16px;">
+            <label>Output Result:</label>
+            <textarea class="psv-textarea" x-model="outputVal" readonly></textarea>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="max-container flex-between">
+      <div>Copyright © 2026 Privacy Skill Vault. All rights reserved.</div>
+        <div style="display: flex; gap: 1.25rem;">
+        <a href="index.html">Home</a>
+        <a href="investigations.html">Investigations</a>
+        <a href="fraud-analysis.html">Fraud Analysis</a>
+        <a href="lab-setup.html">Lab Setup</a>
+        <a href="tools.html">Tools</a>
+        <a href="vault.html">Tool Vault</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CLIENT-SIDE ENGINE SCRIPT -->
+  <script>
+    const UPSTASH_URL = "https://complete-raptor-169531.upstash.io";
+    const UPSTASH_TOKEN = "gQAAAAAAApY7AAIgcDE1OTBhMjBhOTkzMTE0M2YyYmM0Yjk0ZTk1NTNlNzAzMQ";
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const metaReferrer = document.createElement('meta');
+      metaReferrer.name = "referrer";
+      metaReferrer.content = "no-referrer";
+      document.head.appendChild(metaReferrer);
+
+      if (window.location.hash.includes('id=') && window.location.hash.includes('&key=')) {
+        const createView = document.getElementById('psv-create-view');
+        const readView = document.getElementById('psv-read-view');
+        if (createView) createView.style.display = 'none';
+        if (readView) readView.style.display = 'block';
+      }
+    });
+
+    async function exportKey(key) {
+      const exported = await crypto.subtle.exportKey("raw", key);
+      return btoa(String.fromCharCode(...new Uint8Array(exported)));
+    }
+
+    async function importKey(base64Key) {
+      const raw = Uint8Array.from(atob(base64Key), c => c.charCodeAt(0));
+      return await crypto.subtle.importKey("raw", raw, "AES-GCM", true, ["encrypt", "decrypt"]);
+    }
+
+    function bufferToBase64(buffer) {
+      let binary = '';
+      const bytes = new Uint8Array(buffer);
+      for (let i = 0; i < bytes.byteLength; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return btoa(binary);
+    }
+
+    function base64ToBuffer(base64) {
+      const binary = atob(base64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      return bytes.buffer;
+    }
+
+    async function createSecretNote() {
+      const lastCreated = localStorage.getItem('psv_last_created');
+      const now = Date.now();
+      if (lastCreated && (now - parseInt(lastCreated)) < 30000) {
+        return alert("Rate limit: Please wait 30 seconds before creating another secret.");
+      }
+
+      const text = document.getElementById('psv-input-text').value;
+      const fileInput = document.getElementById('psv-file-input');
+      const file = fileInput.files[0];
+
+      if (!text && !file) return alert("Please enter a message or select a file.");
+
+      let fileData = null;
+      if (file) {
+        if (file.size > 2 * 1024 * 1024) return alert("File size limit is 2MB.");
+        const arrayBuf = await file.arrayBuffer();
+        fileData = {
+          name: file.name,
+          type: file.type,
+          data: bufferToBase64(arrayBuf)
+        };
+      }
+
+      localStorage.setItem('psv_last_created', now);
+
+      const payloadObj = JSON.stringify({ text: text, file: fileData });
+
+      const key = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, ["encrypt", "decrypt"]);
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const encodedPayload = new TextEncoder().encode(payloadObj);
+
+      const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, encodedPayload);
+
+      const noteId = crypto.randomUUID();
+      const storagePayload = JSON.stringify({
+        ct: bufferToBase64(ciphertext),
+        iv: bufferToBase64(iv)
+      });
+
+      const response = await fetch(`${UPSTASH_URL}/set/${noteId}?EX=86400`, {
+        headers: { Authorization: `Bearer ${UPSTASH_TOKEN}` },
+        method: 'POST',
+        body: storagePayload
+      });
+
+      if (response.ok) {
+        const keyStr = await exportKey(key);
+        const shareUrl = `${window.location.origin}${window.location.pathname}#id=${noteId}&key=${encodeURIComponent(keyStr)}`;
+        
+        const resultBox = document.getElementById('psv-link-result');
+        resultBox.style.display = 'block';
+        resultBox.innerHTML = `<strong>One-Time Secret Link Generated:</strong><br><input type="text" readonly value="${shareUrl}" style="width:100%; margin-top:8px; padding:10px; background:var(--bg-code); color:var(--cyan-glow); border:1px solid var(--border-color); border-radius:6px; font-family:monospace;" onclick="this.select()">`;
+      } else {
+        alert("Error saving note. Please verify network connectivity.");
+      }
+    }
+
+    async function revealSecretNote() {
+      const hash = window.location.hash.substring(1);
+      const params = new URLSearchParams(hash);
+      const noteId = params.get('id');
+      const keyStr = params.get('key');
+
+      if (!noteId || !keyStr) return alert("Invalid or missing parameters in URL.");
+
+      const getRes = await fetch(`${UPSTASH_URL}/get/${noteId}`, {
+        headers: { Authorization: `Bearer ${UPSTASH_TOKEN}` }
+      });
+      const getData = await getRes.json();
+
+      if (!getData.result) {
+        const displayBox = document.getElementById('psv-secret-display');
+        displayBox.style.display = 'block';
+        displayBox.innerHTML = "<span style='color:#ef4444; font-weight:600;'>❌ Secret not found, expired, or already burned.</span>";
+        return;
+      }
+
+      fetch(`${UPSTASH_URL}/del/${noteId}`, {
+        headers: { Authorization: `Bearer ${UPSTASH_TOKEN}` },
+        method: 'POST'
+      });
+
+      try {
+        const storagePayload = JSON.parse(getData.result);
+        const key = await importKey(keyStr);
+        const iv = new Uint8Array(base64ToBuffer(storagePayload.iv));
+        const ciphertext = base64ToBuffer(storagePayload.ct);
+
+        const decrypted = await crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, ciphertext);
+        const clearText = new TextDecoder().decode(decrypted);
+        const secretData = JSON.parse(clearText);
+
+        const displayBox = document.getElementById('psv-secret-display');
+        displayBox.style.display = 'block';
+        
+        let outputHtml = '';
+        if (secretData.text) {
+          outputHtml += `<strong>Decrypted Message:</strong><pre style="white-space:pre-wrap; background:var(--bg-code); color:var(--text-main); padding:12px; border-radius:6px; margin-top:6px; border:1px solid var(--border-color);">${secretData.text}</pre>`;
+        }
+        
+        if (secretData.file) {
+          const blob = new Blob([base64ToBuffer(secretData.file.data)], { type: secretData.file.type });
+          const fileUrl = URL.createObjectURL(blob);
+          outputHtml += `<div style="margin-top:12px;"><strong>Decrypted File Attachment:</strong><br><a href="${fileUrl}" download="${secretData.file.name}" style="color:var(--cyan-glow); text-decoration:underline; font-weight:600; display:inline-block; margin-top:4px;">📥 Download ${secretData.file.name}</a></div>`;
+        }
+
+        displayBox.innerHTML = outputHtml;
+      } catch (e) {
+        alert("Decryption failed. Invalid or corrupted cryptographic key.");
+      }
+    }
+
+    const PSV_Engine = {
+      hash: async (text, algo) => {
+        if(!text) return '';
+        const buf = await crypto.subtle.digest(algo, new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      },
+      aesEncrypt: async (text, secret) => {
+        if(!text || !secret) return 'Please enter both text and passphrase.';
+        const enc = new TextEncoder();
+        const keyMaterial = await crypto.subtle.importKey("raw", enc.encode(secret.padEnd(32, '0')), "AES-GCM", false, ["encrypt"]);
+        const iv = crypto.getRandomValues(new Uint8Array(12));
+        const encrypted = await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, keyMaterial, enc.encode(text));
+        const combined = new Uint8Array(iv.length + encrypted.byteLength);
+        combined.set(iv);
+        combined.set(new Uint8Array(encrypted), iv.length);
+        return btoa(String.fromCharCode(...combined));
+      },
+      aesDecrypt: async (cipherB64, secret) => {
+        try {
+          const raw = Uint8Array.from(atob(cipherB64), c => c.charCodeAt(0));
+          const iv = raw.slice(0, 12);
+          const ciphertext = raw.slice(12);
+          const enc = new TextEncoder();
+          const keyMaterial = await crypto.subtle.importKey("raw", enc.encode(secret.padEnd(32, '0')), "AES-GCM", false, ["decrypt"]);
+          const decrypted = await crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, keyMaterial, ciphertext);
+          return new TextDecoder().decode(decrypted);
+        } catch(e) { return "Decryption failed. Check secret key or ciphertext."; }
+      },
+      toHex: (str) => Array.from(new TextEncoder().encode(str)).map(b => b.toString(16).padStart(2, '0')).join(''),
+      genPassword: (len = 16) => {
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|";
+        const bytes = new Uint8Array(len);
+        crypto.getRandomValues(bytes);
+        return Array.from(bytes).map(b => chars[b % chars.length]).join('');
+      },
+      decodeJWT: (token) => {
+        try {
+          const parts = token.split('.');
+          if(parts.length !== 3) return 'Invalid JWT token format.';
+          const header = JSON.parse(atob(parts[0]));
+          const payload = JSON.parse(atob(parts[1]));
+          return JSON.stringify({ Header: header, Payload: payload }, null, 2);
+        } catch(e) { return 'Error decoding JWT: ' + e.message; }
+      },
+      convertIP: (ip) => {
+        try {
+          const parts = ip.split('.').map(Number);
+          if(parts.length !== 4) return 'Invalid IPv4 address';
+          const num = (parts[0] << 24) + (parts[1] << 16) + (parts[2] << 8) + parts[3];
+          const binary = parts.map(p => p.toString(2).padStart(8, '0')).join('.');
+          const hex = parts.map(p => p.toString(16).padStart(2, '0')).join('');
+          return `Decimal Integer: ${num >>> 0}\nBinary: ${binary}\nHex: 0x${hex}`;
+        } catch(e) { return 'Invalid input'; }
+      },
+      extractIOCs: (text) => {
+        const ips = text.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g) || [];
+        const md5s = text.match(/\b[a-fA-F0-9]{32}\b/g) || [];
+        const sha256s = text.match(/\b[a-fA-F0-9]{64}\b/g) || [];
+        const emails = text.match(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g) || [];
+        return `--- EXTRACTED IOCs ---\n\nIP Addresses (${ips.length}):\n${[...new Set(ips)].join('\n')}\n\nMD5 Hashes (${md5s.length}):\n${[...new Set(md5s)].join('\n')}\n\nSHA256 Hashes (${sha256s.length}):\n${[...new Set(sha256s)].join('\n')}\n\nEmails (${emails.length}):\n${[...new Set(emails)].join('\n')}`;
+      },
+      validateIBAN: (iban) => {
+        const clean = iban.replace(/[^A-Z0-9]/gi, '').toUpperCase();
+        if(clean.length < 15 || clean.length > 34) return '❌ Invalid Length';
+        const rearranged = clean.slice(4) + clean.slice(0, 4);
+        const digits = rearranged.replace(/[A-Z]/g, c => c.charCodeAt(0) - 55);
+        let remainder = 0;
+        for (let i = 0; i < digits.length; i++) {
+          remainder = (remainder * 10 + parseInt(digits[i])) % 97;
+        }
+        return remainder === 1 ? '✅ Valid IBAN Format & Checksum' : '❌ Invalid IBAN Checksum';
+      }
+    };
+  </script>
+  
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
