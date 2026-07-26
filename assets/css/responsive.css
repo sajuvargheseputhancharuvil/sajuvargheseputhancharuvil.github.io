@@ -13,3 +13,8 @@ html, body {
   overflow-x: hidden;
   max-width: 100vw;
 }
+
+svg {
+  touch-action: pan-x pan-y;
+  pointer-events: auto;
+}
