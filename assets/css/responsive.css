@@ -7,6 +7,11 @@
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .flex-between { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .navbar { padding: 0 1rem; }
+  
+  /* Force touch-scrolling specifically for mobile SVG diagrams */
+  .section-card { overflow: hidden !important; }
+  .section-card > div[style*="overflow-x"] { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  svg { min-width: 750px !important; }
 }
 
 html, body {
