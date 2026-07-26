@@ -145,31 +145,38 @@
 
         <!-- Right Header Feature Badges (Pills) -->
           <!-- ✅ MODIFIED LINE -->
-<div style="display: flex; flex-direction: column; gap: 0.5rem; min-width: 260px; flex-shrink: 0;">
-          <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.5rem 0.85rem; display: flex; align-items: center; gap: 0.65rem;">
-            <i class="fa-solid fa-network-wired" style="color: var(--cyan-glow); font-size: 1.1rem;"></i>
-            <div>
-              <strong style="color: #fff; font-size: 0.75rem; display: block; line-height: 1.2;">Network Visibility</strong>
-              <span style="color: var(--text-muted); font-size: 0.65rem;">pfSense, Suricata, Zeek telemetry</span>
-            </div>
-          </div>
+<div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem; margin-bottom: 1.5rem; flex-wrap: nowrap; gap: 1rem;">
+          <!-- 3 Horizontal Badges (Narrower Width, Taller Height) -->
+<div style="display: flex; flex-direction: row; gap: 0.5rem; flex-shrink: 0;">
+  
+  <!-- Badge 1 -->
+  <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.6rem 0.5rem; display: flex; align-items: center; gap: 0.4rem; width: 145px; box-sizing: border-box;">
+    <i class="fa-solid fa-network-wired" style="color: var(--cyan-glow); font-size: 0.9rem; flex-shrink: 0;"></i>
+    <div style="overflow: hidden;">
+      <strong style="color: #fff; font-size: 0.68rem; display: block; line-height: 1.1; white-space: nowrap;">Network Visibility</strong>
+      <span style="color: var(--text-muted); font-size: 0.58rem; display: block; line-height: 1.1; margin-top: 2px;">pfSense, Suricata,<br/>Zeek telemetry</span>
+    </div>
+  </div>
 
-          <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.5rem 0.85rem; display: flex; align-items: center; gap: 0.65rem;">
-            <i class="fa-solid fa-desktop" style="color: var(--cyan-glow); font-size: 1.1rem;"></i>
-            <div>
-              <strong style="color: #fff; font-size: 0.75rem; display: block; line-height: 1.2;">Endpoint Telemetry</strong>
-              <span style="color: var(--text-muted); font-size: 0.65rem;">Windows Security Events, Sysmon, Auditd</span>
-            </div>
-          </div>
+  <!-- Badge 2 -->
+  <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.6rem 0.5rem; display: flex; align-items: center; gap: 0.4rem; width: 145px; box-sizing: border-box;">
+    <i class="fa-solid fa-desktop" style="color: var(--cyan-glow); font-size: 0.9rem; flex-shrink: 0;"></i>
+    <div style="overflow: hidden;">
+      <strong style="color: #fff; font-size: 0.68rem; display: block; line-height: 1.1; white-space: nowrap;">Endpoint Telemetry</strong>
+      <span style="color: var(--text-muted); font-size: 0.58rem; display: block; line-height: 1.1; margin-top: 2px;">Windows Security,<br/>Sysmon, Auditd</span>
+    </div>
+  </div>
 
-          <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.5rem 0.85rem; display: flex; align-items: center; gap: 0.65rem;">
-            <i class="fa-solid fa-database" style="color: var(--purple-glow); font-size: 1.1rem;"></i>
-            <div>
-              <strong style="color: #fff; font-size: 0.75rem; display: block; line-height: 1.2;">Ingestion Pipeline</strong>
-              <span style="color: var(--text-muted); font-size: 0.65rem;">Filebeat, Logstash into Elastic / Wazuh</span>
-            </div>
-          </div>
-        </div>
+  <!-- Badge 3 -->
+  <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.6rem 0.5rem; display: flex; align-items: center; gap: 0.4rem; width: 145px; box-sizing: border-box;">
+    <i class="fa-solid fa-database" style="color: var(--purple-glow); font-size: 0.9rem; flex-shrink: 0;"></i>
+    <div style="overflow: hidden;">
+      <strong style="color: #fff; font-size: 0.68rem; display: block; line-height: 1.1; white-space: nowrap;">Ingestion Pipeline</strong>
+      <span style="color: var(--text-muted); font-size: 0.58rem; display: block; line-height: 1.1; margin-top: 2px;">Filebeat, Logstash<br/>into Elastic/Wazuh</span>
+    </div>
+  </div>
+
+</div>
       </div>
 
       <!-- Diagram Canvas -->
