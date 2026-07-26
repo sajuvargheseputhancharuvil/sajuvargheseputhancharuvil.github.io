@@ -43,7 +43,6 @@
       </nav>
 
       <div style="color: var(--text-muted); cursor: pointer;">
-        <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
   </header>
@@ -135,51 +134,117 @@
 
     <!-- 3. LAB TOPOLOGY ARCHITECTURE -->
     <section class="section-card space-y">
-      <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
-        <div>
-          <h2 style="font-size: 1.25rem;">Lab Topology & Telemetry Architecture</h2>
-          <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem;">Simulating production conditions to analyze log fidelity, detection coverage, and alert latency across virtualized network segments.</p>
+      <!-- Section Header & Right-Side Pills -->
+      <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div style="max-width: 500px;">
+          <h2 style="font-size: 1.35rem; font-weight: 700; color: #fff;">Lab Topology & Telemetry Architecture</h2>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.35rem; line-height: 1.5;">
+            Simulating production conditions to analyze log fidelity, detection coverage, and alert latency across virtualized network segments.
+          </p>
         </div>
 
+        <!-- Right Header Feature Badges (Pills) -->
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-          <span style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--cyan-glow); font-size: 0.65rem; padding: 0.35rem 0.65rem; border-radius: 0.35rem;">Network Visibility: pfSense, Suricata, Zeek</span>
-          <span style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--cyan-glow); font-size: 0.65rem; padding: 0.35rem 0.65rem; border-radius: 0.35rem;">Endpoint Telemetry: Sysmon, Auditd, Win Events</span>
-          <span style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--cyan-glow); font-size: 0.65rem; padding: 0.35rem 0.65rem; border-radius: 0.35rem;">Ingestion Pipeline: Filebeat, Logstash, Elastic</span>
+          <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.5rem 0.85rem; display: flex; align-items: center; gap: 0.65rem;">
+            <i class="fa-solid fa-network-wired" style="color: var(--cyan-glow); font-size: 1.1rem;"></i>
+            <div>
+              <strong style="color: #fff; font-size: 0.75rem; display: block; line-height: 1.2;">Network Visibility</strong>
+              <span style="color: var(--text-muted); font-size: 0.65rem;">pfSense, Suricata, Zeek telemetry</span>
+            </div>
+          </div>
+
+          <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.5rem 0.85rem; display: flex; align-items: center; gap: 0.65rem;">
+            <i class="fa-solid fa-desktop" style="color: var(--cyan-glow); font-size: 1.1rem;"></i>
+            <div>
+              <strong style="color: #fff; font-size: 0.75rem; display: block; line-height: 1.2;">Endpoint Telemetry</strong>
+              <span style="color: var(--text-muted); font-size: 0.65rem;">Windows Security Events, Sysmon, Auditd</span>
+            </div>
+          </div>
+
+          <div style="background: rgba(11, 23, 54, 0.9); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.5rem 0.85rem; display: flex; align-items: center; gap: 0.65rem;">
+            <i class="fa-solid fa-database" style="color: var(--purple-glow); font-size: 1.1rem;"></i>
+            <div>
+              <strong style="color: #fff; font-size: 0.75rem; display: block; line-height: 1.2;">Ingestion Pipeline</strong>
+              <span style="color: var(--text-muted); font-size: 0.65rem;">Filebeat, Logstash into Elastic / Wazuh</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div style="background-color: var(--bg-surface-alt); padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
-        <svg viewBox="0 0 900 220" style="width: 100%; height: auto; font-family: system-ui;">
+      <!-- Diagram Canvas -->
+      <div style="background-color: #030816; padding: 2rem 1.5rem; border-radius: 0.75rem; border: 1px solid var(--border-color); position: relative; overflow-x: auto;">
+        <svg viewBox="0 0 950 260" style="width: 100%; min-width: 800px; height: auto; font-family: system-ui, -apple-system, sans-serif;">
           <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+            <marker id="blue-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8" />
             </marker>
           </defs>
-          <rect x="30" y="30" width="150" height="50" rx="6" fill="#0b1736" stroke="#172a4d" stroke-width="1.5"/>
-          <text x="105" y="52" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="bold">Attack &</text>
-          <text x="105" y="66" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold">Traffic Sources</text>
-          <line x1="180" y1="55" x2="250" y2="55" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)" />
 
-          <rect x="250" y="30" width="140" height="50" rx="6" fill="#0b1736" stroke="#172a4d" stroke-width="1.5"/>
-          <text x="320" y="52" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="bold">pfSense</text>
-          <text x="320" y="66" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold">Firewall</text>
-          <line x1="390" y1="55" x2="520" y2="55" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- 1. Attack & Traffic Sources Node -->
+          <g transform="translate(40, 20)">
+            <rect width="150" height="58" rx="8" fill="#07122b" stroke="#2563eb" stroke-width="1.5"/>
+            <!-- Attacker Icon -->
+            <path d="M15 25 C15 18 22 18 22 25 L22 28 L15 28 Z M12 38 C12 32 25 32 25 38 L25 40 L12 40 Z" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="88" y="30" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">Attack &</text>
+            <text x="88" y="44" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">Traffic Sources</text>
+          </g>
 
-          <rect x="520" y="30" width="140" height="50" rx="6" fill="#0b1736" stroke="#172a4d" stroke-width="1.5"/>
-          <text x="590" y="58" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold">Suricata IDS</text>
-          <line x1="660" y1="55" x2="730" y2="55" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Arrow 1: Attack -> pfSense -->
+          <line x1="190" y1="49" x2="270" y2="49" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
 
-          <rect x="730" y="30" width="140" height="50" rx="6" fill="#0b1736" stroke="#172a4d" stroke-width="1.5"/>
-          <text x="800" y="52" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="bold">Centralized</text>
-          <text x="800" y="66" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold">SIEM</text>
+          <!-- 2. pfSense Firewall Node -->
+          <g transform="translate(270, 20)">
+            <rect width="140" height="58" rx="8" fill="#07122b" stroke="#2563eb" stroke-width="1.5"/>
+            <!-- Firewall Bricks Icon -->
+            <rect x="15" y="22" width="18" height="8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+            <rect x="15" y="32" width="18" height="8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+            <text x="82" y="30" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">pfSense</text>
+            <text x="82" y="44" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">Firewall</text>
+          </g>
 
-          <line x1="320" y1="80" x2="320" y2="140" stroke="#3b82f6" stroke-width="2" />
-          <line x1="320" y1="140" x2="340" y2="140" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Arrow 2: pfSense -> Suricata (SPAN / Mirror Port) -->
+          <line x1="410" y1="49" x2="550" y2="49" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
+          <text x="480" y="41" fill="#94a3b8" text-anchor="middle" font-size="9" font-weight="600" letter-spacing="0.5">SPAN / Mirror Port</text>
 
-          <rect x="340" y="115" width="200" height="50" rx="6" fill="#0b1736" stroke="#172a4d" stroke-width="1.5"/>
-          <text x="440" y="138" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold">Managed Host Endpoints</text>
-          <text x="440" y="153" fill="#94a3b8" text-anchor="middle" font-size="9">Windows / Linux</text>
-          <path d="M 540 140 L 800 140 L 800 80" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- 3. Suricata IDS Node -->
+          <g transform="translate(550, 20)">
+            <rect width="130" height="58" rx="8" fill="#07122b" stroke="#2563eb" stroke-width="1.5"/>
+            <!-- Pulse Icon -->
+            <path d="M12 30 L18 30 L21 22 L25 38 L29 26 L32 30 L38 30" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="75" y="37" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">Suricata IDS</text>
+          </g>
+
+          <!-- Arrow 3: Suricata -> SIEM -->
+          <line x1="680" y1="49" x2="740" y2="49" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
+
+          <!-- 4. Centralized SIEM Node -->
+          <g transform="translate(740, 20)">
+            <rect width="135" height="58" rx="8" fill="#07122b" stroke="#2563eb" stroke-width="1.5"/>
+            <!-- Database Icon -->
+            <ellipse cx="22" cy="24" rx="8" ry="3" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+            <path d="M14 24 v8 c0 1.6 3.5 3 8 3 s8 -1.4 8 -3 v-8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+            <path d="M14 32 v8 c0 1.6 3.5 3 8 3 s8 -1.4 8 -3 v-8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+            <text x="78" y="30" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">Centralized</text>
+            <text x="78" y="44" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">SIEM</text>
+          </g>
+
+          <!-- Downward Arrow from pfSense to Managed Host Endpoints -->
+          <path d="M 340 78 L 340 140" fill="none" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
+
+          <!-- 5. Managed Host Endpoints Node -->
+          <g transform="translate(260, 140)">
+            <rect width="200" height="62" rx="8" fill="#07122b" stroke="#2563eb" stroke-width="1.5"/>
+            <!-- Monitor Icon -->
+            <rect x="18" y="24" width="18" height="12" rx="1" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+            <line x1="27" y1="36" x2="27" y2="40" stroke="#38bdf8" stroke-width="1.2"/>
+            <line x1="22" y1="40" x2="32" y2="40" stroke="#38bdf8" stroke-width="1.2"/>
+            <text x="115" y="32" fill="#fff" text-anchor="middle" font-size="11" font-weight="700">Managed Host Endpoints</text>
+            <text x="115" y="47" fill="#94a3b8" text-anchor="middle" font-size="10">Windows / Linux</text>
+          </g>
+
+          <!-- Arrow 4: Managed Host Endpoints -> Centralized SIEM (Sysmon & Auditd Logs) -->
+          <path d="M 460 171 L 807 171 L 807 78" fill="none" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
+          <text x="630" y="163" fill="#94a3b8" text-anchor="middle" font-size="9" font-weight="600" letter-spacing="0.5">Sysmon &amp; Auditd Logs</text>
         </svg>
       </div>
     </section>
