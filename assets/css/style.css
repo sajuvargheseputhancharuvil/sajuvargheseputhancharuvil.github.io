@@ -132,20 +132,15 @@ h1, h2, h3, h4 { color: var(--text-bright); font-weight: 700; letter-spacing: -0
 .bg-arc-hero::before {
   content: '';
   position: absolute;
-  top: -180px;
+  top: -220px; /* Lifted up from -180px for cleaner contrast behind text */
   left: 50%;
   transform: translateX(-50%);
-  width: 1000px;
-  height: 500px;
-  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.4) 0%, rgba(30, 58, 138, 0.2) 40%, rgba(2, 6, 18, 0) 70%);
+  width: 1100px;
+  height: 520px;
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.35) 0%, rgba(30, 58, 138, 0.18) 45%, rgba(2, 6, 18, 0) 75%);
   border-radius: 50%;
-  border-top: 1.5px solid rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 50px rgba(56, 189, 248, 0.25);
+  border-top: 1.5px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 60px rgba(56, 189, 248, 0.2);
   pointer-events: none;
   z-index: 0;
-}
-
-.bg-arc-hero > * {
-  position: relative;
-  z-index: 1;
 }
