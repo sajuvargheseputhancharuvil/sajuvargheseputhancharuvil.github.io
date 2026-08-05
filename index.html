@@ -51,28 +51,34 @@
   <main class="max-container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
 
     <!-- 1. HERO SECTION -->
-    <section class="bg-arc-hero space-y" style="padding: 4rem 1rem 3rem 1rem;">
-    <section>
-      <div class="grid-2" style="align-items: center; gap: 2rem;">
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent-blue); text-transform: uppercase;">
-            PRACTICAL SECURITY • OPERATIONAL INSIGHTS
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.2; margin-top: 0.75rem; margin-bottom: 1rem;">
-            Defensive Operations, Threat Analysis & <br/><span style="color: var(--accent-blue);">Security Testing</span>
-          </h1>
-          <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            Documenting real-world SIEM workflows, fraud detection, and lab-based security experimentation. Focused on understanding why security controls fail, how alerts behave, and how systems perform under operational analysis.
-          </p>
-          <div style="display: flex; gap: 1rem;">
-            <a href="investigations.html" class="btn btn-primary">
-              Explore Investigations <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
-            </a>
-            <a href="lab-setup.html" class="btn btn-secondary">
-              View Lab Setups <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
-            </a>
-          </div>
-        </div>
+    <!-- HERO SECTION WITH OPTIMIZED SPACING -->
+    
+<section class="bg-arc-hero" style="padding: 4.5rem 2rem 4rem 2rem; margin-bottom: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+  <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Left Column: Typography & CTAs -->
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+      <span style="color: var(--cyan-glow); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.75rem;">
+        PRACTICAL SECURITY • OPERATIONAL INSIGHTS
+      </span>
+      <h1 style="font-size: 2.4rem; font-weight: 800; line-height: 1.15; color: #ffffff; margin-bottom: 1rem;">
+        Defensive Operations, Threat Analysis &amp; <span style="color: var(--accent-blue);">Security Testing</span>
+      </h1>
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.75rem; max-width: 500px;">
+        Documenting real-world SIEM workflows, fraud detection, and lab-based security experimentation. Focused on understanding why security controls fail, how alerts behave, and how systems perform under operational analysis.
+      </p>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <a href="investigations.html" class="psv-btn" style="width: auto; padding: 0.75rem 1.5rem;">Explore Investigations →</a>
+        <a href="lab-setup.html" style="background: rgba(15, 23, 42, 0.6); color: #fff; border: 1px solid var(--border-color); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.875rem; text-decoration: none;">View Lab Setups →</a>
+      </div>
+    </div>
+
+    <!-- Right Column: Terminal Widget (Position Fixed) -->
+    <div style="width: 100%;">
+      <!-- Terminal Window HTML -->
+    </div>
+
+  </div>
 
         <div class="section-card" style="padding: 1rem;">
           <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
