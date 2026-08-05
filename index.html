@@ -80,23 +80,25 @@
 
   </div>
 
-        <div class="section-card" style="padding: 1rem;">
-          <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
-            <div style="display: flex; gap: 0.35rem;">
-              <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
-              <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
-              <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
-            </div>
-            <span class="mono-font" style="font-size: 0.65rem; color: var(--text-muted);">SOC Live Telemetry Feed</span>
-          </div>
-          <div class="code-container">
-            <p style="color: var(--cyan-glow);"><span style="color: var(--text-muted);">[2026-07-25 01:14:02]</span> SIEM_INGEST: Sysmon Event ID 1 (Process Creation)</p>
-            <p style="color: var(--amber-alert); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ALERT]</span> Suspicious PowerShell Execution: `-NoP -NonI -W Hidden -e aX...`</p>
-            <p style="color: var(--text-muted); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ANALYSIS]</span> Parent Image: `C:\Windows\System32\taskeng.exe` (Scheduled Task)</p>
-            <p style="color: var(--emerald-success); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[CORRELATION]</span> Matched Rule: `ATO_MFA_BYPASS_BEHAVIOR_09` (Risk Score: 85/100)</p>
-          </div>
-        </div>
+<!-- Right Column: Code Terminal Widget -->
+<div style="width: 100%;">
+  <div class="section-card" style="padding: 1rem; background: rgba(5, 12, 33, 0.8); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-card);">
+    <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+      <div style="display: flex; gap: 0.35rem;">
+        <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+        <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+        <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
       </div>
+      <span class="mono-font" style="font-size: 0.65rem; color: var(--text-muted);">SOC Live Telemetry Feed</span>
+    </div>
+    <div class="code-container" style="font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.6;">
+      <p style="color: var(--cyan-glow);"><span style="color: var(--text-muted);">[2026-07-25 01:14:02]</span> SIEM_INGEST: Sysmon Event ID 1 (Process Creation)</p>
+      <p style="color: var(--amber-alert); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ALERT]</span> Suspicious PowerShell Execution: `-NoP -NonI -W Hidden -e aX...`</p>
+      <p style="color: var(--text-muted); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ANALYSIS]</span> Parent Image: `C:\Windows\System32\taskeng.exe` (Scheduled Task)</p>
+      <p style="color: var(--emerald-success); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[CORRELATION]</span> Matched Rule: `ATO_MFA_BYPASS_BEHAVIOR_09` (Risk Score: 85/100)</p>
+    </div>
+  </div>
+</div>
     </section>
 
     <!-- 2. FOCUS AREAS -->
