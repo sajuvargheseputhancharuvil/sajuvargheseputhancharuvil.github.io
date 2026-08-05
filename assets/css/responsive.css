@@ -1,26 +1,3 @@
-@media (max-width: 1024px) {
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .flex-between { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .navbar { padding: 0 1rem; }
-  
-  /* Force touch-scrolling specifically for mobile SVG diagrams */
-  .section-card { overflow: hidden !important; }
-  .section-card > div[style*="overflow-x"] { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
-  svg { min-width: 750px !important; }
-}
-
-
-svg {
-  touch-action: pan-x pan-y;
-  pointer-events: auto;
-}
-
-
 /* BREAKPOINT: TABLETS & SMALL LAPTOPS (1024px and below) */
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
