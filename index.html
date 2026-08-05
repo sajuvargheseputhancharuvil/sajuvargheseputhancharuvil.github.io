@@ -51,12 +51,13 @@
   <main class="max-container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
 
     <!-- 1. HERO SECTION -->
-    <!-- HERO SECTION WITH OPTIMIZED SPACING -->
-    
-<section class="bg-arc-hero" style="padding: 4.5rem 2rem 4rem 2rem; margin-bottom: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+    <!-- HERO SECTION WITH 2-COLUMN GRID -->
+<section class="bg-arc-hero" style="padding: 4rem 2rem 3.5rem 2rem; margin-bottom: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+  
+  <!-- GRID CONTAINER FOR SIDE-BY-SIDE LAYOUT -->
   <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; max-width: 1200px; margin: 0 auto;">
     
-    <!-- Left Column: Typography & CTAs -->
+    <!-- LEFT COLUMN: TEXT & BUTTONS -->
     <div style="display: flex; flex-direction: column; justify-content: center;">
       <span style="color: var(--cyan-glow); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.75rem;">
         PRACTICAL SECURITY • OPERATIONAL INSIGHTS
@@ -64,7 +65,7 @@
       <h1 style="font-size: 2.4rem; font-weight: 800; line-height: 1.15; color: #ffffff; margin-bottom: 1rem;">
         Defensive Operations, Threat Analysis &amp; <span style="color: var(--accent-blue);">Security Testing</span>
       </h1>
-      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.75rem; max-width: 500px;">
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.75rem;">
         Documenting real-world SIEM workflows, fraud detection, and lab-based security experimentation. Focused on understanding why security controls fail, how alerts behave, and how systems perform under operational analysis.
       </p>
       <div style="display: flex; gap: 1rem; align-items: center;">
@@ -73,33 +74,28 @@
       </div>
     </div>
 
-    <!-- Right Column: Terminal Widget (Position Fixed) -->
+    <!-- RIGHT COLUMN: TELEMETRY WIDGET -->
     <div style="width: 100%;">
-      <!-- Terminal Window HTML -->
-    </div>
-
-  </div>
-
-<!-- Right Column: Code Terminal Widget -->
-<div style="width: 100%;">
-  <div class="section-card" style="padding: 1rem; background: rgba(5, 12, 33, 0.8); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-card);">
-    <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
-      <div style="display: flex; gap: 0.35rem;">
-        <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
-        <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
-        <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+      <div class="section-card" style="padding: 1rem; background: rgba(5, 12, 33, 0.8); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-card);">
+        <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+          <div style="display: flex; gap: 0.35rem;">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+          </div>
+          <span class="mono-font" style="font-size: 0.65rem; color: var(--text-muted);">SOC Live Telemetry Feed</span>
+        </div>
+        <div class="code-container" style="font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.6;">
+          <p style="color: var(--cyan-glow);"><span style="color: var(--text-muted);">[2026-07-25 01:14:02]</span> SIEM_INGEST: Sysmon Event ID 1 (Process Creation)</p>
+          <p style="color: var(--amber-alert); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ALERT]</span> Suspicious PowerShell Execution: `-NoP -NonI -W Hidden -e aX...`</p>
+          <p style="color: var(--text-muted); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ANALYSIS]</span> Parent Image: `C:\Windows\System32\taskeng.exe` (Scheduled Task)</p>
+          <p style="color: var(--emerald-success); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[CORRELATION]</span> Matched Rule: `ATO_MFA_BYPASS_BEHAVIOR_09` (Risk Score: 85/100)</p>
+        </div>
       </div>
-      <span class="mono-font" style="font-size: 0.65rem; color: var(--text-muted);">SOC Live Telemetry Feed</span>
     </div>
-    <div class="code-container" style="font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.6;">
-      <p style="color: var(--cyan-glow);"><span style="color: var(--text-muted);">[2026-07-25 01:14:02]</span> SIEM_INGEST: Sysmon Event ID 1 (Process Creation)</p>
-      <p style="color: var(--amber-alert); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ALERT]</span> Suspicious PowerShell Execution: `-NoP -NonI -W Hidden -e aX...`</p>
-      <p style="color: var(--text-muted); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[ANALYSIS]</span> Parent Image: `C:\Windows\System32\taskeng.exe` (Scheduled Task)</p>
-      <p style="color: var(--emerald-success); margin-top: 0.35rem;"><span style="color: var(--text-muted);">[CORRELATION]</span> Matched Rule: `ATO_MFA_BYPASS_BEHAVIOR_09` (Risk Score: 85/100)</p>
-    </div>
+
   </div>
-</div>
-    </section>
+</section>
 
     <!-- 2. FOCUS AREAS -->
     <section class="space-y">
