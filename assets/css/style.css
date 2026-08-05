@@ -120,3 +120,32 @@ h1, h2, h3, h4 { color: var(--text-bright); font-weight: 700; letter-spacing: -0
   background-color: rgba(2, 5, 14, 0.9);
   padding: 1.5rem 0; font-size: 0.75rem; color: var(--text-muted);
 }
+
+
+/* SaaS Arc Glow Background */
+.bg-arc-hero {
+  position: relative;
+  background-color: #020612 !important;
+  overflow: hidden;
+}
+
+.bg-arc-hero::before {
+  content: '';
+  position: absolute;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.4) 0%, rgba(30, 58, 138, 0.2) 40%, rgba(2, 6, 18, 0) 70%);
+  border-radius: 50%;
+  border-top: 1.5px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 50px rgba(56, 189, 248, 0.25);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-arc-hero > * {
+  position: relative;
+  z-index: 1;
+}
